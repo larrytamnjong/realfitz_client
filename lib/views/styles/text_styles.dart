@@ -47,7 +47,7 @@ TextStyle extraBoldTextStyle = const TextStyle(
 );
 
 TextStyle appBarTextStyle = const TextStyle(
-  fontSize: FontSizes.f19,
+  fontSize: FontSizes.f20,
   fontFamily: montserrat,
-  fontWeight: medium,
+  fontWeight: semiBold,
 );

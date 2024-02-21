@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:realfitzclient/constants/image_parts.dart';
 import 'package:realfitzclient/constants/strings.dart';
+import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/registration_page.dart';
 import 'package:realfitzclient/views/styles/text_styles.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
@@ -30,30 +33,38 @@ class GettingStartedPage extends StatelessWidget {
                     height: AppSize.s20,
                   ),
                   Text(
-                    AppStrings.walkEarnRewardsGetCoins,
-                    style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
+                    AppStrings.walkEarnAndRedeem,
+                    style: boldTextStyle.copyWith(fontSize: FontSizes.f23),
                   ),
                   const SizedBox(height: AppSize.s10),
-                  const Text(
-                    AppStrings
-                        .realFitzRewardsYouForWalkingEarnCoinsAndUnlockExclusiveDiscounts,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: AppSize.s18),
-                  const LineDivider(),
                   Text(
-                    AppStrings
-                        .byClickingLetsGetStartedStartedOrSigninYouAgreeToOurTermsAndConditions,
+                    AppStrings.realFitzRewardsYouWIthCoinsForEveryStep,
+                    style: regularTextStyle,
                     textAlign: TextAlign.center,
-                    style: regularTextStyle.copyWith(color: AppColors.grey),
                   ),
+                  const SizedBox(height: AppSize.s30),
+                  // const LineDivider(),
+                  // Text(
+                  //   AppStrings
+                  //       .byClickingLetsGetStartedStartedOrSigninYouAgreeToOurTermsAndConditions,
+                  //   textAlign: TextAlign.center,
+                  //   style: regularTextStyle.copyWith(color: AppColors.grey),
+                  // ),
                   const SizedBox(height: AppSize.s50),
                   PrimaryElevatedButton(
                     text: AppStrings.letsGetStarted,
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        () => const RegistrationPage(),
+                      );
+                    },
                   ),
                   PrimaryTextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(
+                          () => const LoginPage(),
+                        );
+                      },
                       text: AppStrings.alreadyHaveAccountSignIn),
                   const LineDivider(),
                   PrimaryTextButton(

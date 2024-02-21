@@ -38,7 +38,7 @@ class PrimaryTextButton extends StatelessWidget {
 
 class PrimaryElevatedButton extends StatelessWidget {
   final String text;
-  final Function onPressed;
+  final Function() onPressed;
   const PrimaryElevatedButton({
     super.key,
     required this.text,
@@ -52,7 +52,7 @@ class PrimaryElevatedButton extends StatelessWidget {
           padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(
               AppPadding.p80, AppPadding.p8, AppPadding.p80, AppPadding.p8)),
           backgroundColor: MaterialStateProperty.all(AppColors.primary)),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: semiBoldTextStyle.copyWith(color: AppColors.white),
