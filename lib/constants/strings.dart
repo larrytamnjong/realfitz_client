@@ -25,4 +25,10 @@ class AppStrings {
   static const String invalidEmail = "Invalid email";
   static const String invalidLength = "Invalid length";
   static const String invalidCharacter = "Invalid character";
+  static const String alert = 'Alert';
+  static const String successful = "Request was completed successfully";
+  static const String checkIfUserDoesNotAlreadyExist =
+      "Please check if user does not already exist";
+  static const String makeSureEmailAndPasswordAreCorrect =
+      "Please make sure your email and password are correct";
 }

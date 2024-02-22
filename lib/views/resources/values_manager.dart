@@ -23,7 +23,7 @@ class AppSize {
 }
 
 class DurationConstant {
-  static const int d300 = 300;
+  static const int d2 = 2;
 }
 
 class FontSizes {

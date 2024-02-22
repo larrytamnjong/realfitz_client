@@ -43,13 +43,6 @@ class GettingStartedPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: AppSize.s30),
-                  // const LineDivider(),
-                  // Text(
-                  //   AppStrings
-                  //       .byClickingLetsGetStartedStartedOrSigninYouAgreeToOurTermsAndConditions,
-                  //   textAlign: TextAlign.center,
-                  //   style: regularTextStyle.copyWith(color: AppColors.grey),
-                  // ),
                   const SizedBox(height: AppSize.s50),
                   PrimaryElevatedButton(
                     text: AppStrings.letsGetStarted,
