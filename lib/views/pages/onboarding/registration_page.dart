@@ -49,13 +49,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: AppSize.s10),
+                        const SizedBox(height: AppSizes.s10),
                         Text(
                           AppStrings.heyThereAthlete,
                           style:
                               boldTextStyle.copyWith(fontSize: FontSizes.f18),
                         ),
-                        const SizedBox(height: AppSize.s12),
+                        const SizedBox(height: AppSizes.s12),
                         PhoneCodePicker(
                           validator: requiredValidator.call,
                           controller: authController.phoneController,
@@ -113,7 +113,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: AppSize.s20),
+                    const SizedBox(height: AppSizes.s20),
                     PrimaryElevatedButton(
                         text: AppStrings.createAccount,
                         onPressed: authController.createAccount)

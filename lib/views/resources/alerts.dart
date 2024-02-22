@@ -13,7 +13,7 @@ void showSuccessSnackBar() {
       message: AppStrings.successful,
       icon: Icon(
         Icons.check,
-        size: AppSize.s30,
+        size: AppSizes.s30,
         color: AppColors.white,
       ),
       duration: const Duration(seconds: DurationConstant.d2),
@@ -27,7 +27,7 @@ void showFailureSnackBar({required String message}) {
       backgroundColor: AppColors.red,
       title: AppStrings.alert,
       message: message,
-      icon: Icon(Icons.warning, color: AppColors.white, size: AppSize.s30),
+      icon: Icon(Icons.warning, color: AppColors.white, size: AppSizes.s30),
       duration: const Duration(seconds: DurationConstant.d2),
     ),
   );

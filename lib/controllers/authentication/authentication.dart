@@ -10,6 +10,7 @@ import 'package:realfitzclient/views/resources/alerts.dart';
 
 import '../../constants/strings.dart';
 import '../../models/authentication/user.dart';
+import '../../views/resources/transitions.dart';
 
 class AuthenticationController extends ControllerBase {
   final phoneController = TextEditingController();
@@ -65,7 +66,7 @@ class AuthenticationController extends ControllerBase {
         await saveUserToLocalStorage(loggedInUser);
         hideLoadingIndicator();
         showSuccessSnackBar();
-        Get.offAll(() => const DashboardPage());
+        Get.offAll(transition: downToUp, () => const DashboardPage());
       } else {
         hideLoadingIndicator();
         showFailureSnackBar(
@@ -85,7 +86,7 @@ class AuthenticationController extends ControllerBase {
       if (accountIsCreated) {
         hideLoadingIndicator();
         showSuccessSnackBar();
-        Get.off(() => const LoginPage());
+        Get.off(transition: downToUp, () => const LoginPage());
       } else {
         hideLoadingIndicator();
         showFailureSnackBar(message: AppStrings.checkIfUserDoesNotAlreadyExist);

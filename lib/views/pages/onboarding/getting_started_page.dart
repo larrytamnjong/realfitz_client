@@ -8,6 +8,7 @@ import 'package:realfitzclient/views/styles/text_styles.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
 import '../../resources/colors_manager.dart';
+import '../../resources/transitions.dart';
 import '../../resources/values_manager.dart';
 import '../../widgets/divider.dart';
 
@@ -30,20 +31,19 @@ class GettingStartedPage extends StatelessWidget {
                     image: AssetImage(ImagePaths.fitnessStart),
                   ),
                   const SizedBox(
-                    height: AppSize.s20,
+                    height: AppSizes.s20,
                   ),
                   Text(
                     AppStrings.walkEarnAndRedeem,
                     style: boldTextStyle.copyWith(fontSize: FontSizes.f23),
                   ),
-                  const SizedBox(height: AppSize.s10),
+                  const SizedBox(height: AppSizes.s10),
                   Text(
                     AppStrings.realFitzRewardsYouWIthCoinsForEveryStep,
                     style: regularTextStyle,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: AppSize.s30),
-                  const SizedBox(height: AppSize.s50),
+                  const SizedBox(height: AppSizes.s80),
                   PrimaryElevatedButton(
                     text: AppStrings.letsGetStarted,
                     onPressed: () {
@@ -55,6 +55,7 @@ class GettingStartedPage extends StatelessWidget {
                   PrimaryTextButton(
                       onPressed: () {
                         Get.to(
+                          transition: downToUp,
                           () => const LoginPage(),
                         );
                       },

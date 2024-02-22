@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                           style:
                               boldTextStyle.copyWith(fontSize: FontSizes.f18),
                         ),
-                        const SizedBox(height: AppSize.s12),
+                        const SizedBox(height: AppSizes.s12),
                         FormBuilderTextField(
                           name: AppStrings.email,
                           decoration: InputDecoration(
@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: AppSize.s20),
+                    const SizedBox(height: AppSizes.s20),
                     PrimaryElevatedButton(
                         text: AppStrings.login,
                         onPressed: authController.login),

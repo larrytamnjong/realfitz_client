@@ -46,6 +46,19 @@ class UserLocalStorageManager {
     }
   }
 
+  static Future<bool> isUserStoredInLocalStorage() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      int? userId = prefs.getInt('id');
+      if (userId == null) {
+        return true;
+      }
+      return false;
+    } catch (exception) {
+      return false;
+    }
+  }
+
   static removeUserFromLocalStorage() async {
     try {
       final prefs = await SharedPreferences.getInstance();
