@@ -5,12 +5,14 @@ import 'package:realfitzclient/data/steps/step.dart';
 import '../../models/step/last_sync_date.dart';
 import '../../services/steps/steps.dart';
 
-class StepsController extends BaseController {
-  syncStepsData() async {
-    StepsService stepsService = StepsService();
-    StepsClient stepsClient = StepsClient();
+class StepController extends BaseController {
+  syncStepData() async {
+    StepService stepService = StepService();
+    StepClient stepsClient = StepClient();
 
-    DateTime? lastSyncTime = await getLastSyncDate(stepsClient: stepsClient);
+    bool isAccessStepsDataAuthorized =
+        await stepService.accessStepDataAuthorization();
+    DateTime? lastSyncTime = await getLastSyncDate(stepClient: stepsClient);
     DateTime? getStepsDateTimeEnd =
         lastSyncTime?.add(const Duration(hours: 12));
 
@@ -20,17 +22,19 @@ class StepsController extends BaseController {
 
     while (isTimeDifferenceGreaterThan12Hours == true) {
       try {
-        await processSync(
-            stepsService: stepsService,
-            startTime: lastSyncTime!,
-            endTime: getStepsDateTimeEnd!);
+        if (isAccessStepsDataAuthorized) {
+          await processSync(
+              stepService: stepService,
+              startTime: lastSyncTime!,
+              endTime: getStepsDateTimeEnd!);
 
-        lastSyncTime = getStepsDateTimeEnd;
+          lastSyncTime = getStepsDateTimeEnd;
 
-        getStepsDateTimeEnd = lastSyncTime.add(const Duration(hours: 12));
-        isTimeDifferenceGreaterThan12Hours =
-            checkIfTimeDifferenceIsGreaterThan12Hours(
-                lastSyncTime, DateTime.now());
+          getStepsDateTimeEnd = lastSyncTime.add(const Duration(hours: 12));
+          isTimeDifferenceGreaterThan12Hours =
+              checkIfTimeDifferenceIsGreaterThan12Hours(
+                  lastSyncTime, DateTime.now());
+        }
       } catch (exception) {
         handleException(exception);
       }
@@ -38,10 +42,10 @@ class StepsController extends BaseController {
   }
 
   Future processSync(
-      {required StepsService stepsService,
+      {required StepService stepService,
       required DateTime startTime,
       required DateTime endTime}) async {
-    int? steps = await stepsService.getStepsByInterval(
+    int? steps = await stepService.getStepsByInterval(
         startTime: startTime, endTime: endTime);
 
     if (steps != null) {
@@ -49,10 +53,10 @@ class StepsController extends BaseController {
     }
   }
 
-  Future<DateTime?> getLastSyncDate({required StepsClient stepsClient}) async {
+  Future<DateTime?> getLastSyncDate({required StepClient stepClient}) async {
     int? id = await getUserId();
     StepLastSyncDate? stepLastSyncDate =
-        await stepsClient.getLastSyncDate(id: id!);
+        await stepClient.getLastSyncDate(id: id!);
     return stepLastSyncDate?.lastSyncDate!;
   }
 

@@ -9,11 +9,11 @@ import '../../views/resources/transitions.dart';
 
 class SplashProcess extends BaseController {
   void doSplashProcesses() async {
-    StepsController stepsController = StepsController();
+    StepController stepController = StepController();
     bool userStoredInLocalStorage =
         await UserLocalStorageManager.isUserStoredInLocalStorage();
     if (userStoredInLocalStorage) {
-      await stepsController.syncStepsData();
+      await stepController.syncStepData();
       Get.offAll(transition: downToUp, () => const DashboardPage());
     } else {
       Get.offAll(transition: downToUp, () => const GettingStartedPage());

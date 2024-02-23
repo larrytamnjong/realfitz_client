@@ -5,7 +5,7 @@ import 'package:realfitzclient/models/step/last_sync_date.dart';
 
 import '../../constants/api_urls.dart';
 
-class StepsClient {
+class StepClient {
   Future<StepLastSyncDate?> getLastSyncDate({required int id}) async {
     try {
       final response = await http.get(Uri.parse('$lastSyncTimeUrl$id'));
