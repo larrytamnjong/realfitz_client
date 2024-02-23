@@ -8,12 +8,12 @@ import 'package:realfitzclient/views/pages/onboarding/getting_started_page.dart'
 import '../../views/resources/transitions.dart';
 
 class SplashProcess extends BaseController {
-  void doSplashProcesses() async {
+  void startSplashProcesses() async {
     StepController stepController = StepController();
     bool userStoredInLocalStorage =
         await UserLocalStorageManager.isUserStoredInLocalStorage();
     if (userStoredInLocalStorage) {
-      await stepController.syncStepData();
+      await stepController.startupSyncProcess();
       Get.offAll(transition: downToUp, () => const DashboardPage());
     } else {
       Get.offAll(transition: downToUp, () => const GettingStartedPage());

@@ -1,67 +1,72 @@
-import 'package:flutter/cupertino.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
-import 'package:realfitzclient/data/steps/step.dart';
+import 'package:realfitzclient/data/step/step.dart';
 
 import '../../models/step/last_sync_date.dart';
+import '../../models/step/step.dart';
 import '../../services/steps/steps.dart';
 
 class StepController extends BaseController {
-  syncStepData() async {
-    StepService stepService = StepService();
-    StepClient stepsClient = StepClient();
+  StepService stepService = StepService();
+  StepClient stepClient = StepClient();
 
-    bool isAccessStepsDataAuthorized =
-        await stepService.accessStepDataAuthorization();
-    DateTime? lastSyncTime = await _getLastSyncDate(stepClient: stepsClient);
-    DateTime? getStepsDateTimeEnd =
-        lastSyncTime?.add(const Duration(hours: 12));
+  startupSyncProcess() async {
+    try {
+      bool isAuthorized = await stepService.requestAuthorization();
+      DateTime? lastSyncTime = await _getLastSyncDate();
 
-    bool isTimeDifferenceGreaterThan12Hours =
-        _checkIfTimeDifferenceIsGreaterThan12Hours(
-            lastSyncTime!, DateTime.now());
+      while (_checkTimeDifference(lastSyncTime!, DateTime.now())) {
+        if (isAuthorized) {
+          DateTime? getStepsDateTimeEnd = lastSyncTime
+              .add(const Duration(hours: 12))
+              .subtract(const Duration(seconds: 1));
 
-    while (isTimeDifferenceGreaterThan12Hours == true) {
-      try {
-        if (isAccessStepsDataAuthorized) {
           await _handleStepsSync(
-              stepService: stepService,
-              startTime: lastSyncTime!,
-              endTime: getStepsDateTimeEnd!);
+              startTime: lastSyncTime, endTime: getStepsDateTimeEnd);
 
-          lastSyncTime = getStepsDateTimeEnd;
-
-          getStepsDateTimeEnd = lastSyncTime.add(const Duration(hours: 12));
-          isTimeDifferenceGreaterThan12Hours =
-              _checkIfTimeDifferenceIsGreaterThan12Hours(
-                  lastSyncTime, DateTime.now());
+          lastSyncTime = getStepsDateTimeEnd.add(const Duration(seconds: 1));
         }
-      } catch (exception) {
-        handleException(exception);
       }
+    } catch (exception) {
+      handleException(exception);
     }
   }
 
   Future _handleStepsSync(
-      {required StepService stepService,
-      required DateTime startTime,
-      required DateTime endTime}) async {
+      {required DateTime startTime, required DateTime endTime}) async {
     int? steps = await stepService.getStepsByInterval(
         startTime: startTime, endTime: endTime);
-
-    if (steps != null) {
-      debugPrint(steps.toString());
+    try {
+      if (steps != null) {
+        Step stepsObject = Step(steps: steps, syncDate: endTime);
+        _syncSteps(steps: stepsObject);
+      }
+    } catch (exception) {
+      throw Exception(exception);
     }
   }
 
-  Future<DateTime?> _getLastSyncDate({required StepClient stepClient}) async {
-    int? id = await getUserId();
-    StepLastSyncDate? stepLastSyncDate =
-        await stepClient.getLastSyncDate(id: id!);
-    return stepLastSyncDate?.lastSyncDate!;
+  Future<DateTime?> _getLastSyncDate() async {
+    try {
+      int? id = await getUserId();
+      StepLastSyncDate? stepLastSyncDate =
+          await stepClient.getLastSyncDate(id: id!);
+
+      return stepLastSyncDate?.lastSyncDate!;
+    } catch (exception) {
+      throw Exception(exception);
+    }
   }
 
-  bool _checkIfTimeDifferenceIsGreaterThan12Hours(
-      DateTime startDateTime, DateTime endDateTime) {
+  void _syncSteps({required Step steps}) async {
+    try {
+      steps.id = await getUserId();
+      await stepClient.syncSteps(steps: steps);
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
+  bool _checkTimeDifference(DateTime startDateTime, DateTime endDateTime) {
     Duration timeDifference = endDateTime.difference(startDateTime);
     return timeDifference.inHours >= 12;
   }

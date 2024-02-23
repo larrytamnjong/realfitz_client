@@ -3,3 +3,4 @@ String rootUrl = 'http://192.168.9.134:3150/src/Api';
 String createAccountUrl = '$rootUrl/User/CreateUser.php';
 String loginUrl = '$rootUrl/User/LoginUser.php';
 String lastSyncTimeUrl = '$rootUrl/Step/GetLastSyncDate.php?id=';
+String syncStepsUrl = '$rootUrl/Step/SyncSteps.php';

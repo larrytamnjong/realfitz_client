@@ -17,7 +17,7 @@ class StepService {
     }
   }
 
-  Future<bool> accessStepDataAuthorization() async {
+  Future<bool> requestAuthorization() async {
     return await _health.requestAuthorization([HealthDataType.STEPS]);
   }
 }

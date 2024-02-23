@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     splashPageProcess = Get.put(SplashProcess());
-    splashPageProcess.doSplashProcesses();
+    splashPageProcess.startSplashProcesses();
     super.initState();
   }
 
