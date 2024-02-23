@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'package:realfitzclient/controllers/controller_base.dart';
+import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/data/authentication/authentication_client.dart';
 import 'package:realfitzclient/services/local_storage/local_storage_user.dart';
 import 'package:realfitzclient/views/pages/dashboard/dashboard.dart';
@@ -12,7 +12,7 @@ import '../../constants/strings.dart';
 import '../../models/authentication/user.dart';
 import '../../views/resources/transitions.dart';
 
-class AuthenticationController extends ControllerBase {
+class AuthenticationController extends BaseController {
   final phoneController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();

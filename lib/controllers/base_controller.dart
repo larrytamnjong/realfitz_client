@@ -3,7 +3,7 @@ import 'package:realfitzclient/services/local_storage/local_storage_user.dart';
 
 import '../views/resources/alerts.dart';
 
-class ControllerBase extends GetxController {
+class BaseController extends GetxController {
   var isShowingLoadingIndicator = false.obs;
 
   void showLoadingIndicator() {

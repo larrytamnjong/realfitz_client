@@ -31,4 +31,5 @@ class AppStrings {
       "Please check if user does not already exist";
   static const String makeSureEmailAndPasswordAreCorrect =
       "Please make sure your email and password are correct";
+  static const String authorizationNotGranted = "Authorization not granted";
 }

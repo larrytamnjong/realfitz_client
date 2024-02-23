@@ -51,9 +51,9 @@ class UserLocalStorageManager {
       final prefs = await SharedPreferences.getInstance();
       int? userId = prefs.getInt('id');
       if (userId == null) {
-        return true;
+        return false;
       }
-      return false;
+      return true;
     } catch (exception) {
       return false;
     }

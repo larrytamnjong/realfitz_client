@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(AppPadding.p170),
+            padding: const EdgeInsets.all(AppPadding.p150),
             child: LoadingIndicator(
               indicatorType: Indicator.lineScalePulseOut,
               colors: [
