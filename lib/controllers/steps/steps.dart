@@ -12,18 +12,18 @@ class StepController extends BaseController {
 
     bool isAccessStepsDataAuthorized =
         await stepService.accessStepDataAuthorization();
-    DateTime? lastSyncTime = await getLastSyncDate(stepClient: stepsClient);
+    DateTime? lastSyncTime = await _getLastSyncDate(stepClient: stepsClient);
     DateTime? getStepsDateTimeEnd =
         lastSyncTime?.add(const Duration(hours: 12));
 
     bool isTimeDifferenceGreaterThan12Hours =
-        checkIfTimeDifferenceIsGreaterThan12Hours(
+        _checkIfTimeDifferenceIsGreaterThan12Hours(
             lastSyncTime!, DateTime.now());
 
     while (isTimeDifferenceGreaterThan12Hours == true) {
       try {
         if (isAccessStepsDataAuthorized) {
-          await processSync(
+          await _handleStepsSync(
               stepService: stepService,
               startTime: lastSyncTime!,
               endTime: getStepsDateTimeEnd!);
@@ -32,7 +32,7 @@ class StepController extends BaseController {
 
           getStepsDateTimeEnd = lastSyncTime.add(const Duration(hours: 12));
           isTimeDifferenceGreaterThan12Hours =
-              checkIfTimeDifferenceIsGreaterThan12Hours(
+              _checkIfTimeDifferenceIsGreaterThan12Hours(
                   lastSyncTime, DateTime.now());
         }
       } catch (exception) {
@@ -41,7 +41,7 @@ class StepController extends BaseController {
     }
   }
 
-  Future processSync(
+  Future _handleStepsSync(
       {required StepService stepService,
       required DateTime startTime,
       required DateTime endTime}) async {
@@ -53,14 +53,14 @@ class StepController extends BaseController {
     }
   }
 
-  Future<DateTime?> getLastSyncDate({required StepClient stepClient}) async {
+  Future<DateTime?> _getLastSyncDate({required StepClient stepClient}) async {
     int? id = await getUserId();
     StepLastSyncDate? stepLastSyncDate =
         await stepClient.getLastSyncDate(id: id!);
     return stepLastSyncDate?.lastSyncDate!;
   }
 
-  bool checkIfTimeDifferenceIsGreaterThan12Hours(
+  bool _checkIfTimeDifferenceIsGreaterThan12Hours(
       DateTime startDateTime, DateTime endDateTime) {
     Duration timeDifference = endDateTime.difference(startDateTime);
     return timeDifference.inHours >= 12;
