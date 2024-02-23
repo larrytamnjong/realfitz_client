@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realfitzclient/constants/image_parts.dart';
+import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/constants/strings.dart';
 import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/registration_page.dart';

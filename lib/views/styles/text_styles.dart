@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
 const String montserrat = 'Montserrat';
+const String signikaNegative = 'SignikaNegative';
 
 const FontWeight light = FontWeight.w300;
 const FontWeight regular = FontWeight.w400;
@@ -50,4 +51,10 @@ TextStyle appBarTextStyle = const TextStyle(
   fontSize: FontSizes.f20,
   fontFamily: montserrat,
   fontWeight: semiBold,
+);
+
+TextStyle appNameTextStyle = const TextStyle(
+  fontSize: FontSizes.f23,
+  fontFamily: signikaNegative,
+  fontWeight: bold,
 );

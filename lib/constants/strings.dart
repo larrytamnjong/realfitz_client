@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String appName = "RealFitz";
   static const String walkEarnAndRedeem = "Walk, Earn and Redeem";
   static const String realFitzRewardsYouWIthCoinsForEveryStep =
       "RealFitz rewards you with coins for every step. Use your coins to unlock cash and exclusive discounts";
@@ -32,4 +33,8 @@ class AppStrings {
   static const String makeSureEmailAndPasswordAreCorrect =
       "Please make sure your email and password are correct";
   static const String authorizationNotGranted = "Authorization not granted";
+  static const String home = "Home";
+  static const String challenge = "Challenge";
+  static const String reward = "Reward";
+  static const String profile = "Profile";
 }
