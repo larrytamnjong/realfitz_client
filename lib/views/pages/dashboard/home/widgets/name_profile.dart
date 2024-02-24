@@ -19,7 +19,7 @@ class NameAndProfileIconRow extends StatelessWidget {
       children: [
         Text(
           name,
-          style: boldTextStyle.copyWith(fontSize: FontSizes.f21),
+          style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
         ),
         IconButton(
           onPressed: () {},

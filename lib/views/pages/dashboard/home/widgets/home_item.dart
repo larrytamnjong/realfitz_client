@@ -67,7 +67,7 @@ class _HomeItemState extends State<HomeItem> {
               Text(
                 widget.title,
                 style: regularTextStyle.copyWith(
-                  fontSize: FontSizes.f16,
+                  fontSize: FontSizes.f15,
                 ),
               ),
               Padding(
@@ -75,7 +75,7 @@ class _HomeItemState extends State<HomeItem> {
                 child: Obx(
                   () => Text(
                     count.value.toString(),
-                    style: boldTextStyle.copyWith(fontSize: FontSizes.f19),
+                    style: boldTextStyle.copyWith(fontSize: FontSizes.f18),
                   ),
                 ),
               ),

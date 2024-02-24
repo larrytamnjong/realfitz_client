@@ -24,7 +24,7 @@ class AccountBalance extends StatelessWidget {
         const SizedBox(width: AppSizes.s5),
         Text(
           accountBalance,
-          style: boldTextStyle.copyWith(fontSize: FontSizes.f21),
+          style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
         ),
         const SizedBox(width: AppSizes.s10),
         Text(

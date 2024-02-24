@@ -9,7 +9,7 @@ import '../../models/step/step.dart';
 class StepClient {
   Future<StepLastSyncDate?> getLastSyncDate({required int id}) async {
     try {
-      final response = await http.get(Uri.parse('$lastSyncTimeUrl$id'));
+      final response = await http.get(Uri.parse('$getLastSyncTimeUrl$id'));
       if (response.statusCode == 200) {
         return StepLastSyncDate.fromJson(jsonDecode(response.body));
       } else {

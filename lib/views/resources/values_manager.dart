@@ -41,6 +41,7 @@ class DurationConstant {
 class FontSizes {
   static const double f12 = 12.0;
   static const double f16 = 16.0;
+  static const double f15 = 15.0;
   static const double f18 = 18.0;
   static const double f19 = 19.0;
   static const double f20 = 20.0;
