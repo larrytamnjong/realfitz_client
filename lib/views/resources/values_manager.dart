@@ -26,6 +26,7 @@ class AppSizes {
   static const double s23 = 23.0;
   static const double s26 = 26.0;
   static const double s30 = 30.0;
+  static const double s45 = 45.0;
   static const double s50 = 50.0;
   static const double s65 = 65.0;
   static const double s80 = 80.0;
@@ -42,6 +43,7 @@ class FontSizes {
   static const double f19 = 19.0;
   static const double f20 = 20.0;
   static const double f23 = 23.0;
+  static const double f21 = 21.0;
   static const double f25 = 25.0;
 }
 

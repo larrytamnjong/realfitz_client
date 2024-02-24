@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants/strings.dart';
 import '../../../../resources/values_manager.dart';
-import 'account_balance_row.dart';
-import 'account_status_container.dart';
+import 'account_balance.dart';
+import 'account_status.dart';
 import 'column_button.dart';
-import 'name_profile_icon_row.dart';
+import 'name_profile_icon.dart';
 
 class AccountSummaryCard extends StatelessWidget {
   const AccountSummaryCard({
@@ -29,8 +29,8 @@ class AccountSummaryCard extends StatelessWidget {
                 ),
                 const AccountStatusContainer(),
                 const SizedBox(height: AppSizes.s5),
-                const AccountBalanceRow(
-                  accountBalance: '2000',
+                const AccountBalance(
+                  accountBalance: '2000.00',
                 ),
                 const SizedBox(height: AppSizes.s10),
                 Row(

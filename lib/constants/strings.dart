@@ -40,4 +40,5 @@ class AppStrings {
   static const String accountIsActive = "Account is active";
   static const String history = "History";
   static const String withdrawal = "Withdrawal";
+  static const String coins = "RFC";
 }
