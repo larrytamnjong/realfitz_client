@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  count_number:
+    dependency: "direct main"
+    description:
+      name: count_number
+      sha256: "444f92ff3e03864875cd87ccee530bfa71f6d058eaef80134040ed6311496c40"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.71+1"
   country_code_picker:
     dependency: "direct main"
     description:
@@ -437,6 +445,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: a17d07f4348d13570e81a96752cc30a8f3df3f4429a51b327ebe3fae8699ce60
+      url: "https://pub.dev"
+    source: hosted
+    version: "24.2.7+1"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: "9f98e2726af42967497eaef68f3373261700bbfcd33bd97da4ec85cb56fcdaf7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "24.2.7"
   term_glyph:
     dependency: transitive
     description:

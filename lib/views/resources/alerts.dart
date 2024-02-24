@@ -8,7 +8,7 @@ import '../../constants/strings.dart';
 void showSuccessSnackBar() {
   Get.showSnackbar(
     GetSnackBar(
-      backgroundColor: AppColors.whatsAppGreen,
+      backgroundColor: AppColors.green,
       title: AppStrings.alert,
       message: AppStrings.successful,
       icon: Icon(

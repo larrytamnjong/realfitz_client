@@ -46,6 +46,8 @@ dependencies:
   flutter_multi_formatter: ^2.11.2
   loading_indicator: ^3.1.1
   ionicons: ^0.2.2
+  count_number: ^0.3.71+1
+  syncfusion_flutter_charts: ^24.2.7+1
 
 dev_dependencies:
   flutter_test:

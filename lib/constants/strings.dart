@@ -40,5 +40,9 @@ class AppStrings {
   static const String accountIsActive = "Account is active";
   static const String history = "History";
   static const String withdrawal = "Withdrawal";
+  static const String deposit = "Deposit";
   static const String rfc = "RFC";
+  static const String stepsToday = "Steps today";
+  static const String coinsToday = "Coins today";
+  static const String cumulativeStepData = "Cumulative step data";
 }

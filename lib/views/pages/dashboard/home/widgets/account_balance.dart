@@ -30,7 +30,7 @@ class AccountBalance extends StatelessWidget {
         Text(
           AppStrings.rfc,
           style: boldTextStyle.copyWith(
-              fontSize: FontSizes.f21, color: AppColors.whatsAppGreen),
+              fontSize: FontSizes.f21, color: AppColors.green),
           textAlign: TextAlign.end,
         )
       ],

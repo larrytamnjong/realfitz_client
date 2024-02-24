@@ -5,10 +5,10 @@ import '../../../../resources/values_manager.dart';
 import 'account_balance.dart';
 import 'account_status.dart';
 import 'column_button.dart';
-import 'name_profile_icon.dart';
+import 'name_profile.dart';
 
-class AccountSummaryCard extends StatelessWidget {
-  const AccountSummaryCard({
+class AccountSummary extends StatelessWidget {
+  const AccountSummary({
     super.key,
   });
 
@@ -35,15 +35,21 @@ class AccountSummaryCard extends StatelessWidget {
                 const SizedBox(height: AppSizes.s10),
                 Row(
                   children: [
-                    ColumnButton(
+                    VerticalTextButton(
                       icon: Icons.history,
                       text: AppStrings.history,
                       onPressed: () {},
                     ),
                     const SizedBox(width: AppSizes.s5),
-                    ColumnButton(
+                    VerticalTextButton(
                       icon: Icons.arrow_outward_rounded,
                       text: AppStrings.withdrawal,
+                      onPressed: () {},
+                    ),
+                    const SizedBox(width: AppSizes.s5),
+                    VerticalTextButton(
+                      icon: Icons.arrow_downward,
+                      text: AppStrings.deposit,
                       onPressed: () {},
                     ),
                   ],

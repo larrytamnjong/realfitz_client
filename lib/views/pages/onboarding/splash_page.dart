@@ -33,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
               colors: [
                 AppColors.brightBlue,
                 AppColors.primary,
-                AppColors.whatsAppGreen,
+                AppColors.green,
                 AppColors.red,
                 AppColors.primary
               ],

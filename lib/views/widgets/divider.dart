@@ -15,7 +15,7 @@ class LineDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: padding ?? AppPadding.p60),
-      child: Divider(thickness: thickness ?? 0.1),
+      child: Divider(thickness: thickness ?? AppSizes.s_01),
     );
   }
 }
