@@ -54,7 +54,7 @@ TextStyle appBarTextStyle = const TextStyle(
 );
 
 TextStyle appNameTextStyle = const TextStyle(
-  fontSize: FontSizes.f23,
+  fontSize: FontSizes.f25,
   fontFamily: signikaNegative,
   fontWeight: bold,
 );

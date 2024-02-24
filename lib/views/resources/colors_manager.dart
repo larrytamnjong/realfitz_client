@@ -7,4 +7,5 @@ class AppColors {
   static Color brightBlue = const Color(0XFF2196F3);
   static Color whatsAppGreen = const Color(0XFF2AB13F);
   static Color red = const Color(0XFFF70000);
+  static Color lightGreen = const Color(0XFFA5D6A7);
 }

@@ -45,6 +45,7 @@ dependencies:
   form_field_validator: ^1.1.0
   flutter_multi_formatter: ^2.11.2
   loading_indicator: ^3.1.1
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:

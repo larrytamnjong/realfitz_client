@@ -37,4 +37,7 @@ class AppStrings {
   static const String challenge = "Challenge";
   static const String reward = "Reward";
   static const String profile = "Profile";
+  static const String accountIsActive = "Account is active";
+  static const String history = "History";
+  static const String withdrawal = "Withdrawal";
 }
