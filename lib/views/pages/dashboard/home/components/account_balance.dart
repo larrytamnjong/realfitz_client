@@ -28,7 +28,7 @@ class AccountBalance extends StatelessWidget {
         ),
         const SizedBox(width: AppSizes.s10),
         Text(
-          AppStrings.coins,
+          AppStrings.rfc,
           style: boldTextStyle.copyWith(
               fontSize: FontSizes.f21, color: AppColors.whatsAppGreen),
           textAlign: TextAlign.end,
