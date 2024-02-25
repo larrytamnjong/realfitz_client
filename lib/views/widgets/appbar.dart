@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/strings.dart';
-import '../styles/text_styles.dart';
+import '../resources/styles/text_styles.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

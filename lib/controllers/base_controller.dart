@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:realfitzclient/services/local_storage/local_storage_user.dart';
+import 'package:realfitzclient/services/local_storage/local_storage_service.dart';
 
-import '../views/resources/alerts.dart';
+import '../views/resources/dialogs/snack_bars.dart';
 
 class BaseController extends GetxController {
   var isShowingLoadingIndicator = false.obs;
@@ -20,6 +20,6 @@ class BaseController extends GetxController {
   }
 
   Future<int?> getUserId() async {
-    return await UserLocalStorageManager.getUserIdFromLocalStorage();
+    return await LocalStorageService.getUserIdFromLocalStorage();
   }
 }

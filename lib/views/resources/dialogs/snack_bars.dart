@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
-import '../../constants/strings.dart';
+import '../../../constants/strings.dart';
 
 void showSuccessSnackBar() {
   Get.showSnackbar(

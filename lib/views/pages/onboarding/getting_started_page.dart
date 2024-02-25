@@ -4,10 +4,10 @@ import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/constants/strings.dart';
 import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/registration_page.dart';
-import 'package:realfitzclient/views/styles/text_styles.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
 import '../../resources/colors_manager.dart';
+import '../../resources/styles/text_styles.dart';
 import '../../resources/transitions.dart';
 import '../../resources/values_manager.dart';
 import '../../widgets/divider.dart';

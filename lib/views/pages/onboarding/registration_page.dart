@@ -5,13 +5,13 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:realfitzclient/constants/strings.dart';
-import 'package:realfitzclient/controllers/authentication/authentication.dart';
-import 'package:realfitzclient/utils/validator.dart';
+import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
+import 'package:realfitzclient/utils/validators.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
-import 'package:realfitzclient/views/styles/text_styles.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 import 'package:realfitzclient/views/widgets/phone_code_picker.dart';
 
+import '../../resources/styles/text_styles.dart';
 import '../../widgets/appbar.dart';
 
 class RegistrationPage extends StatefulWidget {

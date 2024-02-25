@@ -3,8 +3,8 @@ import 'package:realfitzclient/constants/strings.dart';
 
 import '../../../../../constants/icon_paths.dart';
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
-import '../../../../styles/text_styles.dart';
 
 class AccountBalance extends StatelessWidget {
   final String accountBalance;

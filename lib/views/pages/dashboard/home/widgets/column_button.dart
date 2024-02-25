@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../styles/text_styles.dart';
+import '../../../../resources/styles/text_styles.dart';
 
 class VerticalTextButton extends StatelessWidget {
   final String text;

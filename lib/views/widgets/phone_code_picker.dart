@@ -5,7 +5,7 @@ import 'package:realfitzclient/constants/strings.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
 import '../resources/colors_manager.dart';
-import '../styles/text_styles.dart';
+import '../resources/styles/text_styles.dart';
 
 class PhoneCodePicker extends StatelessWidget {
   final String? Function(String?) validator;

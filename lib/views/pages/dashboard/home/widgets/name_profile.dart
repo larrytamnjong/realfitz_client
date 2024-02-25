@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
-import '../../../../styles/text_styles.dart';
 
 class NameAndProfileIconRow extends StatelessWidget {
   final String name;

@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps.dart';
-import 'package:realfitzclient/services/local_storage/local_storage_user.dart';
-import 'package:realfitzclient/views/pages/dashboard/dashboard.dart';
+import 'package:realfitzclient/services/local_storage/local_storage_service.dart';
+import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/getting_started_page.dart';
 
 import '../../views/resources/transitions.dart';
 
-class SplashProcess extends BaseController {
-  void startSplashProcesses() async {
+class SplashPageController extends BaseController {
+  void executeProcesses() async {
     StepController stepController = StepController();
-    bool userStoredInLocalStorage =
-        await UserLocalStorageManager.isUserStoredInLocalStorage();
-    if (userStoredInLocalStorage) {
+    bool isUserInLocalStorage =
+        await LocalStorageService.isUserStoredInLocalStorage();
+    if (isUserInLocalStorage) {
       await stepController.startupSyncProcess();
       Get.offAll(transition: downToUp, () => const DashboardPage());
     } else {

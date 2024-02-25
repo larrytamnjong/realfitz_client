@@ -3,10 +3,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/data/authentication/authentication_client.dart';
-import 'package:realfitzclient/services/local_storage/local_storage_user.dart';
-import 'package:realfitzclient/views/pages/dashboard/dashboard.dart';
+import 'package:realfitzclient/services/local_storage/local_storage_service.dart';
+import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
-import 'package:realfitzclient/views/resources/alerts.dart';
+import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
 import '../../constants/strings.dart';
 import '../../models/authentication/user.dart';
@@ -97,6 +97,6 @@ class AuthenticationController extends BaseController {
   }
 
   Future saveUserToLocalStorage(User user) async {
-    await UserLocalStorageManager.saveUserToLocalStorage(user);
+    await LocalStorageService.saveUserToLocalStorage(user);
   }
 }

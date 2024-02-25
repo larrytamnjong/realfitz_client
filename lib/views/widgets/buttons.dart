@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
-import '../styles/text_styles.dart';
+import '../resources/styles/text_styles.dart';
 
 class PrimaryTextButton extends StatelessWidget {
   final TextDecoration? decoration;

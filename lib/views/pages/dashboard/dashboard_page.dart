@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
-import 'package:realfitzclient/views/pages/dashboard/challenges/challenges.dart';
-import 'package:realfitzclient/views/pages/dashboard/home/home.dart';
-import 'package:realfitzclient/views/pages/dashboard/profile/profile.dart';
-import 'package:realfitzclient/views/pages/dashboard/rewards/rewards.dart';
+import 'package:realfitzclient/views/pages/dashboard/challenges/challenges_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/home/home_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/profile/profile_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/rewards/rewards_page.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
 import '../../../constants/strings.dart';
-import '../../widgets/bottom_appbar_items.dart';
+import '../../widgets/bottom_appbar_item.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

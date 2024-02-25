@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
-import 'package:realfitzclient/views/styles/text_styles.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../../../constants/strings.dart';
 import '../../../../../models/step/chart_data.dart';
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/text_styles.dart';
 
 class DoughnutGraph extends StatelessWidget {
   final List<DoughnutData> data;
@@ -30,9 +30,9 @@ class DoughnutGraph extends StatelessWidget {
               palette: [
                 AppColors.primary,
                 AppColors.green,
+                AppColors.blue,
+                AppColors.brightTeal,
                 AppColors.pink,
-                AppColors.indigo,
-                AppColors.purple,
               ],
               series: <CircularSeries<DoughnutData, String>>[
                 DoughnutSeries<DoughnutData, String>(

@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/authentication/user.dart';
 
-class UserLocalStorageManager {
+class LocalStorageService {
   static Future<bool> saveUserToLocalStorage(User user) async {
     try {
       final prefs = await SharedPreferences.getInstance();

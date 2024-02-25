@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
-import '../../../../styles/text_styles.dart';
+import '../../../../resources/styles/text_styles.dart';
 
 class HomeItem extends StatefulWidget {
   final String iconPath;

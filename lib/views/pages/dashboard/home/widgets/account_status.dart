@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants/strings.dart';
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
-import '../../../../styles/text_styles.dart';
 
 class AccountStatusContainer extends StatelessWidget {
   const AccountStatusContainer({
