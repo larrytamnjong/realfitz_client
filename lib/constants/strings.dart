@@ -45,4 +45,17 @@ class AppStrings {
   static const String stepsToday = "Steps today";
   static const String coinsToday = "Coins today";
   static const String cumulativeStepData = "Cumulative step data";
+  static const String invalidAccountBalance = "Invalid account balance format";
+  static const String permission = "Permissions";
+  static const String connectYourAppToGoogleFitOrHealConnect =
+      "Connect your Realfitz app by granting permission to access data from Google fit on android and Health kit on IOS";
+  static const String syncHealthDataNow = "Sync Health Data";
+  static const String connectNow = "Connect now";
+  static const String failedToGrantAuthorization =
+      "Failed to grant authorization";
+  static const String googleFitNotInstalled = "Google Fit App Not Installed";
+  static const String pleaseInstallGoogleFit =
+      "Please download and install the Google fit app from the google PlayStore.";
+  static const String exit = "Exit app";
+  static const String error = "Error";
 }

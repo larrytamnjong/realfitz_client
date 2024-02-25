@@ -60,3 +60,54 @@ class PrimaryElevatedButton extends StatelessWidget {
     );
   }
 }
+
+class LargeGradientButton extends StatelessWidget {
+  final List<Color> colors;
+  final String title;
+  final String subtitle;
+  final IconData leadingIcon;
+  final Function onPressed;
+  const LargeGradientButton({
+    super.key,
+    required this.colors,
+    required this.title,
+    required this.subtitle,
+    required this.leadingIcon,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppBorderRadius.r15),
+        gradient: LinearGradient(
+          colors: colors,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: ListTile(
+        leading: Icon(
+          leadingIcon,
+          size: AppSizes.s50,
+          color: AppColors.white,
+        ),
+        title: Text(
+          title,
+          style: boldTextStyle.copyWith(
+              fontSize: FontSizes.f16, color: AppColors.white),
+        ),
+        trailing: Icon(
+          Icons.arrow_circle_right_rounded,
+          color: AppColors.white,
+        ),
+        subtitle: Text(subtitle,
+            style: regularTextStyle.copyWith(color: AppColors.white)),
+        onTap: () {
+          onPressed();
+        },
+      ),
+    );
+  }
+}

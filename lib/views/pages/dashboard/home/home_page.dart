@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
-import 'package:realfitzclient/models/step/chart_data.dart';
+import 'package:realfitzclient/controllers/home/home_page_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/doughnut_graph.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/home_items.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 
+import '../../../../models/home/home_page_data.dart';
 import 'widgets/account_summary.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  HomePageController homePageController = Get.put(HomePageController());
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,25 +41,38 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p8),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const AccountSummary(),
-              const SizedBox(height: AppSizes.s2),
-              const HomeItems(),
-              const SizedBox(height: AppSizes.s2),
-              DoughnutGraph(data: <DoughnutData>[
-                DoughnutData("1", 100),
-                DoughnutData("2", 100),
-                DoughnutData("3", 100),
-                DoughnutData("4", 100),
-                DoughnutData("5", 100)
-              ])
-            ],
-          ),
-        ),
+      body: FutureBuilder<HomePageData?>(
+        future: homePageController.getHomePageData(),
+        builder: (context, result) {
+          if (result.hasError) {
+            return Center(child: Text(result.error.toString()));
+          }
+          if (result.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return Padding(
+            padding: const EdgeInsets.all(AppPadding.p8),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  AccountSummary(
+                    name: result.data!.name!,
+                    accountBalance: result.data!.accountBalance!,
+                  ),
+                  const SizedBox(height: AppSizes.s2),
+                  HomeItems(
+                    stepsToday: result.data!.stepsToday!,
+                    coinsToday: result.data!.coinsToday!,
+                  ),
+                  const SizedBox(height: AppSizes.s2),
+                  DoughnutGraph(
+                    data: result.data!.doughnutChartData,
+                  )
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

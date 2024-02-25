@@ -7,7 +7,10 @@ import '../../../../../constants/strings.dart';
 import '../../../../resources/colors_manager.dart';
 
 class HomeItems extends StatefulWidget {
-  const HomeItems({super.key});
+  final String stepsToday;
+  final String coinsToday;
+  const HomeItems(
+      {super.key, required this.stepsToday, required this.coinsToday});
 
   @override
   State<HomeItems> createState() => _HomeItemsState();
@@ -22,7 +25,7 @@ class _HomeItemsState extends State<HomeItems> {
           children: [
             HomeItem(
               title: AppStrings.stepsToday,
-              value: "5000",
+              value: widget.stepsToday,
               cardColor: AppColors.palePink,
               iconColor: AppColors.black,
               iconPath: IconPaths.shoe,
@@ -30,7 +33,7 @@ class _HomeItemsState extends State<HomeItems> {
             const SizedBox(width: AppSizes.s5),
             HomeItem(
               title: AppStrings.coinsToday,
-              value: "5000",
+              value: widget.coinsToday,
               cardColor: AppColors.paleTeal,
               iconColor: AppColors.primary,
               iconPath: IconPaths.coins,

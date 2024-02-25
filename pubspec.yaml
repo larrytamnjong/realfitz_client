@@ -48,6 +48,8 @@ dependencies:
   ionicons: ^0.2.2
   count_number: ^0.3.71+1
   syncfusion_flutter_charts: ^24.2.7+1
+  appcheck: ^1.0.6
+  permission_handler: ^11.3.0
 
 dev_dependencies:
   flutter_test:

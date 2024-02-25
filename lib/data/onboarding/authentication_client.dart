@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:realfitzclient/constants/api_urls.dart';
 
-import '../../models/authentication/user.dart';
+import '../../models/onboarding/user.dart';
 
 class AuthenticationClient {
   User? user;

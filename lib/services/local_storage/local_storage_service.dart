@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../models/authentication/user.dart';
+import '../../models/onboarding/user.dart';
 
 class LocalStorageService {
-  static Future<bool> saveUserToLocalStorage(User user) async {
+  static Future<bool> saveUser(User user) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setInt('id', user.id!);
@@ -19,7 +19,7 @@ class LocalStorageService {
     }
   }
 
-  static Future<User?> getUserFromLocalStorage() async {
+  static Future<User?> getUser() async {
     final prefs = await SharedPreferences.getInstance();
     try {
       User user = User(
@@ -37,10 +37,19 @@ class LocalStorageService {
     }
   }
 
-  static Future<int?> getUserIdFromLocalStorage() async {
+  static Future<int?> getUserId() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       return prefs.getInt('id');
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
+  static Future<String?> getUserName() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getString('name');
     } catch (exception) {
       throw Exception(exception);
     }
@@ -59,7 +68,7 @@ class LocalStorageService {
     }
   }
 
-  static removeUserFromLocalStorage() async {
+  static removeUser() async {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('id');

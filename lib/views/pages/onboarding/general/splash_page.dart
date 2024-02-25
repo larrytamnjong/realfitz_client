@@ -13,16 +13,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  late SplashPageController splashPageProcess;
-  @override
-  void initState() {
-    splashPageProcess = Get.put(SplashPageController());
-    splashPageProcess.executeProcesses();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    SplashPageController splashPageController = Get.put(SplashPageController());
+    splashPageController.executeProcesses();
     return Scaffold(
       body: SafeArea(
         child: Center(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:realfitzclient/utils/amount_formatter.dart';
+import 'package:realfitzclient/utils/get_first_name.dart';
 
 import '../../../../../constants/strings.dart';
 import '../../../../resources/values_manager.dart';
@@ -8,8 +10,12 @@ import 'column_button.dart';
 import 'name_profile.dart';
 
 class AccountSummary extends StatelessWidget {
+  final String name;
+  final String accountBalance;
   const AccountSummary({
     super.key,
+    required this.name,
+    required this.accountBalance,
   });
 
   @override
@@ -24,13 +30,13 @@ class AccountSummary extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const NameAndProfileIconRow(
-                  name: '#Tamnjong',
+                NameAndProfileIconRow(
+                  name: getFirstNameFromNames(name),
                 ),
                 const AccountStatusContainer(),
                 const SizedBox(height: AppSizes.s5),
-                const AccountBalance(
-                  accountBalance: '2000.00',
+                AccountBalance(
+                  accountBalance: formatAmount(accountBalance),
                 ),
                 const SizedBox(height: AppSizes.s10),
                 Row(

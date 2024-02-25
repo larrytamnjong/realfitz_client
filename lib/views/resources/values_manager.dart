@@ -32,6 +32,7 @@ class AppSizes {
   static const double s50 = 50.0;
   static const double s65 = 65.0;
   static const double s80 = 80.0;
+  static const double s200 = 200.0;
 }
 
 class DurationConstant {
@@ -52,4 +53,5 @@ class FontSizes {
 
 class AppBorderRadius {
   static const double r5 = 5.0;
+  static const double r15 = 15.0;
 }

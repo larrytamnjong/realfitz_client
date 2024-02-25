@@ -3,12 +3,12 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../../../constants/strings.dart';
-import '../../../../../models/step/chart_data.dart';
+import '../../../../../models/step/doughnut_chart_data.dart';
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/styles/text_styles.dart';
 
 class DoughnutGraph extends StatelessWidget {
-  final List<DoughnutData> data;
+  final List<DoughnutChartData> data;
   const DoughnutGraph({super.key, required this.data});
 
   @override
@@ -34,12 +34,12 @@ class DoughnutGraph extends StatelessWidget {
                 AppColors.brightTeal,
                 AppColors.pink,
               ],
-              series: <CircularSeries<DoughnutData, String>>[
-                DoughnutSeries<DoughnutData, String>(
+              series: <CircularSeries<DoughnutChartData, String>>[
+                DoughnutSeries<DoughnutChartData, String>(
                   dataSource: data,
-                  xValueMapper: (DoughnutData data, _) => data.x,
-                  yValueMapper: (DoughnutData data, _) => data.y,
-                  dataLabelMapper: (DoughnutData data, _) => data.x,
+                  xValueMapper: (DoughnutChartData data, _) => data.x,
+                  yValueMapper: (DoughnutChartData data, _) => data.y,
+                  dataLabelMapper: (DoughnutChartData data, _) => data.x,
                   dataLabelSettings: const DataLabelSettings(isVisible: true),
                 )
               ],

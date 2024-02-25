@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/constants/strings.dart';
-import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
-import 'package:realfitzclient/views/pages/onboarding/registration_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/authentication/login_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/authentication/registration_page.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
-import '../../resources/colors_manager.dart';
-import '../../resources/styles/text_styles.dart';
-import '../../resources/transitions.dart';
-import '../../resources/values_manager.dart';
-import '../../widgets/divider.dart';
+import '../../../resources/colors_manager.dart';
+import '../../../resources/styles/text_styles.dart';
+import '../../../resources/transitions.dart';
+import '../../../resources/values_manager.dart';
+import '../../../widgets/divider.dart';
 
 class GettingStartedPage extends StatelessWidget {
   const GettingStartedPage({super.key});

@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
-import 'package:realfitzclient/data/authentication/authentication_client.dart';
-import 'package:realfitzclient/services/local_storage/local_storage_service.dart';
+import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
-import 'package:realfitzclient/views/pages/onboarding/login_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/authentication/login_page.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
 import '../../constants/strings.dart';
-import '../../models/authentication/user.dart';
+import '../../data/onboarding/authentication_client.dart';
+import '../../models/onboarding/user.dart';
 import '../../views/resources/transitions.dart';
 
 class AuthenticationController extends BaseController {
@@ -22,6 +22,7 @@ class AuthenticationController extends BaseController {
   String? countryController;
 
   late AuthenticationClient authClient;
+  final UserController _userController = UserController();
 
   final formKey = GlobalKey<FormBuilderState>();
 
@@ -38,6 +39,7 @@ class AuthenticationController extends BaseController {
   void createAccount() async {
     if (formKey.currentState!.validate()) {
       User user = User(
+          name: nameController.text,
           phone: phoneController.text,
           email: emailController.text,
           password: passwordController.text,
@@ -63,7 +65,7 @@ class AuthenticationController extends BaseController {
       authClient.user = user;
       User? loggedInUser = await authClient.login();
       if (loggedInUser != null) {
-        await saveUserToLocalStorage(loggedInUser);
+        await _userController.saveUserToLocalStorage(loggedInUser);
         hideLoadingIndicator();
         showSuccessSnackBar();
         Get.offAll(transition: downToUp, () => const DashboardPage());
@@ -94,9 +96,5 @@ class AuthenticationController extends BaseController {
     } catch (exception) {
       handleException(exception);
     }
-  }
-
-  Future saveUserToLocalStorage(User user) async {
-    await LocalStorageService.saveUserToLocalStorage(user);
   }
 }

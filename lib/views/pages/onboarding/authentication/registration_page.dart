@@ -11,8 +11,8 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 import 'package:realfitzclient/views/widgets/phone_code_picker.dart';
 
-import '../../resources/styles/text_styles.dart';
-import '../../widgets/appbar.dart';
+import '../../../resources/styles/text_styles.dart';
+import '../../../widgets/appbar.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});

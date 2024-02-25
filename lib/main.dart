@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/general/splash_page.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
         useMaterial3: true,
       ),
-      home: const DashboardPage(),
+      home: const SplashPage(),
     );
   }
 }
