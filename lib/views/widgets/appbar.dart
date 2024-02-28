@@ -5,9 +5,11 @@ import '../resources/styles/text_styles.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final PreferredSizeWidget? bottom;
   const MainAppBar({
     super.key,
     required this.title,
+    this.bottom,
   });
 
   @override
@@ -17,6 +19,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: appBarTextStyle,
       ),
+      bottom: bottom,
     );
   }
 

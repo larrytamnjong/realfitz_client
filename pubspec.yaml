@@ -50,6 +50,7 @@ dependencies:
   syncfusion_flutter_charts: ^24.2.7+1
   appcheck: ^1.0.6
   permission_handler: ^11.3.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:

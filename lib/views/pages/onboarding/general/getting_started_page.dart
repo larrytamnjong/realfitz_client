@@ -60,7 +60,7 @@ class GettingStartedPage extends StatelessWidget {
                         );
                       },
                       text: AppStrings.alreadyHaveAccountSignIn),
-                  const LineDivider(),
+                  const DividerHorizontal(),
                   PrimaryTextButton(
                       decoration: TextDecoration.underline,
                       color: AppColors.brightBlue,

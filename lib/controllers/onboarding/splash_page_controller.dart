@@ -4,10 +4,10 @@ import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
 import 'package:realfitzclient/services/local_storage/local_storage_service.dart';
 import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
-import 'package:realfitzclient/views/widgets/exit_error.dart';
+import 'package:realfitzclient/views/widgets/fatal_error.dart';
 
 import '../../constants/strings.dart';
-import '../../views/pages/onboarding/authentication/grant_permission.dart';
+import '../../views/pages/onboarding/authentication/permission.dart';
 import '../../views/pages/onboarding/general/getting_started_page.dart';
 import '../../views/resources/transitions.dart';
 
@@ -28,7 +28,7 @@ class SplashPageController extends BaseController {
           Get.offAll(transition: downToUp, () => const GettingStartedPage());
         }
       } else {
-        Get.offAll(() => const GrantPermission());
+        Get.offAll(() => const Permission());
       }
     } catch (exception) {
       handleException(exception);
@@ -43,7 +43,7 @@ class SplashPageController extends BaseController {
       await AppCheck.checkAvailability("com.google.android.apps.fitness");
     } catch (exception) {
       Get.offAll(() =>
-          const ExitErrorPage(errorMessage: AppStrings.pleaseInstallGoogleFit));
+          const FatalError(errorMessage: AppStrings.pleaseInstallGoogleFit));
     }
   }
 }

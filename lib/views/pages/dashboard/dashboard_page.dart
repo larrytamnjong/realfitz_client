@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
-import 'package:realfitzclient/views/pages/dashboard/challenges/challenges_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/home_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/profile/profile_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/rewards/rewards_page.dart';
@@ -9,6 +8,7 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 
 import '../../../constants/strings.dart';
 import '../../widgets/bottom_appbar_item.dart';
+import 'challenge/challenge_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -50,7 +50,7 @@ class _DashboardPageState extends State<DashboardPage> {
       ),
       body: <Widget>[
         const HomePage(),
-        const ChallengesPage(),
+        const ChallengePage(),
         const RewardsPage(),
         const ProfilePage(),
       ][currentPageIndex],

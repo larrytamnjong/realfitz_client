@@ -6,7 +6,7 @@ import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
 import '../../constants/strings.dart';
 
-class GrantPermissionController extends BaseController {
+class PermissionController extends BaseController {
   final StepController _stepController = StepController();
 
   Future requestPermission() async {

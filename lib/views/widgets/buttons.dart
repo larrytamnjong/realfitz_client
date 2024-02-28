@@ -28,7 +28,7 @@ class PrimaryTextButton extends StatelessWidget {
         style: regularTextStyle.copyWith(
           color: color ?? AppColors.primary,
           decoration: decoration,
-          decorationThickness: 0.5,
+          decorationThickness: AppSizes.s_05,
           decorationColor: color,
         ),
       ),

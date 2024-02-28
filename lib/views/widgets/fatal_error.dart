@@ -8,10 +8,10 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
-class ExitErrorPage extends StatelessWidget {
+class FatalError extends StatelessWidget {
   final String errorMessage;
 
-  const ExitErrorPage({super.key, required this.errorMessage});
+  const FatalError({super.key, required this.errorMessage});
 
   @override
   Widget build(BuildContext context) {

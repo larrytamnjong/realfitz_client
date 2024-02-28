@@ -10,18 +10,17 @@ import '../../../resources/colors_manager.dart';
 import '../../../resources/styles/text_styles.dart';
 import '../../../widgets/buttons.dart';
 
-class GrantPermission extends StatefulWidget {
-  const GrantPermission({super.key});
+class Permission extends StatefulWidget {
+  const Permission({super.key});
 
   @override
-  State<GrantPermission> createState() => _GrantPermissionState();
+  State<Permission> createState() => _PermissionState();
 }
 
-class _GrantPermissionState extends State<GrantPermission> {
+class _PermissionState extends State<Permission> {
   @override
   Widget build(BuildContext context) {
-    GrantPermissionController permissionController =
-        Get.put(GrantPermissionController());
+    PermissionController permissionController = Get.put(PermissionController());
     return Scaffold(
       appBar: const MainAppBar(
         title: AppStrings.permission,

@@ -58,4 +58,18 @@ class AppStrings {
       "Please download and install the Google fit app from the google PlayStore.";
   static const String exit = "Exit app";
   static const String error = "Error";
+  static const String available = "Available";
+  static const String upcoming = "Upcoming";
+  static const String totalSteps = "Total steps";
+  static const String steps = "Steps";
+  static const String days = "Day(s)";
+  static const String challengeDetail = "Challenge detail";
+  static const String details = 'Details';
+  static const String showLess = "Show less";
+  static const String showMore = "Show more";
+  static const String howToRedeem = "How to redeem?";
+  static const String termsAndConditions = "Terms and conditions";
+  static const String expiryDate = "Expiry Date";
+  static const String sponsor = "Sponsor";
+  static const String acceptChallenge = "Accept challenge";
 }
