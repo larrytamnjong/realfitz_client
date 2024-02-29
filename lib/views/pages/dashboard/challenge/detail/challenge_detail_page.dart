@@ -77,7 +77,7 @@ class ChallengeDetailPage extends StatelessWidget {
       case 'ongoing':
         if (challenge.isParticipating) {
           return PrimaryElevatedButton(
-              color: AppColors.brightTeal,
+              color: AppColors.primary,
               text: AppStrings.viewLeaderBoard,
               onPressed: () {});
         } else {
