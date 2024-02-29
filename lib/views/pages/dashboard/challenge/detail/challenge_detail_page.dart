@@ -84,7 +84,8 @@ class ChallengeDetailPage extends StatelessWidget {
           return PrimaryElevatedButton(
             text: AppStrings.acceptChallenge,
             onPressed: () {
-              controller.addParticipation(challengeId: challenge.challengeId);
+              controller.addChallengeParticipant(
+                  challengeId: challenge.challengeId);
             },
           );
         }

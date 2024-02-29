@@ -5,7 +5,8 @@ import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/models/participant/participant.dart';
 
 class ParticipationClient {
-  Future<bool> addParticipation({required Participation participation}) async {
+  Future<bool> addChallengeParticipant(
+      {required Participation participation}) async {
     try {
       final response = await http.post(Uri.parse(addParticipationUrl),
           body: jsonEncode(participation.toJson()));

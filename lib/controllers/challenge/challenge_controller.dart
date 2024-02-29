@@ -41,15 +41,15 @@ class ChallengeController extends BaseController {
     }
   }
 
-  addParticipation({required int challengeId}) async {
+  addChallengeParticipant({required int challengeId}) async {
     try {
       showLoadingIndicator();
       Participation participation = Participation();
       participation.challengeId = challengeId;
       participation.id = 1; //await _userController.getUserId();
 
-      bool isParticipantAdded = await _participationClient.addParticipation(
-          participation: participation);
+      bool isParticipantAdded = await _participationClient
+          .addChallengeParticipant(participation: participation);
       if (isParticipantAdded) {
         List<Challenge>? challenges =
             await _challengeClient.getAvailableChallenges(id: 1);
