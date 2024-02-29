@@ -51,6 +51,7 @@ dependencies:
   appcheck: ^1.0.6
   permission_handler: ^11.3.0
   percent_indicator: ^4.2.3
+  flutter_timer_countdown: ^1.0.7
 
 dev_dependencies:
   flutter_test:

@@ -74,9 +74,6 @@ class AppStrings {
   static const String acceptChallenge = "Accept challenge";
   static const String weCouldNotFindAnythingPullToRefresh =
       "We could not find anything pull to refresh!";
-  static const String pleaseCheckBackWhenThisChallengeStarts =
-      "Please check back when this challenge begins to confirm your participation.";
-  static const String youAreParticipatingInThisContest =
-      "Congratulation your are participating in this contest";
-  static const String challengeHasEnded = "This challenge has ended";
+  static const String viewLeaderBoard = "View leader board";
+  static const String notifyMe = "Notify me";
 }

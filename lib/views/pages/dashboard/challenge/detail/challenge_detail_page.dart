@@ -10,10 +10,11 @@ import 'package:realfitzclient/views/widgets/buttons.dart';
 
 import '../../../../../constants/image_paths.dart';
 import '../../../../../models/challenge/challenge.dart';
+import '../../../../resources/colors_manager.dart';
 import '../../rewards/widgets/reward_card.dart';
 import '../widgets/challenge_card_bottom.dart';
 import '../widgets/challenge_detail_text.dart';
-import '../widgets/challenge_page_bottom_information.dart';
+import '../widgets/count_down_timer.dart';
 
 class ChallengeDetailPage extends StatelessWidget {
   final Challenge challenge;
@@ -54,7 +55,7 @@ class ChallengeDetailPage extends StatelessWidget {
                   ],
                 ),
               ),
-              _getChallengeDetailPageBottomAction(controller)
+              _getChallengeDetailPageBottomAction(controller, context)
             ],
           ),
         ),
@@ -62,28 +63,36 @@ class ChallengeDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _getChallengeDetailPageBottomAction(ChallengeController controller) {
+  Widget _getChallengeDetailPageBottomAction(
+      ChallengeController controller, BuildContext context) {
     switch (challenge.status) {
       case 'upcoming':
-        return ChallengeDetailPageBottomInformation(
-            text: 'Starts on ${challenge.daysToStart}');
+        return CountDownTimer(
+          startDate: DateTime.parse(challenge.startDate),
+          onEnd: () {
+            controller.getAvailableChallenges();
+            Get.back();
+          },
+        );
       case 'ongoing':
         if (challenge.isParticipating) {
-          return const ChallengeDetailPageBottomInformation(
-              text: AppStrings.youAreParticipatingInThisContest);
+          return PrimaryElevatedButton(
+              color: AppColors.brightTeal,
+              text: AppStrings.viewLeaderBoard,
+              onPressed: () {});
         } else {
           return PrimaryElevatedButton(
-              text: AppStrings.acceptChallenge,
-              onPressed: () {
-                controller.addParticipation(challengeId: challenge.challengeId);
-              });
+            text: AppStrings.acceptChallenge,
+            onPressed: () {
+              controller.addParticipation(challengeId: challenge.challengeId);
+            },
+          );
         }
       case 'ended':
-        return const ChallengeDetailPageBottomInformation(
-            text: AppStrings.challengeHasEnded);
+        return PrimaryElevatedButton(
+            text: AppStrings.viewLeaderBoard, onPressed: () {});
       default:
-        return const ChallengeDetailPageBottomInformation(
-            text: AppStrings.error);
+        return PrimaryElevatedButton(text: AppStrings.exit, onPressed: () {});
     }
   }
 }

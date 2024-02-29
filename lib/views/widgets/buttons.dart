@@ -37,21 +37,26 @@ class PrimaryTextButton extends StatelessWidget {
 }
 
 class PrimaryElevatedButton extends StatelessWidget {
+  final Color? color;
   final String text;
   final Function() onPressed;
   const PrimaryElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
+    this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(
-              AppPadding.p80, AppPadding.p8, AppPadding.p80, AppPadding.p8)),
-          backgroundColor: MaterialStateProperty.all(AppColors.primary)),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.fromLTRB(
+              AppPadding.p80, AppPadding.p8, AppPadding.p80, AppPadding.p8),
+        ),
+        backgroundColor: MaterialStateProperty.all(color ?? AppColors.primary),
+      ),
       onPressed: onPressed,
       child: Text(
         text,

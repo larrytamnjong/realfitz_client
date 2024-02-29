@@ -22,8 +22,9 @@ class LinearPercentageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: AppSizes.s10),
+        const SizedBox(height: AppSizes.s12),
         LinearPercentIndicator(
+          backgroundColor: AppColors.palePrimary,
           barRadius: const Radius.circular(AppBorderRadius.r15),
           progressColor: AppColors.primary,
           animation: true,
@@ -39,13 +40,15 @@ class LinearPercentageIndicator extends StatelessWidget {
               ),
               Text(
                 "$stepsTaken/$steps",
-                style: semiBoldTextStyle.copyWith(fontSize: FontSizes.f10),
+                style: semiBoldTextStyle.copyWith(
+                  fontSize: FontSizes.f10,
+                ),
               ),
             ],
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+          padding: const EdgeInsets.symmetric(vertical: AppPadding.p10),
           child: ChallengeCompletionStatus(percent: percent),
         )
       ],

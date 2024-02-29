@@ -23,6 +23,7 @@ class RoundedPercentageIndicator extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
       child: CircularPercentIndicator(
+        backgroundColor: AppColors.palePrimary,
         radius: AppSizes.s70,
         lineWidth: AppSizes.s12,
         animation: true,

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/widgets/floating_status_card.dart';
 
 import '../../../../resources/colors_manager.dart';
