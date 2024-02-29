@@ -22,6 +22,7 @@ class AppPadding {
 
 class TextLines {
   static const int l20 = 20;
+  static const int l4 = 4;
   static const int l5 = 5;
   static const int l6 = 6;
 }

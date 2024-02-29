@@ -5,3 +5,8 @@ String loginUrl = '$rootUrl/User/LoginUser.php';
 String getLastSyncTimeUrl = '$rootUrl/Step/GetLastSyncDate.php?id=';
 String syncStepsUrl = '$rootUrl/Step/SyncSteps.php';
 String getAccountBalanceUrl = '$rootUrl/Account/GetAccountBalance.php?id=';
+String getAvailableChallengeUrl =
+    '$rootUrl/Challenge/GetAvailableChallenges.php?id=';
+String getChallengeHistoriesUrl =
+    '$rootUrl/Challenge/GetChallengeHistories.php?id=';
+String addParticipationUrl = '$rootUrl/Participation/AddParticipant.php';

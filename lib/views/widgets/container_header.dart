@@ -10,7 +10,7 @@ class ContainerHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: AppPadding.p10),
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p10),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppBorderRadius.r5),

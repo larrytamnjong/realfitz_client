@@ -5,16 +5,19 @@ import 'package:realfitzclient/views/resources/transitions.dart';
 
 import '../../../../../constants/image_paths.dart';
 import '../../../../../models/reward/reward.dart';
+import '../../../../../models/sponsor/sponsor.dart';
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/styles/border_radius.dart';
 import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
 
 class RewardCard extends StatelessWidget {
-  final Reward? reward;
+  final Reward reward;
+  final Sponsor sponsor;
   const RewardCard({
     super.key,
-    this.reward,
+    required this.reward,
+    required this.sponsor,
   });
 
   @override
@@ -48,16 +51,17 @@ class RewardCard extends StatelessWidget {
                         Container(height: 5),
                         // Add a title widget
                         Text(
-                          "Reward Caption",
-                          style: boldTextStyle,
+                          reward.caption,
+                          style:
+                              boldTextStyle.copyWith(fontSize: FontSizes.f13),
                         ),
 
                         Container(height: AppSizes.s5),
                         // Add a subtitle widget
                         Text(
-                          "Here goes the reward details which is not suppose to be more than 4 lines or so...",
+                          reward.detail,
                           style: semiBoldTextStyle,
-                          maxLines: TextLines.l5,
+                          maxLines: TextLines.l4,
                           overflow: TextOverflow.ellipsis,
                         ),
                         Container(height: AppSizes.s10),
@@ -70,7 +74,13 @@ class RewardCard extends StatelessWidget {
           ],
         ),
         onTap: () {
-          Get.to(transition: downToUp, () => const RewardDetailPage());
+          Get.to(
+            transition: downToUp,
+            () => RewardDetailPage(
+              sponsor: sponsor,
+              reward: reward,
+            ),
+          );
         },
       ),
     );

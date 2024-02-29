@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/detail/challenge_detail_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/challenge/widgets/challenge_card_bottom.dart';
 
 import '../../../../../models/challenge/challenge.dart';
 import '../../../../resources/styles/border_radius.dart';
 import '../../../../resources/transitions.dart';
-import 'challenge_card_bottom.dart';
 import 'challenge_card_top.dart';
 
-class ChallengeCard extends StatelessWidget {
-  final String image;
-  final String status;
-  final String title;
-  final String steps;
-  final String days;
+class ChallengeCard extends StatefulWidget {
+  final Challenge challenge;
 
-  const ChallengeCard(
-      {super.key,
-      required this.image,
-      required this.status,
-      required this.title,
-      required this.steps,
-      required this.days});
+  const ChallengeCard({
+    super.key,
+    required this.challenge,
+  });
 
+  @override
+  State<ChallengeCard> createState() => _ChallengeCardState();
+}
+
+class _ChallengeCardState extends State<ChallengeCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -34,20 +33,23 @@ class ChallengeCard extends StatelessWidget {
         child: Column(
           children: [
             ChallengeCardTop(
-              image: image,
-              status: status,
-              title: title,
+              image: ImagePaths.fitnessTracker,
+              status: widget.challenge.status,
+              title: widget.challenge.title,
             ),
-            ChallengeCardBottom(
-              days: days,
-              steps: steps,
-            )
+            getChallengeCardBottom(
+              challenge: widget.challenge,
+              showCircularIndicator: false,
+            ),
           ],
         ),
         onTap: () {
           Get.to(
-              transition: downToUp,
-              () => ChallengeDetailPage(challenge: Challenge()));
+            transition: downToUp,
+            () => ChallengeDetailPage(
+              challenge: widget.challenge,
+            ),
+          );
         },
       ),
     );

@@ -1,13 +1,13 @@
 class Sponsor {
-  int? id;
-  String? name;
+  int id;
+  String name;
   String? image;
   String? detail;
   int? categoryId;
 
   Sponsor({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
     this.image,
     this.detail,
     this.categoryId,

@@ -1,4 +1,4 @@
-String formatDateString(String inputDateString) {
+String formatDate(String inputDateString) {
   DateTime dateTime = DateTime.parse(inputDateString);
 
   List<String> daysOfWeek = [

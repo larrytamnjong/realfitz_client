@@ -25,7 +25,7 @@ class FatalError extends StatelessWidget {
         child: Column(
           children: [
             Image(
-              image: AssetImage(ImagePaths.error),
+              image: AssetImage(ImagePaths.warning),
             ),
             const SizedBox(height: AppSizes.s10),
             Text(

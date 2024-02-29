@@ -26,7 +26,7 @@ class FloatingStatusCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: AppPadding.p15, vertical: AppPadding.p7),
           child: Text(
-            text,
+            text.toUpperCase(),
             style: regularTextStyle.copyWith(color: AppColors.white),
           ),
         ),

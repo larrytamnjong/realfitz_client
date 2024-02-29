@@ -20,7 +20,7 @@ class ChallengeCompletionStatus extends StatelessWidget {
           : "Completed (${percent * 100}%)",
       style: boldTextStyle.copyWith(
           fontSize: fontSize,
-          color: percent < 1 ? AppColors.red : AppColors.green),
+          color: percent < 1 ? AppColors.primary : AppColors.green),
     );
   }
 }

@@ -20,29 +20,32 @@ class RoundedPercentageIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularPercentIndicator(
-      radius: AppSizes.s70,
-      lineWidth: AppSizes.s12,
-      animation: true,
-      percent: percent,
-      center: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ImageIcon(
-            AssetImage(IconPaths.shoe),
-            size: AppSizes.s40,
-          ),
-          Text(
-            "$stepsTaken/$steps",
-            style: semiBoldTextStyle,
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+      child: CircularPercentIndicator(
+        radius: AppSizes.s70,
+        lineWidth: AppSizes.s12,
+        animation: true,
+        percent: percent,
+        center: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ImageIcon(
+              AssetImage(IconPaths.shoe),
+              size: AppSizes.s40,
+            ),
+            Text(
+              "$stepsTaken/$steps",
+              style: semiBoldTextStyle,
+            ),
+          ],
+        ),
+        footer: ChallengeCompletionStatus(
+            percent: percent, fontSize: FontSizes.f16),
+        circularStrokeCap: CircularStrokeCap.round,
+        progressColor: AppColors.primary,
       ),
-      footer:
-          ChallengeCompletionStatus(percent: percent, fontSize: FontSizes.f16),
-      circularStrokeCap: CircularStrokeCap.round,
-      progressColor: AppColors.primary,
     );
   }
 }
