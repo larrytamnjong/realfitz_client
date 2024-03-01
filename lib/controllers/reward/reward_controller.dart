@@ -10,7 +10,8 @@ class RewardController {
   Future<List<Reward>?> getUserRedeemedRewards() async {
     try {
       int? id = await _userController.getUserId();
-      List<Reward>? rewards = await _rewardClient.getUserRedeemedRewards(id: 1);
+      List<Reward>? rewards =
+          await _rewardClient.getUserRedeemedRewards(id: id!);
       return rewards;
     } catch (exception) {
       throw Exception(exception);
