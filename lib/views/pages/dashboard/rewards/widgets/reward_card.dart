@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/reward_detail_page.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 
 import '../../../../../constants/image_paths.dart';

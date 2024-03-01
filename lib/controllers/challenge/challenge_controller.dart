@@ -21,7 +21,7 @@ class ChallengeController extends BaseController {
     try {
       int? id = await _userController.getUserId();
       List<Challenge>? challenges =
-          await _challengeClient.getAvailableChallenges(id: 1);
+          await _challengeClient.getAvailableChallenges(id: id!);
       availableChallenges.value = challenges!;
       return challenges;
     } catch (exception) {
@@ -33,7 +33,7 @@ class ChallengeController extends BaseController {
     try {
       int? id = await _userController.getUserId();
       List<Challenge>? challenges =
-          await _challengeClient.getChallengeHistories(id: 1);
+          await _challengeClient.getChallengeHistories(id: id!);
       challengeHistories.value = challenges!;
       return challenges;
     } catch (exception) {
@@ -44,15 +44,15 @@ class ChallengeController extends BaseController {
   addChallengeParticipant({required int challengeId}) async {
     try {
       showLoadingIndicator();
+      int? id = await _userController.getUserId();
       Participation participation = Participation();
       participation.challengeId = challengeId;
-      participation.id = 1; //await _userController.getUserId();
-
+      participation.id = id;
       bool isParticipantAdded = await _participationClient
           .addChallengeParticipant(participation: participation);
       if (isParticipantAdded) {
         List<Challenge>? challenges =
-            await _challengeClient.getAvailableChallenges(id: 1);
+            await _challengeClient.getAvailableChallenges(id: id!);
         availableChallenges.value = challenges!;
         Get.back();
         showSuccessSnackBar();

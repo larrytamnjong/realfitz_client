@@ -4,10 +4,10 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/container_header.dart';
 
-import '../../../../constants/strings.dart';
-import '../../../../models/reward/reward.dart';
-import '../../../../models/sponsor/sponsor.dart';
-import '../../../resources/colors_manager.dart';
+import '../../../../../constants/strings.dart';
+import '../../../../../models/reward/reward.dart';
+import '../../../../../models/sponsor/sponsor.dart';
+import '../../../../resources/colors_manager.dart';
 
 class RewardDetailPage extends StatelessWidget {
   final Reward reward;

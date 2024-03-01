@@ -76,4 +76,5 @@ class AppStrings {
       "We could not find anything pull to refresh!";
   static const String viewLeaderBoard = "View leader board";
   static const String notifyMe = "Notify me";
+  static const String myRewards = "My rewards";
 }
