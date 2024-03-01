@@ -11,8 +11,9 @@ class ChallengeClient {
           await http.get(Uri.parse('$getAvailableChallengeUrl$id'));
       if (response.statusCode == 200) {
         final List<dynamic> jsonChallenges = jsonDecode(response.body);
-        List<Challenge> challenges =
-            jsonChallenges.map((json) => Challenge.fromJson(json)).toList();
+        List<Challenge> challenges = jsonChallenges
+            .map((challenge) => Challenge.fromJson(challenge))
+            .toList();
         return challenges;
       } else {
         return null;

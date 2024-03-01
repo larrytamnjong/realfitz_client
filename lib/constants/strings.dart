@@ -77,4 +77,6 @@ class AppStrings {
   static const String viewLeaderBoard = "View leader board";
   static const String notifyMe = "Notify me";
   static const String myRewards = "My rewards";
+  static const String claimedOn = "Claimed on";
+  static const String expiresOn = "Expires on";
 }

@@ -10,3 +10,5 @@ String getAvailableChallengeUrl =
 String getChallengeHistoriesUrl =
     '$rootUrl/Challenge/GetChallengeHistories.php?id=';
 String addParticipationUrl = '$rootUrl/Participation/AddParticipant.php';
+String getUserRedeemedRewardsUrl =
+    '$rootUrl/Reward/GetUserRedeemedRewards.php?id=';

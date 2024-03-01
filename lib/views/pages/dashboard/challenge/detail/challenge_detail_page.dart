@@ -11,7 +11,7 @@ import 'package:realfitzclient/views/widgets/buttons.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../models/challenge/challenge.dart';
 import '../../../../resources/colors_manager.dart';
-import '../../rewards/widgets/reward_card.dart';
+import '../../rewards/widgets/reward_card_summary.dart';
 import '../widgets/challenge_card_bottom.dart';
 import '../widgets/challenge_detail_text.dart';
 import '../widgets/count_down_timer.dart';
@@ -48,7 +48,7 @@ class ChallengeDetailPage extends StatelessWidget {
                       detail: challenge.detail,
                     ),
                     const SizedBox(height: AppSizes.s10),
-                    RewardCard(
+                    RewardCardSummary(
                       reward: challenge.reward,
                       sponsor: challenge.sponsor,
                     ),

@@ -11,10 +11,10 @@ import '../../../../resources/styles/border_radius.dart';
 import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
 
-class RewardCard extends StatelessWidget {
+class RewardCardSummary extends StatelessWidget {
   final Reward reward;
   final Sponsor sponsor;
-  const RewardCard({
+  const RewardCardSummary({
     super.key,
     required this.reward,
     required this.sponsor,

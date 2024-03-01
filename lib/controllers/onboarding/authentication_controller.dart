@@ -66,16 +66,16 @@ class AuthenticationController extends BaseController {
       User? loggedInUser = await authClient.login();
       if (loggedInUser != null) {
         await _userController.saveUserToLocalStorage(loggedInUser);
-        hideLoadingIndicator();
         showSuccessSnackBar();
         Get.offAll(transition: downToUp, () => const DashboardPage());
       } else {
-        hideLoadingIndicator();
         showFailureSnackBar(
             message: AppStrings.makeSureEmailAndPasswordAreCorrect);
       }
     } catch (exception) {
       handleException(exception);
+    } finally {
+      hideLoadingIndicator();
     }
   }
 
@@ -86,15 +86,15 @@ class AuthenticationController extends BaseController {
       authClient.user = user;
       bool accountIsCreated = await authClient.createAccount();
       if (accountIsCreated) {
-        hideLoadingIndicator();
         showSuccessSnackBar();
         Get.off(transition: downToUp, () => const LoginPage());
       } else {
-        hideLoadingIndicator();
         showFailureSnackBar(message: AppStrings.checkIfUserDoesNotAlreadyExist);
       }
     } catch (exception) {
       handleException(exception);
+    } finally {
+      hideLoadingIndicator();
     }
   }
 }

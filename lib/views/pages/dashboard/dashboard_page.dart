@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/home_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/profile/profile_page.dart';
-import 'package:realfitzclient/views/pages/dashboard/rewards/my_reward/my_reward_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/rewards/my_reward/my_rewards.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
@@ -51,7 +51,7 @@ class _DashboardPageState extends State<DashboardPage> {
       body: <Widget>[
         const HomePage(),
         const ChallengePage(),
-        const RewardsPage(),
+        const MyRewards(),
         const ProfilePage(),
       ][currentPageIndex],
     );
