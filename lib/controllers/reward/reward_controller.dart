@@ -1,9 +1,10 @@
+import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/reward/reward_client.dart';
 
 import '../../models/reward/reward.dart';
 
-class RewardController {
+class RewardController extends BaseController {
   final UserController _userController = UserController();
   final RewardClient _rewardClient = RewardClient();
 

@@ -81,15 +81,16 @@ class RewardCardMain extends StatelessWidget {
                 children: [
                   OutlinedButton(
                     onPressed: () {
-                      Clipboard.setData(ClipboardData(
-                          text: reward.userReward!.rewardVoucherCode));
+                      Clipboard.setData(
+                        ClipboardData(text: reward.voucherCode),
+                      );
                       showInfoSnackBar(message: AppStrings.copiedToClipBoard);
                     },
                     child: Row(
                       children: [
                         const Icon(Ionicons.copy_outline),
                         const SizedBox(width: AppSizes.s5),
-                        Text(reward.userReward!.rewardVoucherCode),
+                        Text(reward.voucherCode),
                       ],
                     ),
                   ),
