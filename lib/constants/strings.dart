@@ -79,4 +79,5 @@ class AppStrings {
   static const String myRewards = "My rewards";
   static const String claimedOn = "Claimed on";
   static const String expiresOn = "Expires on";
+  static const String copiedToClipBoard = "Copied to clipboard.";
 }

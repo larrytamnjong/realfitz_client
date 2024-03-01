@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/reward_detail_page.dart';
+import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 
 import '../../../../../constants/strings.dart';
@@ -78,12 +80,16 @@ class RewardCardMain extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   OutlinedButton(
-                    onPressed: () {},
-                    child: const Row(
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(
+                          text: reward.userReward!.rewardVoucherCode));
+                      showInfoSnackBar(message: AppStrings.copiedToClipBoard);
+                    },
+                    child: Row(
                       children: [
-                        Icon(Ionicons.copy_outline),
-                        SizedBox(width: AppSizes.s5),
-                        Text("RealFit01"),
+                        const Icon(Ionicons.copy_outline),
+                        const SizedBox(width: AppSizes.s5),
+                        Text(reward.userReward!.rewardVoucherCode),
                       ],
                     ),
                   ),

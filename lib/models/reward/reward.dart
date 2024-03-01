@@ -6,6 +6,7 @@ import '../sponsor/sponsor.dart';
 class Reward {
   int id;
   String detail;
+  String voucherCode;
   String? image;
   String creationDate;
   String howToRedeem;
@@ -21,6 +22,7 @@ class Reward {
   Reward({
     required this.id,
     required this.detail,
+    required this.voucherCode,
     this.image,
     required this.creationDate,
     required this.howToRedeem,
@@ -38,6 +40,7 @@ class Reward {
     return Reward(
       id: json['id'],
       detail: json['detail'] ?? '',
+      voucherCode: json['voucher_code'] ?? '',
       image: json['image'],
       creationDate: json['creation_date'],
       howToRedeem: json['how_to_redeem'] ?? '',

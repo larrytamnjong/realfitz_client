@@ -29,26 +29,29 @@ class _MyRewardsState extends State<MyRewards> {
       appBar: const MainAppBar(title: AppStrings.myRewards),
       body: Padding(
         padding: const EdgeInsets.all(AppPadding.p8),
-        child: FutureBuilder(
-          future: rewardController.getUserRedeemedRewards(),
-          builder: (context, result) {
-            if (result.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (result.hasError || result.data == null) {
-              return const ErrorPage();
-            }
+        child: RefreshIndicator(
+          onRefresh: rewardController.getUserRedeemedRewards,
+          child: FutureBuilder(
+            future: rewardController.getUserRedeemedRewards(),
+            builder: (context, result) {
+              if (result.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (result.hasError || result.data == null) {
+                return const ErrorPage();
+              }
 
-            return ListView.builder(
-              itemCount: result.data?.length,
-              itemBuilder: (BuildContext context, int index) {
-                return RewardCardMain(
-                  reward: result.data![index],
-                  sponsor: result.data![index].sponsor!,
-                );
-              },
-            );
-          },
+              return ListView.builder(
+                itemCount: result.data?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return RewardCardMain(
+                    reward: result.data![index],
+                    sponsor: result.data![index].sponsor!,
+                  );
+                },
+              );
+            },
+          ),
         ),
       ),
     );

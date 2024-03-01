@@ -32,3 +32,7 @@ void showFailureSnackBar({required String message}) {
     ),
   );
 }
+
+void showInfoSnackBar({required String message}) {
+  Get.snackbar('Info', message, snackPosition: SnackPosition.BOTTOM);
+}
