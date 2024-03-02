@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     AccountSummary(
                       name: result.data!.name!,
-                      accountBalance: result.data!.accountBalance!,
+                      accountBalance: result.data!.accountBalance ?? '0',
                     ),
                     const SizedBox(height: AppSizes.s2),
                     HomeItems(
