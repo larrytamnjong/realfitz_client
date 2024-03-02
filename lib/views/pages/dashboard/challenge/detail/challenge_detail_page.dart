@@ -76,10 +76,13 @@ class ChallengeDetailPage extends StatelessWidget {
         );
       case 'ongoing':
         if (challenge.isParticipating) {
-          return PrimaryElevatedButton(
-              color: AppColors.primary,
-              text: AppStrings.viewLeaderBoard,
-              onPressed: () {});
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
+            child: PrimaryElevatedButton(
+                color: AppColors.primary,
+                text: AppStrings.leaderBoard,
+                onPressed: () {}),
+          );
         } else {
           return PrimaryElevatedButton(
             text: AppStrings.acceptChallenge,
@@ -91,7 +94,7 @@ class ChallengeDetailPage extends StatelessWidget {
         }
       case 'ended':
         return PrimaryElevatedButton(
-            text: AppStrings.viewLeaderBoard, onPressed: () {});
+            text: AppStrings.leaderBoard, onPressed: () {});
       default:
         return PrimaryElevatedButton(text: AppStrings.exit, onPressed: () {});
     }

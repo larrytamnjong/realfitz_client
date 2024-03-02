@@ -74,10 +74,18 @@ class AppStrings {
   static const String acceptChallenge = "Accept challenge";
   static const String weCouldNotFindAnythingPullToRefresh =
       "We could not find anything pull to refresh!";
-  static const String viewLeaderBoard = "View leader board";
+  static const String leaderBoard = "Leader board";
   static const String notifyMe = "Notify me";
   static const String myRewards = "My rewards";
+  static const String allRewards = "Rewards";
   static const String claimedOn = "Claimed on";
   static const String expiresOn = "Expires on";
   static const String copiedToClipBoard = "Copied to clipboard.";
+  static const String settings = "Settings";
+  static const String accountInformation = "Account information";
+  static const String general = "General";
+  static const String faqs = "FAQs";
+  static const String privacyPolicy = "Privacy policy";
+  static const String liveSupport = "Live support";
+  static const String suggestion = "Suggestion";
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../resources/colors_manager.dart';
 import '../resources/values_manager.dart';
 
 class BottomAppBarIcon extends StatelessWidget {
@@ -16,6 +17,7 @@ class BottomAppBarIcon extends StatelessWidget {
     return ImageIcon(
       AssetImage(iconPath),
       size: size ?? AppSizes.s30,
+      color: AppColors.black,
     );
   }
 }

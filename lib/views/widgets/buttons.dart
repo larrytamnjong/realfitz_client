@@ -7,6 +7,7 @@ import '../resources/styles/text_styles.dart';
 class PrimaryTextButton extends StatelessWidget {
   final TextDecoration? decoration;
   final Color? color;
+  final double? fontSize;
   final Function onPressed;
   final String text;
   const PrimaryTextButton({
@@ -15,6 +16,7 @@ class PrimaryTextButton extends StatelessWidget {
     required this.text,
     this.decoration,
     this.color,
+    this.fontSize,
   });
 
   @override
@@ -28,6 +30,7 @@ class PrimaryTextButton extends StatelessWidget {
         style: regularTextStyle.copyWith(
           color: color ?? AppColors.primary,
           decoration: decoration,
+          fontSize: fontSize,
           decorationThickness: AppSizes.s_05,
           decorationColor: color,
         ),
@@ -112,6 +115,55 @@ class LargeGradientButton extends StatelessWidget {
         onTap: () {
           onPressed();
         },
+      ),
+    );
+  }
+}
+
+class OutlineTileButton extends StatelessWidget {
+  final Function()? onTap;
+  final String text;
+  final IconData icon;
+  final bool? showTrailing;
+
+  const OutlineTileButton({
+    super.key,
+    this.onTap,
+    required this.text,
+    required this.icon,
+    this.showTrailing = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(AppPadding.p8),
+      child: ListTile(
+        dense: true,
+        contentPadding: const EdgeInsets.only(
+          left: AppPadding.p16,
+          right: AppPadding.p16,
+          top: AppPadding.p1,
+          bottom: AppPadding.p1,
+        ),
+        leading: Icon(
+          icon,
+          color: AppColors.primary,
+        ),
+        title: Text(text, style: regularTextStyle),
+        trailing: showTrailing == true
+            ? const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: AppSizes.s18,
+              )
+            : const SizedBox.shrink(),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.r15),
+          side: BorderSide(
+            color: AppColors.grey,
+          ),
+        ),
+        onTap: onTap,
       ),
     );
   }

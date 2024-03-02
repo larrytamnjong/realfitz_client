@@ -2,20 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/reward/reward_controller.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
-import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/error.dart';
 
-import '../../../../../constants/strings.dart';
 import '../widgets/reward_card_main.dart';
 
-class MyRewards extends StatefulWidget {
-  const MyRewards({super.key});
+class MyRewardsPage extends StatefulWidget {
+  const MyRewardsPage({super.key});
 
   @override
-  State<MyRewards> createState() => _MyRewardsState();
+  State<MyRewardsPage> createState() => _MyRewardsPageState();
 }
 
-class _MyRewardsState extends State<MyRewards> {
+class _MyRewardsPageState extends State<MyRewardsPage> {
   late RewardController rewardController;
   @override
   void initState() {
@@ -26,7 +24,6 @@ class _MyRewardsState extends State<MyRewards> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: AppStrings.myRewards),
       body: Padding(
         padding: const EdgeInsets.all(AppPadding.p8),
         child: RefreshIndicator(

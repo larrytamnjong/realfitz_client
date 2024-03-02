@@ -7,4 +7,6 @@ class IconPaths {
   static String crown = "assets/icons/ic_crown.png";
   static String notification = "assets/icons/ic_notification.png";
   static String coins = "assets/icons/ic_coins.png";
+  static String setting = "assets/icons/ic_setting.png";
+  static String confetti = "assets/icons/ic_confetti.png";
 }
