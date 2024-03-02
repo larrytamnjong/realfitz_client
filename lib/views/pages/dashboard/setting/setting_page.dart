@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
 import 'package:realfitzclient/views/resources/styles/text_styles.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
@@ -7,14 +9,21 @@ import 'package:realfitzclient/views/widgets/appbar.dart';
 import '../../../../constants/strings.dart';
 import '../../../widgets/buttons.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _SettingsPageState extends State<SettingsPage> {
+  late AuthenticationController authenticationController;
+  @override
+  void initState() {
+    authenticationController = Get.put(AuthenticationController());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,9 +85,11 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             PrimaryTextButton(
-              onPressed: () {},
+              onPressed: () async {
+                await authenticationController.logout();
+              },
               fontSize: FontSizes.f20,
-              text: 'Logout',
+              text: AppStrings.logOut,
             )
           ],
         ),

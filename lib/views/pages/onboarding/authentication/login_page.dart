@@ -77,7 +77,9 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: authController.login),
                     PrimaryTextButton(
                       text: AppStrings.signInWithWhatsAppOTP,
-                      onPressed: () {},
+                      onPressed: () async {
+                        await authController.signInWithWhatsApp();
+                      },
                     )
                   ],
                 ),

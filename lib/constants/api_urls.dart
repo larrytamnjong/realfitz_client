@@ -12,3 +12,4 @@ String getChallengeHistoriesUrl =
 String addParticipationUrl = '$rootUrl/Participation/AddParticipant.php';
 String getUserRedeemedRewardsUrl =
     '$rootUrl/Reward/GetUserRedeemedRewards.php?id=';
+String whatsAppLoginUrl = '$rootUrl/User/WhatsAppLogin.php?phone=';

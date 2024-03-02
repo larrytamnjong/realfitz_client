@@ -1,15 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:otpless_flutter/otpless_flutter.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/authentication/login_page.dart';
+import 'package:realfitzclient/views/pages/onboarding/general/getting_started_page.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
 import '../../constants/strings.dart';
 import '../../data/onboarding/authentication_client.dart';
 import '../../models/onboarding/user.dart';
+import '../../utils/remove_country_code.dart';
 import '../../views/resources/transitions.dart';
 
 class AuthenticationController extends BaseController {
@@ -22,6 +25,7 @@ class AuthenticationController extends BaseController {
   String? countryController;
 
   late AuthenticationClient authClient;
+  final _otpless = Otpless();
   final UserController _userController = UserController();
 
   final formKey = GlobalKey<FormBuilderState>();
@@ -55,6 +59,15 @@ class AuthenticationController extends BaseController {
       User user =
           User(email: emailController.text, password: passwordController.text);
       _handleLogin(user);
+    }
+  }
+
+  Future logout() async {
+    try {
+      await _userController.removeUser();
+      Get.offAll(transition: downToUp, () => const GettingStartedPage());
+    } catch (exception) {
+      handleException(exception);
     }
   }
 
@@ -95,6 +108,46 @@ class AuthenticationController extends BaseController {
       handleException(exception);
     } finally {
       hideLoadingIndicator();
+    }
+  }
+
+  Future<void> signInWithWhatsApp() async {
+    try {
+      showLoadingIndicator();
+      if (await _isWhatsAppInstalled()) {
+        authClient = AuthenticationClient();
+        await _otpless.hideFabButton();
+        _otpless.openLoginPage(
+          (result) async {
+            String? phone = await result['data']['mobile']['number'];
+            if (await result['data'] != null) {
+              User? user = await authClient.whatsAppLogin(
+                  phone: removeCountryCode(phone!));
+              if (user != null) {
+                await _userController.saveUserToLocalStorage(user);
+                Get.offAll(transition: downToUp, () => const DashboardPage());
+              } else {
+                showFailureSnackBar(message: AppStrings.failedToRetrieveUser);
+              }
+            }
+          },
+        );
+      } else {
+        showFailureSnackBar(message: AppStrings.pleaseInstallWhatsApp);
+      }
+    } catch (exception) {
+      handleException(exception);
+    } finally {
+      hideLoadingIndicator();
+    }
+  }
+
+  Future<bool> _isWhatsAppInstalled() async {
+    bool whatsAppInstalled = await _otpless.isWhatsAppInstalled();
+    if (whatsAppInstalled) {
+      return true;
+    } else {
+      return false;
     }
   }
 }

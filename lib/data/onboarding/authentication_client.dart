@@ -35,4 +35,17 @@ class AuthenticationClient {
       throw Exception(exception);
     }
   }
+
+  Future<User?> whatsAppLogin({required String phone}) async {
+    try {
+      final response = await http.get(Uri.parse('$whatsAppLoginUrl$phone'));
+      if (response.statusCode == 200) {
+        return User.fromJson(jsonDecode(response.body));
+      } else {
+        return null;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
 }

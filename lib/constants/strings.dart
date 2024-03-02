@@ -12,6 +12,7 @@ class AppStrings {
       "Already have an account? signIn";
   static const String createAccount = "Create account";
   static const String login = "Login";
+  static const String failedToRetrieveUser = "Failed to retrieve user";
   static const String signInWithWhatsAppOTP = "Sign in with WhatsApp OTP?!";
   static const String fullName = "Full name";
   static const String email = "Email";
@@ -22,6 +23,7 @@ class AppStrings {
       "You will use this number for OTP Sign in or account recovery in the future.";
   static const String heyThereAthlete = "Hey there athlete!";
   static const String required = "Required";
+  static const String logOut = "Logout";
   static const String passwordsDoNotMatch = 'Password don\'t match';
   static const String invalidEmail = "Invalid email";
   static const String invalidLength = "Invalid length";
@@ -34,6 +36,7 @@ class AppStrings {
       "Please make sure your email and password are correct";
   static const String authorizationNotGranted = "Authorization not granted";
   static const String home = "Home";
+  static const String pleaseInstallWhatsApp = "Please install WhatApp";
   static const String challenge = "Challenge";
   static const String reward = "Reward";
   static const String profile = "Profile";
