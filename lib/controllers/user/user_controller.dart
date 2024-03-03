@@ -8,7 +8,7 @@ class UserController extends BaseController {
     await LocalStorageService.saveUser(user);
   }
 
-  Future<int?> getUserId() async {
+  Future<String?> getUserId() async {
     return await LocalStorageService.getUserId();
   }
 

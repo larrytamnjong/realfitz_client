@@ -9,7 +9,7 @@ class AccountController extends BaseController {
   final UserController _userController = UserController();
   Future<String?> getAccountBalance() async {
     try {
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       AccountBalance? accountBalance =
           await _accountClient.getAccountBalance(id: id!);
       return accountBalance?.accountBalance;

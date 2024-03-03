@@ -44,7 +44,7 @@ class AuthenticationController extends BaseController {
     if (formKey.currentState!.validate()) {
       User user = User(
           name: nameController.text,
-          phone: phoneController.text,
+          phone: phoneController.text.replaceAll(RegExp(r'\s+'), ''),
           email: emailController.text,
           password: passwordController.text,
           countryCode: countryCodeController,

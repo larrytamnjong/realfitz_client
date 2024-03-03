@@ -6,7 +6,7 @@ import '../../constants/api_urls.dart';
 import '../../models/account/account_balance.dart';
 
 class AccountClient {
-  Future<AccountBalance?> getAccountBalance({required int id}) async {
+  Future<AccountBalance?> getAccountBalance({required String id}) async {
     try {
       final response = await http.get(Uri.parse('$getAccountBalanceUrl$id'));
       if (response.statusCode == 200) {

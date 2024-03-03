@@ -1,7 +1,7 @@
 class UserReward {
-  int id;
-  int userId;
-  int rewardId;
+  String id;
+  String userId;
+  String rewardId;
   String creationDate;
 
   UserReward({
@@ -13,9 +13,9 @@ class UserReward {
 
   factory UserReward.fromJson(Map<String, dynamic> json) {
     return UserReward(
-      id: json['id'],
-      userId: json['user_id'],
-      rewardId: json['reward_id'],
+      id: json['id'].toString(),
+      userId: json['user_id'].toString(),
+      rewardId: json['reward_id'].toString(),
       creationDate: json['creation_date'],
     );
   }

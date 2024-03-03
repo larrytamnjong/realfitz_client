@@ -7,7 +7,7 @@ import '../../constants/api_urls.dart';
 import '../../models/step/step.dart';
 
 class StepClient {
-  Future<StepLastSyncDate?> getLastSyncDate({required int id}) async {
+  Future<StepLastSyncDate?> getLastSyncDate({required String id}) async {
     try {
       final response = await http.get(Uri.parse('$getLastSyncTimeUrl$id'));
       if (response.statusCode == 200) {

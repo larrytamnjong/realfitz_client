@@ -5,7 +5,7 @@ import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/models/challenge/challenge.dart';
 
 class ChallengeClient {
-  Future<List<Challenge>?> getAvailableChallenges({required int id}) async {
+  Future<List<Challenge>?> getAvailableChallenges({required String id}) async {
     try {
       final response =
           await http.get(Uri.parse('$getAvailableChallengeUrl$id'));
@@ -23,7 +23,7 @@ class ChallengeClient {
     }
   }
 
-  Future<List<Challenge>?> getChallengeHistories({required int id}) async {
+  Future<List<Challenge>?> getChallengeHistories({required String id}) async {
     try {
       final response =
           await http.get(Uri.parse('$getChallengeHistoriesUrl$id'));

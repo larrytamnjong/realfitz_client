@@ -5,7 +5,7 @@ import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/models/reward/reward.dart';
 
 class RewardClient {
-  Future<List<Reward>?> getUserRedeemedRewards({required int id}) async {
+  Future<List<Reward>?> getUserRedeemedRewards({required String id}) async {
     try {
       final response =
           await http.get(Uri.parse('$getUserRedeemedRewardsUrl$id'));

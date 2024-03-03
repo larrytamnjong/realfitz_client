@@ -1,9 +1,9 @@
 class Sponsor {
-  int id;
+  String id;
   String name;
   String? image;
   String? detail;
-  int? categoryId;
+  String? categoryId;
 
   Sponsor({
     required this.id,
@@ -14,11 +14,11 @@ class Sponsor {
   });
   factory Sponsor.fromJson(Map<String, dynamic> json) {
     return Sponsor(
-      id: json['id'],
+      id: json['id'].toString(),
       name: json['name'],
       image: json['image'],
       detail: json['detail'],
-      categoryId: json['category_id'],
+      categoryId: json['category_id']?.toString(),
     );
   }
 }

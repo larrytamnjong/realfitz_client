@@ -36,7 +36,7 @@ class StepController extends BaseController {
         startTime: startTime, endTime: endTime);
     try {
       if (steps != null) {
-        Step stepsObject = Step(steps: steps, syncDate: endTime);
+        Step stepsObject = Step(steps: steps.toString(), syncDate: endTime);
         _syncSteps(steps: stepsObject);
       }
     } catch (exception) {
@@ -46,7 +46,7 @@ class StepController extends BaseController {
 
   Future<DateTime?> _getLastSyncDate() async {
     try {
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       StepLastSyncDate? stepLastSyncDate =
           await _stepClient.getLastSyncDate(id: id!);
 

@@ -4,13 +4,13 @@ import '../category/category.dart';
 import '../sponsor/sponsor.dart';
 
 class Reward {
-  int id;
+  String id;
   String detail;
   String voucherCode;
   String? image;
   String creationDate;
   String howToRedeem;
-  int? coinsNeededToRedeem;
+  String? coinsNeededToRedeem;
   bool? isUserRedeemable;
   String termsAndConditions;
   String caption;
@@ -38,14 +38,14 @@ class Reward {
 
   factory Reward.fromJson(Map<String, dynamic> json) {
     return Reward(
-      id: json['id'],
+      id: json['id'].toString(),
       detail: json['detail'] ?? '',
       voucherCode: json['voucher_code'] ?? '',
       image: json['image'],
       creationDate: json['creation_date'],
       howToRedeem: json['how_to_redeem'] ?? '',
-      coinsNeededToRedeem: json['coins_needed_to_redeem'],
-      isUserRedeemable: json['is_user_redeemable'] == 1,
+      coinsNeededToRedeem: json['coins_needed_to_redeem'].toString(),
+      isUserRedeemable: json['is_user_redeemable'].toString() == "1",
       termsAndConditions: json['terms_and_conditions'] ?? '',
       caption: json['caption'],
       expiryDate: json['expiry_date'],

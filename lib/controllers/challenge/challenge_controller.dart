@@ -19,7 +19,7 @@ class ChallengeController extends BaseController {
 
   Future<List<Challenge>> getAvailableChallenges() async {
     try {
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       List<Challenge>? challenges =
           await _challengeClient.getAvailableChallenges(id: id!);
       availableChallenges.value = challenges!;
@@ -31,7 +31,7 @@ class ChallengeController extends BaseController {
 
   Future<List<Challenge>> getChallengeHistories() async {
     try {
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       List<Challenge>? challenges =
           await _challengeClient.getChallengeHistories(id: id!);
       challengeHistories.value = challenges!;
@@ -41,10 +41,10 @@ class ChallengeController extends BaseController {
     }
   }
 
-  addChallengeParticipant({required int challengeId}) async {
+  addChallengeParticipant({required String challengeId}) async {
     try {
       showLoadingIndicator();
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       Participation participation = Participation();
       participation.challengeId = challengeId;
       participation.id = id;

@@ -1,6 +1,6 @@
 class Step {
-  int? id;
-  int? steps;
+  String? id;
+  String? steps;
   DateTime? syncDate;
 
   Step({this.id, this.steps, this.syncDate});

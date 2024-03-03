@@ -1,6 +1,6 @@
 class Participation {
-  int? id;
-  int? challengeId;
+  String? id;
+  String? challengeId;
 
   Participation({this.id, this.challengeId});
 

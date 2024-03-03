@@ -10,7 +10,7 @@ class RewardController extends BaseController {
 
   Future<List<Reward>?> getUserRedeemedRewards() async {
     try {
-      int? id = await _userController.getUserId();
+      String? id = await _userController.getUserId();
       List<Reward>? rewards =
           await _rewardClient.getUserRedeemedRewards(id: id!);
       return rewards;
