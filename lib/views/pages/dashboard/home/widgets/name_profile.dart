@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:realfitzclient/views/pages/dashboard/setting/account_information/profile_information_page.dart';
 
 import '../../../../resources/colors_manager.dart';
 import '../../../../resources/styles/text_styles.dart';
+import '../../../../resources/transitions.dart';
 import '../../../../resources/values_manager.dart';
 
 class NameAndProfileIconRow extends StatelessWidget {
@@ -22,7 +25,12 @@ class NameAndProfileIconRow extends StatelessWidget {
           style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.to(
+              transition: downToUp,
+              () => const ProfileInformationPage(),
+            );
+          },
           icon: Icon(
             Ionicons.person_circle,
             color: AppColors.primary,

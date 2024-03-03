@@ -16,6 +16,10 @@ class UserController extends BaseController {
     return await LocalStorageService.getUserName();
   }
 
+  Future<User> getUserDetails() async {
+    return await LocalStorageService.getUserDetails();
+  }
+
   removeUser() async {
     await LocalStorageService.removeUser();
   }

@@ -46,6 +46,23 @@ class LocalStorageService {
     }
   }
 
+  static Future<User> getUserDetails() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      User user = User();
+      user.id = prefs.getString('id');
+      user.phone = prefs.getString('phone');
+      user.email = prefs.getString('email');
+      user.name = prefs.getString('name');
+      user.creationDate = prefs.getString('creationDate');
+      user.country = prefs.getString('country');
+      user.countryCode = prefs.getString('countryCode');
+      return user;
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
   static Future<String?> getUserName() async {
     try {
       final prefs = await SharedPreferences.getInstance();

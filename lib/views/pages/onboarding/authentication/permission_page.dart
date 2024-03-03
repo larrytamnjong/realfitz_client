@@ -10,14 +10,14 @@ import '../../../resources/colors_manager.dart';
 import '../../../resources/styles/text_styles.dart';
 import '../../../widgets/buttons.dart';
 
-class Permission extends StatefulWidget {
-  const Permission({super.key});
+class PermissionPage extends StatefulWidget {
+  const PermissionPage({super.key});
 
   @override
-  State<Permission> createState() => _PermissionState();
+  State<PermissionPage> createState() => _PermissionPageState();
 }
 
-class _PermissionState extends State<Permission> {
+class _PermissionPageState extends State<PermissionPage> {
   @override
   Widget build(BuildContext context) {
     PermissionController permissionController = Get.put(PermissionController());

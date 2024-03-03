@@ -3,11 +3,14 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
 import 'package:realfitzclient/views/resources/styles/text_styles.dart';
+import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 
 import '../../../../constants/strings.dart';
 import '../../../widgets/buttons.dart';
+import '../../onboarding/authentication/permission_page.dart';
+import 'account_information/profile_information_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -39,12 +42,21 @@ class _SettingsPageState extends State<SettingsPage> {
                   OutlineTileButton(
                     text: AppStrings.permission,
                     icon: Icons.security_rounded,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(
+                          transition: rightToLeft,
+                          () => const PermissionPage());
+                    },
                   ),
                   OutlineTileButton(
                     text: AppStrings.accountInformation,
                     icon: Ionicons.person,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(
+                        transition: rightToLeft,
+                        () => const ProfileInformationPage(),
+                      );
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.all(AppPadding.p8),

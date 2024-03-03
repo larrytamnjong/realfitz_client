@@ -7,7 +7,7 @@ import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
 import 'package:realfitzclient/views/widgets/fatal_error.dart';
 
 import '../../constants/strings.dart';
-import '../../views/pages/onboarding/authentication/permission.dart';
+import '../../views/pages/onboarding/authentication/permission_page.dart';
 import '../../views/pages/onboarding/general/getting_started_page.dart';
 import '../../views/resources/transitions.dart';
 
@@ -28,7 +28,7 @@ class SplashPageController extends BaseController {
           Get.offAll(transition: downToUp, () => const GettingStartedPage());
         }
       } else {
-        Get.offAll(() => const Permission());
+        Get.offAll(() => const PermissionPage());
       }
     } catch (exception) {
       handleException(exception);

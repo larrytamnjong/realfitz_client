@@ -48,4 +48,18 @@ class AuthenticationClient {
       throw Exception(exception);
     }
   }
+
+  Future<bool> updateUserDetail() async {
+    try {
+      final response = await http.put(Uri.parse(updateUserUrl),
+          body: jsonEncode(user?.toJson()));
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
 }

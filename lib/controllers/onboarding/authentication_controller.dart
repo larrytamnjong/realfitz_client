@@ -21,8 +21,10 @@ class AuthenticationController extends BaseController {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
   final repeatPasswordController = TextEditingController();
-  String? countryCodeController;
-  String? countryController;
+  final creationDateController = TextEditingController();
+  final countryController = TextEditingController();
+  String? countryCode;
+  String? country;
 
   late AuthenticationClient authClient;
   final _otpless = Otpless();
@@ -47,8 +49,8 @@ class AuthenticationController extends BaseController {
           phone: phoneController.text.replaceAll(RegExp(r'\s+'), ''),
           email: emailController.text,
           password: passwordController.text,
-          countryCode: countryCodeController,
-          country: countryController);
+          countryCode: countryCode,
+          country: country);
 
       _handleCreateAccount(user);
     }
@@ -62,12 +64,54 @@ class AuthenticationController extends BaseController {
     }
   }
 
+  void updateUserDetail() async {
+    if (formKey.currentState!.validate()) {
+      String? id = await _userController.getUserId();
+      User user = User(
+        id: id,
+        name: nameController.text,
+        password: passwordController.text,
+      );
+      _handleUpdateUserDetail(user);
+    }
+  }
+
+  Future setUserInformation() async {
+    User user = await _userController.getUserDetails();
+    nameController.text = user.name ?? '';
+    emailController.text = user.email ?? '';
+    phoneController.text = '${user.countryCode}-${user.phone}';
+    creationDateController.text = user.creationDate ?? '';
+    countryController.text = user.country ?? '';
+    passwordController.text = '';
+    repeatPasswordController.text = '';
+  }
+
   Future logout() async {
     try {
       await _userController.removeUser();
       Get.offAll(transition: downToUp, () => const GettingStartedPage());
     } catch (exception) {
       handleException(exception);
+    }
+  }
+
+  void _handleUpdateUserDetail(User user) async {
+    try {
+      showLoadingIndicator();
+      authClient = AuthenticationClient();
+      authClient.user = user;
+      bool userIsUpdated = await authClient.updateUserDetail();
+      if (userIsUpdated) {
+        showSuccessSnackBar();
+        Get.offAll(() => const GettingStartedPage());
+      } else {
+        showFailureSnackBar(message: AppStrings.failedToUpdateUserDetail);
+      }
+    } catch (exception) {
+      handleException(exception);
+    } finally {
+      hideLoadingIndicator();
     }
   }
 

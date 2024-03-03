@@ -60,8 +60,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           validator: requiredValidator.call,
                           controller: authController.phoneController,
                           countryDetails: (String? code, String? country) {
-                            authController.countryCodeController = code;
-                            authController.countryController = country;
+                            authController.countryCode = code;
+                            authController.country = country;
                           },
                         ),
                         FormBuilderTextField(
@@ -78,7 +78,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           decoration: InputDecoration(
                               hintStyle: regularTextStyle,
                               labelText: AppStrings.email),
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           validator: emailValidator.call,
                           controller: authController.emailController,
                         ),
@@ -115,8 +115,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ),
                     const SizedBox(height: AppSizes.s20),
                     PrimaryElevatedButton(
-                        text: AppStrings.createAccount,
-                        onPressed: authController.createAccount)
+                      text: AppStrings.createAccount,
+                      onPressed: authController.createAccount,
+                    )
                   ],
                 ),
               ),

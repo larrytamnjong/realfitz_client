@@ -91,4 +91,8 @@ class AppStrings {
   static const String privacyPolicy = "Privacy policy";
   static const String liveSupport = "Live support";
   static const String suggestion = "Suggestion";
+  static const String updateDetails = "Update details";
+  static const String creationDate = "Creation date";
+  static const String country = "Country";
+  static const String failedToUpdateUserDetail = "Failed to update user detail";
 }
