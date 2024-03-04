@@ -16,14 +16,17 @@ class StepController extends BaseController {
       DateTime? lastSyncTime = await _getLastSyncDate();
 
       while (_checkTimeDifference(lastSyncTime!, DateTime.now())) {
-        DateTime? getStepsDateTimeEnd = lastSyncTime
+        DateTime? stepsDateTimeEnd = lastSyncTime
             .add(const Duration(hours: 12))
             .subtract(const Duration(seconds: 1));
 
         await _handleStepsSync(
-            startTime: lastSyncTime, endTime: getStepsDateTimeEnd);
+            startTime: lastSyncTime, endTime: stepsDateTimeEnd);
 
-        lastSyncTime = getStepsDateTimeEnd.add(const Duration(seconds: 1));
+        lastSyncTime = stepsDateTimeEnd.add(const Duration(seconds: 1));
+        if (!_checkTimeDifference(lastSyncTime, DateTime.now())) {
+          return;
+        }
       }
     } catch (exception) {
       handleException(exception);
@@ -111,6 +114,6 @@ class StepController extends BaseController {
 
   bool _checkTimeDifference(DateTime startDateTime, DateTime endDateTime) {
     Duration timeDifference = endDateTime.difference(startDateTime);
-    return timeDifference.inHours >= 12;
+    return timeDifference.inHours > 12;
   }
 }

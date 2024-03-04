@@ -3,6 +3,6 @@ class AccountBalance {
   AccountBalance({this.accountBalance});
 
   factory AccountBalance.fromJson(Map<String, dynamic> json) {
-    return AccountBalance(accountBalance: json['account_balance']);
+    return AccountBalance(accountBalance: json['account_balance'].toString());
   }
 }

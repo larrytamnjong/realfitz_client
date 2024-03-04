@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
 import 'package:realfitzclient/controllers/home/home_page_controller.dart';
+import 'package:realfitzclient/utils/coin_value_exchange.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/doughnut_graph.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/home_items.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
@@ -64,7 +65,8 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: AppSizes.s2),
                     HomeItems(
                       stepsToday: result.data!.stepsToday!,
-                      coinsToday: result.data!.coinsToday!,
+                      coinsToday:
+                          getCoinsValueFromSteps(result.data!.coinsToday),
                     ),
                     const SizedBox(height: AppSizes.s2),
                     DoughnutGraph(

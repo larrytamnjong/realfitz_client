@@ -9,8 +9,11 @@ import '../../../../resources/colors_manager.dart';
 class HomeItems extends StatefulWidget {
   final String stepsToday;
   final String coinsToday;
-  const HomeItems(
-      {super.key, required this.stepsToday, required this.coinsToday});
+  const HomeItems({
+    super.key,
+    required this.stepsToday,
+    required this.coinsToday,
+  });
 
   @override
   State<HomeItems> createState() => _HomeItemsState();
