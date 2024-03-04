@@ -77,13 +77,13 @@ Widget getChallengeCardBottom({
       case 'ongoing':
         return ChallengeCardActiveBottom(
             showCircularIndicator: showCircularIndicator,
-            percent: getPercentage(challenge.percentageCompleted),
+            percent: getPercentageOnTen(challenge.percentageCompleted),
             stepsTaken: challenge.totalStepsTaken!,
             steps: challenge.steps.toString());
       case 'ended':
         return ChallengeCardActiveBottom(
             showCircularIndicator: showCircularIndicator,
-            percent: getPercentage(challenge.percentageCompleted),
+            percent: getPercentageOnTen(challenge.percentageCompleted),
             stepsTaken: challenge.totalStepsTaken!,
             steps: challenge.steps.toString());
       default:

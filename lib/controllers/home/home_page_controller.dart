@@ -20,6 +20,7 @@ class HomePageController extends BaseController {
       homePageData.accountBalance =
           await _accountController.getAccountBalance();
       homePageData.coinsToday = await _stepController.getTodaySteps();
+      homePageData.stepTarget = await _stepController.getUserStepTarget();
       return homePageData;
     } catch (exception) {
       handleException(exception);

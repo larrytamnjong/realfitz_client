@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../resources/styles/text_styles.dart';
 
-class VerticalTextButton extends StatelessWidget {
+class VerticalTextWithIconButton extends StatelessWidget {
   final String text;
   final Function() onPressed;
   final IconData icon;
-  const VerticalTextButton({
+  const VerticalTextWithIconButton({
     super.key,
     required this.text,
     required this.onPressed,

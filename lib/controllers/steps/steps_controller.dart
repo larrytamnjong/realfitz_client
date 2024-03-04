@@ -1,6 +1,7 @@
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/step/step_client.dart';
+import 'package:realfitzclient/models/step/StepTarget.dart';
 
 import '../../models/step/last_sync_date.dart';
 import '../../models/step/step.dart';
@@ -103,6 +104,16 @@ class StepController extends BaseController {
         return false;
       }
       return hasPermissions;
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
+  Future<StepTarget?> getUserStepTarget() async {
+    try {
+      String? id = await _userController.getUserId();
+      StepTarget? stepTarget = await _stepClient.getUserStepTarget(id: id!);
+      return stepTarget;
     } catch (exception) {
       throw Exception(exception);
     }

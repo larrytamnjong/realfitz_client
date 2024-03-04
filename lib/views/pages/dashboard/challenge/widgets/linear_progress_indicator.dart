@@ -11,11 +11,13 @@ class LinearPercentageIndicator extends StatelessWidget {
   final double percent;
   final String stepsTaken;
   final String steps;
+  final int? negativeWidth;
   const LinearPercentageIndicator({
     super.key,
     required this.percent,
     required this.stepsTaken,
     required this.steps,
+    this.negativeWidth,
   });
 
   @override
@@ -28,7 +30,7 @@ class LinearPercentageIndicator extends StatelessWidget {
           barRadius: const Radius.circular(AppBorderRadius.r15),
           progressColor: AppColors.primary,
           animation: true,
-          width: MediaQuery.of(context).size.width - 25,
+          width: MediaQuery.of(context).size.width - (negativeWidth ?? 25),
           lineHeight: AppSizes.s20,
           percent: percent,
           center: Row(

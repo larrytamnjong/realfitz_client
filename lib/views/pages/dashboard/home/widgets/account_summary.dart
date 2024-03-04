@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:realfitzclient/utils/amount_formatter.dart';
 import 'package:realfitzclient/utils/get_first_name.dart';
+import 'package:realfitzclient/utils/get_percentage.dart';
 
-import '../../../../../constants/strings.dart';
 import '../../../../resources/values_manager.dart';
 import 'account_balance.dart';
 import 'account_status.dart';
-import 'column_button.dart';
+import 'daily_target.dart';
 import 'name_profile.dart';
 
 class AccountSummary extends StatelessWidget {
   final String name;
   final String accountBalance;
+  final String stepsTaken;
+  final String steps;
+
   const AccountSummary({
     super.key,
     required this.name,
     required this.accountBalance,
+    required this.stepsTaken,
+    required this.steps,
   });
 
   @override
@@ -39,27 +44,11 @@ class AccountSummary extends StatelessWidget {
                   accountBalance: formatAmount(accountBalance),
                 ),
                 const SizedBox(height: AppSizes.s10),
-                Row(
-                  children: [
-                    VerticalTextButton(
-                      icon: Icons.history,
-                      text: AppStrings.history,
-                      onPressed: () {},
-                    ),
-                    const SizedBox(width: AppSizes.s5),
-                    VerticalTextButton(
-                      icon: Icons.arrow_outward_rounded,
-                      text: AppStrings.withdrawal,
-                      onPressed: () {},
-                    ),
-                    const SizedBox(width: AppSizes.s5),
-                    VerticalTextButton(
-                      icon: Icons.arrow_downward,
-                      text: AppStrings.deposit,
-                      onPressed: () {},
-                    ),
-                  ],
-                )
+                DailyTarget(
+                  percent: calculatePercentage(stepsTaken, steps),
+                  stepsTaken: stepsTaken,
+                  steps: steps,
+                ),
               ],
             ),
           ),

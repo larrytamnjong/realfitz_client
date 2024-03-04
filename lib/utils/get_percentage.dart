@@ -1,4 +1,4 @@
-double getPercentage(String? percentString) {
+double getPercentageOnTen(String? percentString) {
   if (percentString == null) {
     return 0.0;
   } else {
@@ -9,4 +9,10 @@ double getPercentage(String? percentString) {
       return percent / 100;
     }
   }
+}
+
+String calculatePercentage(String numerator, String denominator) {
+  double percentage =
+      (double.parse(numerator) / double.parse(denominator)) * 100;
+  return percentage.toString();
 }

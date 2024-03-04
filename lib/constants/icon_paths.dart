@@ -9,4 +9,5 @@ class IconPaths {
   static String coins = "assets/icons/ic_coins.png";
   static String setting = "assets/icons/ic_setting.png";
   static String confetti = "assets/icons/ic_confetti.png";
+  static String edit = "assets/icons/ic_edit.png";
 }

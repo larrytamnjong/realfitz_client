@@ -17,6 +17,7 @@ class AppStrings {
   static const String fullName = "Full name";
   static const String email = "Email";
   static const String password = "Password";
+  static const String dailyStepTarget = "Daily step target";
   static const String repeatPassword = "Repeat Password";
   static const String phone = "WhatsApp number";
   static const String youWillUseThisNumberForAccountRecoveryOrOTPSignIn =
