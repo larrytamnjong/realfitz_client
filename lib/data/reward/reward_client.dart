@@ -21,4 +21,21 @@ class RewardClient {
       throw Exception(exception);
     }
   }
+
+  Future<List<Reward>?> getAllRewards() async {
+    try {
+      final response = await http.get(Uri.parse(getAllRewardsUrl));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonRewards = jsonDecode(response.body);
+        List<Reward> rewards =
+            jsonRewards.map((reward) => Reward.fromJson(reward)).toList();
+        return rewards;
+      } else {
+        return null;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
 }

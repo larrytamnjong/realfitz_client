@@ -86,6 +86,8 @@ class AppStrings {
   static const String expiresOn = "Expires on";
   static const String copiedToClipBoard = "Copied to clipboard.";
   static const String settings = "Settings";
+  static const String stepTarget = "Step target";
+  static const String numberOfSteps = "Number of steps";
   static const String accountInformation = "Account information";
   static const String general = "General";
   static const String faqs = "FAQs";
@@ -94,6 +96,11 @@ class AppStrings {
   static const String suggestion = "Suggestion";
   static const String updateDetails = "Update details";
   static const String creationDate = "Creation date";
+  static const String save = "Save";
+  static const String caloriesBurned = "Calories";
+  static const String kmWalked = "KM Walked";
   static const String country = "Country";
   static const String failedToUpdateUserDetail = "Failed to update user detail";
+  static const String enterYourDailyStepTarget =
+      "Enter you daily step target (e.g 5000)";
 }

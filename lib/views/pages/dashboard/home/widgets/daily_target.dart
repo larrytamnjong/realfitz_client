@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:get/get.dart';
+import 'package:realfitzclient/controllers/home/home_page_controller.dart';
 import 'package:realfitzclient/utils/get_percentage.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../../../../constants/icon_paths.dart';
 import '../../../../../constants/strings.dart';
+import '../../../../../utils/validators.dart';
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
 import '../../challenge/widgets/linear_progress_indicator.dart';
 import 'horizontal_text_icon_button.dart';
@@ -30,7 +36,7 @@ class DailyTarget extends StatelessWidget {
             color: AppColors.primary,
           ),
           text: AppStrings.dailyStepTarget,
-          onPressed: () {},
+          onPressed: () => _updateStepTarget(context),
         ),
         LinearPercentageIndicator(
           negativeWidth: 40,
@@ -40,5 +46,43 @@ class DailyTarget extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _updateStepTarget(context) {
+    HomePageController controller = Get.find<HomePageController>();
+    Alert(
+      context: context,
+      title: AppStrings.stepTarget,
+      content: controller.isShowingLoadingIndicator.value
+          ? const CircularProgressIndicator()
+          : FormBuilder(
+              key: controller.formKey,
+              child: Column(
+                children: <Widget>[
+                  FormBuilderTextField(
+                    name: AppStrings.stepTarget,
+                    decoration: InputDecoration(
+                      helperText: AppStrings.enterYourDailyStepTarget,
+                      helperStyle: regularTextStyle,
+                      hintStyle: regularTextStyle,
+                      labelText: AppStrings.stepTarget,
+                    ),
+                    keyboardType: TextInputType.number,
+                    validator: requiredValidator.call,
+                    controller: controller.targetController,
+                  )
+                ],
+              ),
+            ),
+      buttons: [
+        DialogButton(
+          color: AppColors.primary,
+          onPressed: () async {
+            await controller.updateUserStepTarget();
+          },
+          child: Text(AppStrings.save, style: mediumTextStyle),
+        )
+      ],
+    ).show();
   }
 }

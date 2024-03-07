@@ -6,18 +6,22 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import '../../../../resources/styles/text_styles.dart';
 
 class HomeItem extends StatefulWidget {
-  final String iconPath;
+  final String? iconPath;
   final String title;
   final String value;
   final Color cardColor;
   final Color iconColor;
+  final bool useImageIcon;
+  final IconData? icon;
   const HomeItem({
     super.key,
-    required this.iconPath,
+    this.iconPath,
     required this.title,
     required this.value,
     required this.cardColor,
     required this.iconColor,
+    this.useImageIcon = true,
+    this.icon,
   });
 
   @override
@@ -58,11 +62,17 @@ class _HomeItemState extends State<HomeItem> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(AppPadding.p8),
-                child: ImageIcon(
-                  AssetImage(widget.iconPath),
-                  size: AppSizes.s45,
-                  color: widget.iconColor,
-                ),
+                child: widget.useImageIcon
+                    ? ImageIcon(
+                        AssetImage(widget.iconPath ?? ''),
+                        size: AppSizes.s45,
+                        color: widget.iconColor,
+                      )
+                    : Icon(
+                        widget.icon,
+                        size: AppSizes.s45,
+                        color: widget.iconColor,
+                      ),
               ),
               Text(
                 widget.title,

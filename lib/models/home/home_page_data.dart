@@ -8,4 +8,6 @@ class HomePageData {
   String? coinsToday;
   String? stepsToday;
   StepTarget? stepTarget;
+  String? caloriesBurned;
+  String? kmWalked;
 }

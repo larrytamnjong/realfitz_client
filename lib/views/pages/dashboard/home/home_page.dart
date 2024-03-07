@@ -53,22 +53,24 @@ class _HomePageState extends State<HomePage> {
             if (result.hasError || result.data == null) {
               return const ErrorPage();
             }
+            var data = result.data!;
             return Padding(
               padding: const EdgeInsets.all(AppPadding.p8),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
                     AccountSummary(
-                      name: result.data!.name!,
-                      accountBalance: result.data!.accountBalance ?? '0',
-                      stepsTaken: result.data!.stepsToday!,
-                      steps: result.data!.stepTarget!.target!,
+                      name: data.name!,
+                      accountBalance: data.accountBalance ?? '0',
+                      stepsTaken: data.stepsToday!,
+                      steps: data.stepTarget!.target!,
                     ),
                     const SizedBox(height: AppSizes.s2),
                     HomeItems(
-                      stepsToday: result.data!.stepsToday!,
-                      coinsToday:
-                          getCoinsValueFromSteps(result.data!.coinsToday),
+                      stepsToday: data.stepsToday!,
+                      coinsToday: getCoinsValueFromSteps(data.coinsToday),
+                      caloriesBurned: data.caloriesBurned!,
+                      kmWalked: data.kmWalked!,
                     ),
                     const SizedBox(height: AppSizes.s2),
                     DoughnutGraph(

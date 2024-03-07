@@ -1,8 +1,15 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
+import 'package:realfitzclient/models/step/StepTarget.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
+import 'package:realfitzclient/views/pages/onboarding/general/splash_page.dart';
+import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
+import '../../constants/strings.dart';
 import '../../models/home/home_page_data.dart';
 import '../account/account_controller.dart';
 
@@ -10,17 +17,22 @@ class HomePageController extends BaseController {
   final StepController _stepController = StepController();
   final AccountController _accountController = AccountController();
   final UserController _userController = UserController();
+  final targetController = TextEditingController();
 
+  final formKey = GlobalKey<FormBuilderState>();
   Future<HomePageData?> getHomePageData() async {
     try {
       HomePageData homePageData = HomePageData();
+      String? todaySteps = await _stepController.getTodaySteps();
       homePageData.name = await _userController.getUserName();
       homePageData.doughnutChartData = await _getDoughnutChartData();
-      homePageData.stepsToday = await _stepController.getTodaySteps();
+      homePageData.stepsToday = todaySteps;
       homePageData.accountBalance =
           await _accountController.getAccountBalance();
-      homePageData.coinsToday = await _stepController.getTodaySteps();
+      homePageData.coinsToday = todaySteps;
       homePageData.stepTarget = await _stepController.getUserStepTarget();
+      homePageData.caloriesBurned = _calculateCaloriesBurned(todaySteps);
+      homePageData.kmWalked = _calculateKilometersWalked(todaySteps);
       return homePageData;
     } catch (exception) {
       handleException(exception);
@@ -43,6 +55,50 @@ class HomePageController extends BaseController {
       return doughnutChartData;
     } catch (exception) {
       throw Exception(exception);
+    }
+  }
+
+  updateUserStepTarget() async {
+    try {
+      if (formKey.currentState!.validate()) {
+        showLoadingIndicator();
+        StepTarget stepTarget = StepTarget();
+        stepTarget.target = targetController.text;
+        stepTarget.id = await _userController.getUserId();
+
+        bool isUpdated =
+            await _stepController.updateUserStepTarget(stepTarget: stepTarget);
+        if (isUpdated) {
+          showSuccessSnackBar();
+          Get.offAll(() => const SplashPage());
+        } else {
+          showFailureSnackBar(message: AppStrings.error);
+        }
+      }
+    } catch (exception) {
+      handleException(exception);
+    } finally {
+      hideLoadingIndicator();
+    }
+  }
+
+  String _calculateCaloriesBurned(String? steps) {
+    if (steps == null) {
+      return 0.toString();
+    } else {
+      const double caloriesPerStep = 0.04;
+      double caloriesBurned = int.parse(steps) * caloriesPerStep;
+      return caloriesBurned.round().toString();
+    }
+  }
+
+  String _calculateKilometersWalked(String? steps) {
+    if (steps == null) {
+      return 0.toString();
+    } else {
+      const double stepsPerKilometer = 1312.34;
+      double kilometersWalked = int.parse(steps) / stepsPerKilometer;
+      return kilometersWalked.round().toString();
     }
   }
 }

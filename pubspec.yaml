@@ -53,6 +53,7 @@ dependencies:
   percent_indicator: ^4.2.3
   flutter_timer_countdown: ^1.0.7
   otpless_flutter: ^2.1.0
+  rflutter_alert: ^2.0.7
 
 dev_dependencies:
   flutter_test:

@@ -12,18 +12,20 @@ import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
 
 class RewardCardSummary extends StatelessWidget {
+  final bool showRandomColor;
   final Reward reward;
   final Sponsor sponsor;
   const RewardCardSummary({
     super.key,
     required this.reward,
     required this.sponsor,
+    this.showRandomColor = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.palePink,
+      color: showRandomColor ? AppColors.getRandomColor() : AppColors.palePink,
       shape: RoundedRectangleBorder(
         borderRadius: circularBorderAll15,
       ),

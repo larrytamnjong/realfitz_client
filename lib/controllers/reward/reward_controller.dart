@@ -18,4 +18,13 @@ class RewardController extends BaseController {
       throw Exception(exception);
     }
   }
+
+  Future<List<Reward>?> getAllRewards() async {
+    try {
+      List<Reward>? rewards = await _rewardClient.getAllRewards();
+      return rewards;
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
 }

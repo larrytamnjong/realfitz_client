@@ -123,6 +123,14 @@ class StepController extends BaseController {
     return await _stepService.requestAuthorization();
   }
 
+  Future<bool> updateUserStepTarget({required StepTarget stepTarget}) async {
+    try {
+      return await _stepClient.updateUserStepTarget(stepTarget: stepTarget);
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
   bool _checkTimeDifference(DateTime startDateTime, DateTime endDateTime) {
     Duration timeDifference = endDateTime.difference(startDateTime);
     return timeDifference.inHours > 12;
