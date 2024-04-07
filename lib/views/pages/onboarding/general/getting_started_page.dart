@@ -20,55 +20,63 @@ class GettingStartedPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(AppPadding.p8),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(
-                    image: AssetImage(ImagePaths.fitnessStart),
-                  ),
-                  const SizedBox(
-                    height: AppSizes.s20,
-                  ),
-                  Text(
-                    AppStrings.walkEarnAndRedeem,
-                    style: boldTextStyle.copyWith(fontSize: FontSizes.f23),
-                  ),
-                  const SizedBox(height: AppSizes.s10),
-                  Text(
-                    AppStrings.realFitzRewardsYouWIthCoinsForEveryStep,
-                    style: regularTextStyle,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: AppSizes.s80),
-                  PrimaryElevatedButton(
-                    text: AppStrings.letsGetStarted,
-                    onPressed: () {
-                      Get.to(
-                        () => const RegistrationPage(),
-                      );
-                    },
-                  ),
-                  PrimaryTextButton(
-                      onPressed: () {
-                        Get.to(
-                          transition: downToUp,
-                          () => const LoginPage(),
-                        );
-                      },
-                      text: AppStrings.alreadyHaveAccountSignIn),
-                  const DividerHorizontal(),
-                  PrimaryTextButton(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.brightBlue,
-                      onPressed: () {},
-                      text: AppStrings.ourTermsAndConditions),
-                ],
+          child: Column(
+            children: [
+              Image(
+                colorBlendMode: BlendMode.difference,
+                image: AssetImage(
+                  ImagePaths.manWomanStretching,
+                ),
               ),
-            ),
+              const SizedBox(
+                height: AppSizes.s20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(AppPadding.p8),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppStrings.walkEarnAndRedeem,
+                        style: boldTextStyle.copyWith(fontSize: FontSizes.f23),
+                      ),
+                      const SizedBox(height: AppSizes.s10),
+                      Text(
+                        AppStrings.realFitzRewardsYouWIthCoinsForEveryStep,
+                        style: regularTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: AppSizes.s45),
+                      PrimaryElevatedButton(
+                        text: AppStrings.letsGetStarted,
+                        onPressed: () {
+                          Get.to(
+                            () => const RegistrationPage(),
+                          );
+                        },
+                      ),
+                      PrimaryTextButton(
+                          onPressed: () {
+                            Get.to(
+                              transition: downToUp,
+                              () => const LoginPage(),
+                            );
+                          },
+                          text: AppStrings.alreadyHaveAccountSignIn),
+                      const DividerHorizontal(),
+                      PrimaryTextButton(
+                        decoration: TextDecoration.underline,
+                        color: AppColors.brightBlue,
+                        onPressed: () {},
+                        text: AppStrings.ourTermsAndConditions,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

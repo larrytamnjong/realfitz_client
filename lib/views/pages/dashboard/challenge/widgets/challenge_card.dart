@@ -33,7 +33,7 @@ class _ChallengeCardState extends State<ChallengeCard> {
         child: Column(
           children: [
             ChallengeCardTop(
-              image: ImagePaths.fitnessTracker,
+              image: ImagePaths.getRandomPath(),
               status: widget.challenge.status,
               title: widget.challenge.title,
             ),

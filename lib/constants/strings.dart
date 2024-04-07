@@ -103,4 +103,6 @@ class AppStrings {
   static const String failedToUpdateUserDetail = "Failed to update user detail";
   static const String enterYourDailyStepTarget =
       "Enter you daily step target (e.g 5000)";
+  static const String participants = 'Participants';
+  static const String redeem = 'Redeem now';
 }

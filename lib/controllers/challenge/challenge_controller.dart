@@ -4,6 +4,7 @@ import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/challenge/challenge_client.dart';
 import 'package:realfitzclient/data/challenge/participation_client.dart';
 import 'package:realfitzclient/models/challenge/challenge.dart';
+import 'package:realfitzclient/models/participant/challenge_participants.dart';
 import 'package:realfitzclient/models/participant/participant.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 
@@ -36,6 +37,17 @@ class ChallengeController extends BaseController {
           await _challengeClient.getChallengeHistories(id: id!);
       challengeHistories.value = challenges!;
       return challenges;
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
+  Future<List<ChallengeParticipants>?> getChallengeParticipants(
+      {required String id}) async {
+    try {
+      List<ChallengeParticipants>? participants =
+          await _participationClient.getChallengeParticipants(id: id);
+      return participants;
     } catch (exception) {
       throw Exception(exception);
     }

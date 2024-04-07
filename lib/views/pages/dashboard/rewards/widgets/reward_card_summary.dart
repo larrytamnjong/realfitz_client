@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/reward_detail_page.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
+import 'package:realfitzclient/views/widgets/buttons.dart';
 
 import '../../../../../constants/image_paths.dart';
+import '../../../../../constants/strings.dart';
 import '../../../../../models/reward/reward.dart';
 import '../../../../../models/sponsor/sponsor.dart';
 import '../../../../resources/colors_manager.dart';
@@ -40,7 +42,7 @@ class RewardCardSummary extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Image(
-                    image: AssetImage(ImagePaths.fitnessTracker),
+                    image: AssetImage(ImagePaths.logo),
                     height: AppSizes.s100,
                     width: AppSizes.s100,
                     fit: BoxFit.cover,
@@ -73,6 +75,17 @@ class RewardCardSummary extends StatelessWidget {
                 ],
               ),
             ),
+            reward.isUserRedeemable
+                ? Padding(
+                    padding: const EdgeInsets.all(AppPadding.p5),
+                    child: Center(
+                      child: PrimaryElevatedButton(
+                        text: AppStrings.redeem,
+                        onPressed: () {},
+                      ),
+                    ),
+                  )
+                : const SizedBox.shrink()
           ],
         ),
         onTap: () {

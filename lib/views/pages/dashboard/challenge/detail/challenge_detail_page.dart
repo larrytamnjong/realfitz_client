@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:realfitzclient/constants/strings.dart';
 import 'package:realfitzclient/controllers/challenge/challenge_controller.dart';
+import 'package:realfitzclient/views/pages/dashboard/challenge/detail/challenge_participants_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/widgets/challenge_card_top.dart';
+import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
@@ -81,7 +83,10 @@ class ChallengeDetailPage extends StatelessWidget {
             child: PrimaryElevatedButton(
                 color: AppColors.primary,
                 text: AppStrings.leaderBoard,
-                onPressed: () {}),
+                onPressed: () {
+                  Get.to(() => ChallengeParticipantsPage(challenge: challenge),
+                      transition: downToUp);
+                }),
           );
         } else {
           return PrimaryElevatedButton(
@@ -94,7 +99,11 @@ class ChallengeDetailPage extends StatelessWidget {
         }
       case 'ended':
         return PrimaryElevatedButton(
-            text: AppStrings.leaderBoard, onPressed: () {});
+            text: AppStrings.leaderBoard,
+            onPressed: () {
+              Get.to(() => ChallengeParticipantsPage(challenge: challenge),
+                  transition: downToUp);
+            });
       default:
         return PrimaryElevatedButton(text: AppStrings.exit, onPressed: () {});
     }

@@ -1,5 +1,5 @@
 //String rootUrl = 'http://10.0.2.2/realfitzapi/src/Api';
-String rootUrl = 'http://192.168.219.134:3150/src/Api';
+String rootUrl = 'http://192.168.130.134:3150/src/Api';
 //String rootUrl = 'https://realfitz.loptymobile.com/src/Api';
 String createAccountUrl = '$rootUrl/User/CreateUser.php';
 String loginUrl = '$rootUrl/User/LoginUser.php';
@@ -18,3 +18,5 @@ String whatsAppLoginUrl = '$rootUrl/User/WhatsAppLogin.php?phone=';
 String updateUserUrl = '$rootUrl/User/UpdateUser.php';
 String getUserStepTargetUrl = '$rootUrl/Step/GetUserStepTarget.php?id=';
 String updateUserStepTargetUrl = '$rootUrl/Step/UpdateUserStepTarget.php';
+String getChallengeParticipantsUrl =
+    '$rootUrl/Participation/GetChallengeParticipants.php?challenge_id=';

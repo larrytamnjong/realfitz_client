@@ -11,7 +11,7 @@ class Reward {
   String creationDate;
   String howToRedeem;
   String? coinsNeededToRedeem;
-  bool? isUserRedeemable;
+  bool isUserRedeemable;
   String termsAndConditions;
   String caption;
   String expiryDate;
@@ -27,7 +27,7 @@ class Reward {
     required this.creationDate,
     required this.howToRedeem,
     this.coinsNeededToRedeem,
-    this.isUserRedeemable,
+    required this.isUserRedeemable,
     required this.termsAndConditions,
     required this.caption,
     required this.expiryDate,
