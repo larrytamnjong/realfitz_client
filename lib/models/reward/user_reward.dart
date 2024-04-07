@@ -19,4 +19,10 @@ class UserReward {
       creationDate: json['creation_date'],
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'reward_id': rewardId,
+    };
+  }
 }

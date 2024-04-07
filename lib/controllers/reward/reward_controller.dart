@@ -1,6 +1,7 @@
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/reward/reward_client.dart';
+import 'package:realfitzclient/models/reward/user_reward.dart';
 
 import '../../models/reward/reward.dart';
 
@@ -25,6 +26,21 @@ class RewardController extends BaseController {
       return rewards;
     } catch (exception) {
       throw Exception(exception);
+    }
+  }
+
+  addUserReward({required String rewardId}) async {
+    try {
+      String? userId = await _userController.getUserId();
+      UserReward reward = UserReward(
+        id: rewardId,
+        userId: userId!,
+        rewardId: rewardId,
+        creationDate: '',
+      );
+      await _rewardClient.addUserReward(reward: reward);
+    } catch (exception) {
+      handleException(exception);
     }
   }
 }
