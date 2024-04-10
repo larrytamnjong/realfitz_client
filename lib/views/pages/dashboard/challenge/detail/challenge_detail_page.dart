@@ -37,7 +37,7 @@ class ChallengeDetailPage extends StatelessWidget {
                 child: ListView(
                   children: [
                     ChallengeCardTop(
-                      image: ImagePaths.fitnessStart,
+                      image: ImagePaths.getRandomPath(),
                       status: challenge.status,
                       title: challenge.title,
                     ),

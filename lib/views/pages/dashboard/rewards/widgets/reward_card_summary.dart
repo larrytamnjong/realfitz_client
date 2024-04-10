@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:realfitzclient/controllers/reward/reward_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/reward_detail_page.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
@@ -15,13 +16,17 @@ import '../../../../resources/values_manager.dart';
 
 class RewardCardSummary extends StatelessWidget {
   final bool showRandomColor;
+  final bool showRedeemButton;
   final Reward reward;
   final Sponsor sponsor;
+  final RewardController? controller;
   const RewardCardSummary({
     super.key,
     required this.reward,
     required this.sponsor,
     this.showRandomColor = false,
+    this.controller,
+    this.showRedeemButton = false,
   });
 
   @override
@@ -79,10 +84,15 @@ class RewardCardSummary extends StatelessWidget {
                 ? Padding(
                     padding: const EdgeInsets.all(AppPadding.p5),
                     child: Center(
-                      child: PrimaryElevatedButton(
-                        text: AppStrings.redeem,
-                        onPressed: () {},
-                      ),
+                      child: showRedeemButton
+                          ? PrimaryElevatedButton(
+                              text: AppStrings.redeem,
+                              onPressed: () async {
+                                await controller?.addUserReward(
+                                    rewardId: reward.id);
+                              },
+                            )
+                          : const SizedBox.shrink(),
                     ),
                   )
                 : const SizedBox.shrink()

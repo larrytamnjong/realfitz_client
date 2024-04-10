@@ -23,9 +23,9 @@ class RewardClient {
     }
   }
 
-  Future<List<Reward>?> getAllRewards() async {
+  Future<List<Reward>?> getAllRewards({required String id}) async {
     try {
-      final response = await http.get(Uri.parse(getAllRewardsUrl));
+      final response = await http.get(Uri.parse('$getAllRewardsUrl$id'));
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonRewards = jsonDecode(response.body);

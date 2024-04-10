@@ -62,6 +62,8 @@ class AppStrings {
       "Please download and install the Google fit app from the google PlayStore.";
   static const String exit = "Exit app";
   static const String error = "Error";
+  static const String redeemError =
+      "Please check if you have sufficient coins to redeem";
   static const String available = "Available";
   static const String upcoming = "Upcoming";
   static const String totalSteps = "Total steps";

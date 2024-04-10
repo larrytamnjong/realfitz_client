@@ -1,6 +1,8 @@
 import 'package:realfitzclient/models/step/StepTarget.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
 
+import '../reward/reward.dart';
+
 class HomePageData {
   String? name;
   String? accountBalance;
@@ -10,4 +12,5 @@ class HomePageData {
   StepTarget? stepTarget;
   String? caloriesBurned;
   String? kmWalked;
+  List<Reward>? rewards;
 }

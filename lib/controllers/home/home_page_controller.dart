@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
+import 'package:realfitzclient/controllers/reward/reward_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/models/step/StepTarget.dart';
@@ -17,6 +18,7 @@ class HomePageController extends BaseController {
   final StepController _stepController = StepController();
   final AccountController _accountController = AccountController();
   final UserController _userController = UserController();
+  final RewardController _rewardController = RewardController();
   final targetController = TextEditingController();
 
   final formKey = GlobalKey<FormBuilderState>();
@@ -33,6 +35,7 @@ class HomePageController extends BaseController {
       homePageData.stepTarget = await _stepController.getUserStepTarget();
       homePageData.caloriesBurned = _calculateCaloriesBurned(todaySteps);
       homePageData.kmWalked = _calculateKilometersWalked(todaySteps);
+      homePageData.rewards = await _rewardController.getAllRewards();
       return homePageData;
     } catch (exception) {
       handleException(exception);

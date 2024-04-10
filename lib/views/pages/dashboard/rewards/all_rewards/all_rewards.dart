@@ -37,15 +37,19 @@ class _AllRewardsPageState extends State<AllRewardsPage> {
               if (result.hasError || result.data == null) {
                 return const ErrorPage();
               }
-              return ListView.builder(
-                itemCount: result.data?.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return RewardCardSummary(
-                    showRandomColor: true,
-                    reward: result.data![index],
-                    sponsor: result.data![index].sponsor!,
-                  );
-                },
+              return Obx(
+                () => ListView.builder(
+                  itemCount: rewardController.allRewards.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return RewardCardSummary(
+                      controller: rewardController,
+                      showRedeemButton: true,
+                      showRandomColor: true,
+                      reward: rewardController.allRewards[index],
+                      sponsor: rewardController.allRewards[index].sponsor!,
+                    );
+                  },
+                ),
               );
             },
           ),
