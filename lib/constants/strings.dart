@@ -48,7 +48,7 @@ class AppStrings {
   static const String rfc = "RFC";
   static const String stepsToday = "Steps today";
   static const String coinsToday = "Coins today";
-  static const String cumulativeStepData = "Cumulative step data";
+  static const String cumulativeStepData = "Five day step data";
   static const String invalidAccountBalance = "Invalid account balance format";
   static const String permission = "Permissions";
   static const String connectYourAppToGoogleFitOrHealConnect =

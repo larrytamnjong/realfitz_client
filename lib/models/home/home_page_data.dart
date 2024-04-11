@@ -1,3 +1,4 @@
+import 'package:realfitzclient/models/onboarding/AdImages.dart';
 import 'package:realfitzclient/models/step/StepTarget.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
 
@@ -13,4 +14,5 @@ class HomePageData {
   String? caloriesBurned;
   String? kmWalked;
   List<Reward>? rewards;
+  AdImages? adImages;
 }

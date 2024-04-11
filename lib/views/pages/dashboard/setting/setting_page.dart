@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
+import 'package:realfitzclient/views/pages/dashboard/setting/general/faq_page.dart';
 import 'package:realfitzclient/views/resources/styles/text_styles.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 
 import '../../../../constants/strings.dart';
+import '../../../resources/colors_manager.dart';
 import '../../../widgets/buttons.dart';
 import '../../onboarding/authentication/permission_page.dart';
 import 'account_information/profile_information_page.dart';
@@ -67,7 +69,9 @@ class _SettingsPageState extends State<SettingsPage> {
                     showTrailing: false,
                     text: AppStrings.faqs,
                     icon: Icons.question_mark_outlined,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const FaqPage(), transition: rightToLeft);
+                    },
                   ),
                   OutlineTileButton(
                     showTrailing: false,
@@ -97,6 +101,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             PrimaryTextButton(
+              color: AppColors.red,
               onPressed: () async {
                 await authenticationController.logout();
               },

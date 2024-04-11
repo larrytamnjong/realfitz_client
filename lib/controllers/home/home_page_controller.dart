@@ -5,6 +5,7 @@ import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/reward/reward_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
+import 'package:realfitzclient/data/onboarding/authentication_client.dart';
 import 'package:realfitzclient/models/step/StepTarget.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
 import 'package:realfitzclient/views/pages/onboarding/general/splash_page.dart';
@@ -20,6 +21,7 @@ class HomePageController extends BaseController {
   final UserController _userController = UserController();
   final RewardController _rewardController = RewardController();
   final targetController = TextEditingController();
+  final AuthenticationClient _authenticationClient = AuthenticationClient();
 
   final formKey = GlobalKey<FormBuilderState>();
   Future<HomePageData?> getHomePageData() async {
@@ -36,6 +38,7 @@ class HomePageController extends BaseController {
       homePageData.caloriesBurned = _calculateCaloriesBurned(todaySteps);
       homePageData.kmWalked = _calculateKilometersWalked(todaySteps);
       homePageData.rewards = await _rewardController.getAllRewards();
+      homePageData.adImages = await _authenticationClient.getAdImages();
       return homePageData;
     } catch (exception) {
       handleException(exception);

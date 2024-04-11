@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:realfitzclient/constants/api_urls.dart';
+import 'package:realfitzclient/models/onboarding/AdImages.dart';
 
 import '../../models/onboarding/user.dart';
 
@@ -57,6 +58,20 @@ class AuthenticationClient {
         return true;
       } else {
         return false;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
+  Future<AdImages?> getAdImages() async {
+    try {
+      final response = await http.get(Uri.parse(getAdImageUrls));
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonImages = jsonDecode(response.body);
+        return AdImages.fromJson(jsonImages);
+      } else {
+        return null;
       }
     } catch (exception) {
       throw Exception(exception);
