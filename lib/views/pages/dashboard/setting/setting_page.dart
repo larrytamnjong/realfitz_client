@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/setting/general/faq_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/setting/policy/privacy_policy_page.dart';
+import 'package:realfitzclient/views/pages/dashboard/setting/policy/terms_and_conditions_page.dart';
 import 'package:realfitzclient/views/resources/styles/text_styles.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
@@ -77,17 +79,23 @@ class _SettingsPageState extends State<SettingsPage> {
                     showTrailing: false,
                     text: AppStrings.privacyPolicy,
                     icon: Icons.policy,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const PrivacyPolicyPage(),
+                          transition: rightToLeft);
+                    },
                   ),
                   OutlineTileButton(
                     showTrailing: false,
                     text: AppStrings.termsAndConditions,
                     icon: Icons.receipt,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const TermsAndConditionPage(),
+                          transition: rightToLeft);
+                    },
                   ),
                   OutlineTileButton(
                     showTrailing: false,
-                    text: AppStrings.liveSupport,
+                    text: AppStrings.liveSupportOrRequestAccountDeletion,
                     icon: Ionicons.logo_whatsapp,
                     onTap: () {},
                   ),

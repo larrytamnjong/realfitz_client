@@ -52,7 +52,7 @@ class HomePageController extends BaseController {
       List<DoughnutChartData> doughnutChartData = [];
       for (var steps in fiveDayStepData) {
         if (steps == null) {
-          doughnutChartData.add(DoughnutChartData("0", 100.00));
+          doughnutChartData.add(DoughnutChartData("0", 0.0));
         } else {
           doughnutChartData.add(
               DoughnutChartData(steps.toDouble().toString(), steps.toDouble()));

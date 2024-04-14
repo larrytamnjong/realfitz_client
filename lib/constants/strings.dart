@@ -94,7 +94,8 @@ class AppStrings {
   static const String general = "General";
   static const String faqs = "FAQs";
   static const String privacyPolicy = "Privacy policy";
-  static const String liveSupport = "Live support";
+  static const String liveSupportOrRequestAccountDeletion =
+      "Live support or Request account deletion";
   static const String suggestion = "Suggestion";
   static const String updateDetails = "Update details";
   static const String creationDate = "Creation date";
@@ -107,4 +108,6 @@ class AppStrings {
       "Enter you daily step target (e.g 5000)";
   static const String participants = 'Participants';
   static const String redeem = 'Redeem now';
+  static const String unableToRedeemReward =
+      "Please make sure you have enough coins to redeem this reward. Check the reward details for how much coins you need to redeem it for.";
 }

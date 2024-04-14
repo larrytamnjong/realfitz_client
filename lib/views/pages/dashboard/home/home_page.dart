@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realfitzclient/constants/icon_paths.dart';
 import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/controllers/home/home_page_controller.dart';
 import 'package:realfitzclient/utils/coin_value_exchange.dart';
@@ -28,22 +27,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       child: Scaffold(
-        appBar: AppBarWithAppName(
+        appBar: const AppBarWithAppName(
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: AppPadding.p8),
-              child: IconButton(
-                onPressed: () {},
-                icon: Badge(
-                  isLabelVisible: false,
-                  label: const Text(''),
-                  child: ImageIcon(
-                    AssetImage(IconPaths.notification),
-                    size: AppSizes.s26,
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: AppPadding.p8),
+            //   child: IconButton(
+            //     onPressed: () {},
+            //     icon: Badge(
+            //       isLabelVisible: false,
+            //       label: const Text(''),
+            //       child: ImageIcon(
+            //         AssetImage(IconPaths.notification),
+            //         size: AppSizes.s26,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
         body: FutureBuilder<HomePageData?>(

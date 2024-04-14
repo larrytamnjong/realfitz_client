@@ -4,6 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/models/reward/reward.dart';
 import 'package:realfitzclient/models/reward/user_reward.dart';
+import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
+
+import '../../constants/strings.dart';
 
 class RewardClient {
   Future<List<Reward>?> getUserRedeemedRewards({required String id}) async {
@@ -47,6 +50,7 @@ class RewardClient {
       if (response.statusCode == 200) {
         return true;
       } else {
+        showFailureSnackBar(message: AppStrings.unableToRedeemReward);
         return false;
       }
     } catch (exception) {

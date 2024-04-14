@@ -26,6 +26,9 @@ class DoughnutGraph extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(AppBorderRadius.r5),
             child: SfCircularChart(
+              legend: const Legend(
+                isVisible: true,
+              ),
               backgroundColor: AppColors.paleLime,
               palette: [
                 AppColors.primary,
@@ -40,7 +43,7 @@ class DoughnutGraph extends StatelessWidget {
                   xValueMapper: (DoughnutChartData data, _) => data.x,
                   yValueMapper: (DoughnutChartData data, _) => data.y,
                   dataLabelMapper: (DoughnutChartData data, _) => data.x,
-                  dataLabelSettings: const DataLabelSettings(isVisible: true),
+                  dataLabelSettings: const DataLabelSettings(isVisible: false),
                 )
               ],
             ),
