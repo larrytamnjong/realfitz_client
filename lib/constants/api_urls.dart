@@ -18,6 +18,8 @@ String getUserRedeemedRewardsUrl =
     '$rootUrl/Reward/GetUserRedeemedRewards.php?id=';
 String whatsAppLoginUrl = '$rootUrl/User/WhatsAppLogin.php?phone=';
 String updateUserUrl = '$rootUrl/User/UpdateUser.php';
+String getWhatsAppSupportNumberUrl =
+    '$rootUrl/Settings/GetWhatsAppSupportNumber.php';
 String getUserStepTargetUrl = '$rootUrl/Step/GetUserStepTarget.php?id=';
 String updateUserStepTargetUrl = '$rootUrl/Step/UpdateUserStepTarget.php';
 String getChallengeParticipantsUrl =

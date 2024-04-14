@@ -56,6 +56,7 @@ dependencies:
   rflutter_alert: ^2.0.7
   carousel_images: ^1.1.2
   flutter_easy_faq: ^1.0.1
+  url_launcher: ^6.2.6
 
 dev_dependencies:
   flutter_test:

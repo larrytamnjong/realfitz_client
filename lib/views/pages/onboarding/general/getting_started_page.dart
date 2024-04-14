@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/constants/strings.dart';
+import 'package:realfitzclient/utils/launch_url.dart';
 import 'package:realfitzclient/views/pages/onboarding/authentication/login_page.dart';
 import 'package:realfitzclient/views/pages/onboarding/authentication/registration_page.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
@@ -69,7 +70,9 @@ class GettingStartedPage extends StatelessWidget {
                       PrimaryTextButton(
                         decoration: TextDecoration.underline,
                         color: AppColors.brightBlue,
-                        onPressed: () {},
+                        onPressed: () async {
+                          launchExternalUrl(urlString: 'https://flutter.dev');
+                        },
                         text: AppStrings.ourTermsAndConditions,
                       ),
                     ],

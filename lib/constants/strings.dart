@@ -108,6 +108,8 @@ class AppStrings {
       "Enter you daily step target (e.g 5000)";
   static const String participants = 'Participants';
   static const String redeem = 'Redeem now';
+  static const String errorInFetchingSupportNumber =
+      'We encountered an error while fetching WhatsApp support number';
   static const String unableToRedeemReward =
       "Please make sure you have enough coins to redeem this reward. Check the reward details for how much coins you need to redeem it for.";
 }
