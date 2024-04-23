@@ -19,26 +19,31 @@ class Term extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppBorderRadius.r5),
-            color: AppColors.palePrimary,
-          ),
-          height: AppSizes.s40,
-          width: MediaQuery.sizeOf(context).width / 1.8,
-          child: Center(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: AppPadding.p5),
-                child: Text(
-                  title,
-                  style: boldTextStyle,
-                  textAlign: TextAlign.left,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppBorderRadius.r5),
+                color: AppColors.palePrimary,
+              ),
+              height: AppSizes.s40,
+              width: MediaQuery.sizeOf(context).width / 1.8,
+              child: Center(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: AppPadding.p5),
+                    child: Text(
+                      title,
+                      style: boldTextStyle,
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
         const SizedBox(height: AppSizes.s10),
         Text(
