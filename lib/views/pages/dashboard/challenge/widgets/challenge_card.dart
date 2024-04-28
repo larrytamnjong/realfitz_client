@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/detail/challenge_detail_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/widgets/challenge_card_bottom.dart';
@@ -33,7 +34,9 @@ class _ChallengeCardState extends State<ChallengeCard> {
         child: Column(
           children: [
             ChallengeCardTop(
-              image: ImagePaths.getRandomPath(),
+              image: widget.challenge.image != null
+                  ? '$networkImageUrl${widget.challenge.image}'
+                  : ImagePaths.getRandomPath(),
               status: widget.challenge.status,
               title: widget.challenge.title,
             ),

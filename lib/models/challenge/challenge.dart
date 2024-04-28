@@ -8,7 +8,7 @@ class Challenge {
   String startDate;
   String endDate;
   String steps;
-  String image;
+  String? image;
   bool isParticipating;
   String status;
   String? daysToStart;

@@ -11,7 +11,6 @@ class ImagePaths {
   static String manWomanStretching = "assets/images/man_woman_stretching.png";
   static String smileyWomanJogging = "assets/images/smiley_woman_running.jpg";
   static String logo = "assets/images/logo.png";
-  static String networkImageBaseUrl = "https://realfitz.loptymobile.com/";
 
   static String getRandomPath() {
     List<String> paths = [

@@ -32,7 +32,8 @@ class ChallengeCardTop extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: topRightLeftCircularBorder15,
                 image: DecorationImage(
-                  image: AssetImage(image),
+                  image: //AssetImage(image)
+                      NetworkImage(image),
                   fit: BoxFit.cover,
                 ),
               ),

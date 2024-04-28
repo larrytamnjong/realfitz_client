@@ -10,6 +10,7 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
+import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../models/challenge/challenge.dart';
 import '../../../../resources/colors_manager.dart';
@@ -37,7 +38,9 @@ class ChallengeDetailPage extends StatelessWidget {
                 child: ListView(
                   children: [
                     ChallengeCardTop(
-                      image: ImagePaths.getRandomPath(),
+                      image: challenge.image != null
+                          ? "$networkImageUrl${challenge.image}"
+                          : ImagePaths.getRandomPath(),
                       status: challenge.status,
                       title: challenge.title,
                     ),
