@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/controllers/home/home_page_controller.dart';
 import 'package:realfitzclient/utils/coin_value_exchange.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/carousel_images.dart';
@@ -68,13 +67,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: AppSizes.s2),
                     ImageCarousel(
-                      images: //data.adImages?.imageUrls ??
-                          <String>[
-                        ImagePaths.womanRunning,
-                        ImagePaths.manWomanStretching,
-                        ImagePaths.smileyWomanJogging,
-                        ImagePaths.manWomanJogging
-                      ],
+                      images: data.adImages,
                     ),
                     const SizedBox(height: AppSizes.s2),
                     HomeItems(

@@ -1,14 +1,12 @@
-class AdImages {
-  List<String> imageUrls;
+class AdImage {
+  String imageUrl;
+  String siteUrl;
+  AdImage({required this.imageUrl, required this.siteUrl});
 
-  AdImages({
-    required this.imageUrls,
-  });
-
-  factory AdImages.fromJson(List<dynamic> json) {
-    List<String> urls = List<String>.from(json);
-    return AdImages(
-      imageUrls: urls,
+  factory AdImage.fromJson(Map<String, dynamic> json) {
+    return AdImage(
+      imageUrl: json['image_url'],
+      siteUrl: json['site_url'],
     );
   }
 }

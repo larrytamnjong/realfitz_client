@@ -14,5 +14,5 @@ class HomePageData {
   String? caloriesBurned;
   String? kmWalked;
   List<Reward>? rewards;
-  AdImages? adImages;
+  List<AdImage>? adImages;
 }

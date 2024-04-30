@@ -64,12 +64,14 @@ class AuthenticationClient {
     }
   }
 
-  Future<AdImages?> getAdImages() async {
+  Future<List<AdImage>?> getAdImages() async {
     try {
       final response = await http.get(Uri.parse(getAdImageUrls));
       if (response.statusCode == 200) {
         final List<dynamic> jsonImages = jsonDecode(response.body);
-        return AdImages.fromJson(jsonImages);
+        final List<AdImage> adImages =
+            jsonImages.map((image) => AdImage.fromJson(image)).toList();
+        return adImages;
       } else {
         return null;
       }
