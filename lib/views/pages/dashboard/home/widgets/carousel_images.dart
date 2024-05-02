@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:realfitzclient/models/onboarding/AdImages.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
+import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../utils/launch_url.dart';
 
@@ -15,7 +16,7 @@ class ImageCarousel extends StatelessWidget {
     List<String> imageUrls = [];
     if (images != null) {
       for (var image in images!) {
-        imageUrls.add(image.imageUrl);
+        imageUrls.add('$networkImageUrl${image.imageUrl}');
       }
     } else {
       imageUrls = <String>[
@@ -26,9 +27,10 @@ class ImageCarousel extends StatelessWidget {
       ];
     }
     return CarouselImages(
-      scaleFactor: 0.6,
+      viewportFraction: 1.0,
+      scaleFactor: 1.0,
       listImages: imageUrls,
-      height: AppSizes.s300,
+      height: 218, //AppSizes.s300,
       borderRadius: AppBorderRadius.r20,
       cachedNetworkImage: true,
       verticalAlignment: Alignment.topCenter,
