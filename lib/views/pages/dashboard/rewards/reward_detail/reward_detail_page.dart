@@ -19,7 +19,7 @@ class RewardDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBarWithAppName(),
-      backgroundColor: AppColors.palePink,
+      backgroundColor: AppColors.paleLime,
       body: Padding(
         padding: const EdgeInsets.all(AppPadding.p16),
         child: ListView(

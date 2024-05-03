@@ -58,20 +58,32 @@ class GettingStartedPage extends StatelessWidget {
                           );
                         },
                       ),
-                      PrimaryTextButton(
-                          onPressed: () {
-                            Get.to(
-                              transition: downToUp,
-                              () => const LoginPage(),
-                            );
-                          },
-                          text: AppStrings.alreadyHaveAccountSignIn),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            AppStrings.alreadyHaveAnAccount,
+                            style: regularTextStyle,
+                          ),
+                          PrimaryTextButton(
+                              onPressed: () {
+                                Get.to(
+                                  transition: downToUp,
+                                  () => const LoginPage(),
+                                );
+                              },
+                              text: AppStrings.signIn),
+                        ],
+                      ),
                       const DividerHorizontal(),
                       PrimaryTextButton(
                         decoration: TextDecoration.underline,
                         color: AppColors.brightBlue,
                         onPressed: () async {
-                          launchExternalUrl(urlString: 'https://flutter.dev');
+                          launchExternalUrl(
+                            urlString:
+                                'https://realfitz.org/terms-and-conditions/',
+                          );
                         },
                         text: AppStrings.ourTermsAndConditions,
                       ),

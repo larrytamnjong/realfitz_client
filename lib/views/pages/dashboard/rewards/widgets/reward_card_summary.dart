@@ -32,7 +32,7 @@ class RewardCardSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: showRandomColor ? AppColors.getRandomColor() : AppColors.palePink,
+      color: showRandomColor ? AppColors.getRandomColor() : AppColors.paleLime,
       shape: RoundedRectangleBorder(
         borderRadius: circularBorderAll15,
       ),

@@ -8,8 +8,8 @@ class AppStrings {
       "By clicking \"let's get started\" or \"signin\" you agree to our terms and conditions";
   static const String ourTermsAndConditions = "Read our terms and conditions";
   static const String letsGetStarted = "Let's get Started";
-  static const String alreadyHaveAccountSignIn =
-      "Already have an account? signIn";
+  static const String signIn = "SignIn";
+  static const String alreadyHaveAnAccount = "Already have an account?";
   static const String createAccount = "Create account";
   static const String login = "Login";
   static const String failedToRetrieveUser = "Failed to retrieve user";
