@@ -3,7 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class StepService {
   final HealthFactory _health =
-      HealthFactory(useHealthConnectIfAvailable: false);
+      HealthFactory(useHealthConnectIfAvailable: true);
 
   Future<int?> getStepsByTimeInterval(
       {required DateTime startTime, required DateTime endTime}) async {

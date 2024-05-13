@@ -40,10 +40,11 @@ class SplashPageController extends BaseController {
 
   void isGoogleFitInstalled() async {
     try {
-      await AppCheck.checkAvailability("com.google.android.apps.fitness");
+      // await AppCheck.checkAvailability("com.google.android.apps.fitness");
+      await AppCheck.checkAvailability("com.google.android.apps.healthdata");
     } catch (exception) {
-      Get.offAll(() =>
-          const FatalError(errorMessage: AppStrings.pleaseInstallGoogleFit));
+      Get.offAll(() => const FatalError(
+          errorMessage: AppStrings.pleaseInstallGoogleFitHealthConnect));
     }
   }
 }

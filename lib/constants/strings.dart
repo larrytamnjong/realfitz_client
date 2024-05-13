@@ -1,5 +1,6 @@
 class AppStrings {
   static const String appName = "RealFitz";
+  static const String restartApp = "Restart app to effect changes";
   static const String walkEarnAndRedeem = "Walk, Earn and Redeem";
   static const String realFitzRewardsYouWIthCoinsForEveryStep =
       "RealFitz rewards you with coins for every step. Use your coins to unlock cash and exclusive discounts";
@@ -52,14 +53,14 @@ class AppStrings {
   static const String invalidAccountBalance = "Invalid account balance format";
   static const String permission = "Permissions";
   static const String connectYourAppToGoogleFitOrHealConnect =
-      "Connect your Realfitz app by granting permission to access data from Google fit on android and Health kit on IOS";
+      "Connect your Realfitz app by granting permission to access data from Google Health connect on android and Health kit on IOS. Please install Health Connect on Android";
   static const String syncHealthDataNow = "Sync Health Data";
-  static const String connectNow = "Connect now";
+  static const String connectNow = "Manage permissions";
   static const String failedToGrantAuthorization =
       "Failed to grant authorization";
   static const String googleFitNotInstalled = "Google Fit App Not Installed";
-  static const String pleaseInstallGoogleFit =
-      "Please download and install the Google fit app from the google PlayStore.";
+  static const String pleaseInstallGoogleFitHealthConnect =
+      "Please download and install the Google Health Connect app from the google PlayStore.\nOnce installed please open the Health Connect App and click on 'Get started' then allow 'Read' and 'Write' access to RealFitz";
   static const String exit = "Exit app";
   static const String error = "Error";
   static const String redeemError =
