@@ -36,11 +36,11 @@ class SplashPageController extends BaseController {
       handleException(exception);
       exitApp();
     } finally {
-      isGoogleFitInstalled();
+      isGoogleFitOrHealthConnectInstalled();
     }
   }
 
-  void isGoogleFitInstalled() async {
+  void isGoogleFitOrHealthConnectInstalled() async {
     try {
       if (Platform.isAndroid) {
         await AppCheck.checkAvailability("com.google.android.apps.fitness");
