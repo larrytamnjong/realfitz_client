@@ -27,55 +27,52 @@ class _PermissionPageState extends State<PermissionPage> {
       appBar: const MainAppBar(
         title: AppStrings.permission,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: ListView(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image(image: AssetImage(ImagePaths.fitnessTracker)),
-                    const SizedBox(height: AppSizes.s20),
-                    const SizedBox(height: AppSizes.s20),
-                    Text(
-                      AppStrings.connectYourAppToGoogleFitOrHealConnect,
-                      style: regularTextStyle.copyWith(fontSize: FontSizes.f15),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(height: AppSizes.s60),
-                    LargeGradientButton(
-                      colors: [AppColors.blue, AppColors.green],
-                      title: AppStrings.syncHealthDataNow,
-                      subtitle: AppStrings.connectNow,
-                      leadingIcon: Icons.security,
-                      onPressed: () async {
-                        await permissionController.requestPermission();
-                      },
-                    ),
-                    const SizedBox(height: AppSizes.s10),
-                    PrimaryTextButton(
-                      onPressed: () {
-                        Get.offAll(() => const SplashPage());
-                      },
-                      text: AppStrings.restartApp,
-                    )
-                  ],
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(AppPadding.p8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  Image(image: AssetImage(ImagePaths.fitnessTracker)),
+                  const SizedBox(height: AppSizes.s20),
+                  Text(
+                    AppStrings.connectYourAppToGoogleFitOrHealConnect,
+                    style: regularTextStyle.copyWith(fontSize: FontSizes.f15),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSizes.s60),
+                  LargeGradientButton(
+                    colors: [AppColors.blue, AppColors.green],
+                    title: AppStrings.syncHealthDataNow,
+                    subtitle: AppStrings.connectNow,
+                    leadingIcon: Icons.security,
+                    onPressed: () async {
+                      await permissionController.requestPermission();
+                    },
+                  ),
+                  const SizedBox(height: AppSizes.s10),
+                  PrimaryTextButton(
+                    onPressed: () {
+                      Get.offAll(() => const SplashPage());
+                    },
+                    text: AppStrings.restartApp,
+                  )
+                ],
               ),
-              PrimaryTextButton(
-                decoration: TextDecoration.underline,
-                color: AppColors.brightBlue,
-                onPressed: () async {
-                  launchExternalUrl(
-                    urlString: 'https://realfitz.org/terms-and-conditions/',
-                  );
-                },
-                text: AppStrings.ourTermsAndConditions,
-              ),
-            ],
-          ),
+            ),
+            PrimaryTextButton(
+              decoration: TextDecoration.underline,
+              color: AppColors.brightBlue,
+              onPressed: () async {
+                launchExternalUrl(
+                  urlString: 'https://realfitz.org/terms-and-conditions/',
+                );
+              },
+              text: AppStrings.ourTermsAndConditions,
+            ),
+          ],
         ),
       ),
     );
