@@ -53,7 +53,7 @@ class AppStrings {
   static const String invalidAccountBalance = "Invalid account balance format";
   static const String permission = "Permissions";
   static const String connectYourAppToGoogleFitOrHealConnect =
-      "Connect your Realfitz app by granting permission to access data from Google Health connect on android and Health kit on IOS. Please install Health Connect on Android";
+      "Connect your Realfitz app by granting permission to access data from Health connect on Android and Health kit on IOS.";
   static const String syncHealthDataNow = "Sync Health Data";
   static const String connectNow = "Manage permissions";
   static const String failedToGrantAuthorization =
