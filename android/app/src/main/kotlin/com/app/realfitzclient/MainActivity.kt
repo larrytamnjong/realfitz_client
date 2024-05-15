@@ -1,5 +1,8 @@
 package com.app.realfitzclient
 
-import io.flutter.embedding.android.FlutterActivity
+import android.os.Bundle
 
-class MainActivity: FlutterActivity()
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity: FlutterFragmentActivity() {
+}

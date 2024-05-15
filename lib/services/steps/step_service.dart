@@ -2,15 +2,16 @@ import 'package:health/health.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class StepService {
-  final HealthFactory _health =
-      HealthFactory(useHealthConnectIfAvailable: true);
+  StepService() {
+    Health().configure(useHealthConnectIfAvailable: true);
+  }
 
   Future<int?> getStepsByTimeInterval(
       {required DateTime startTime, required DateTime endTime}) async {
     int? steps;
     {
       try {
-        steps = await _health.getTotalStepsInInterval(startTime, endTime);
+        steps = await Health().getTotalStepsInInterval(startTime, endTime);
         return steps;
       } catch (exception) {
         throw Exception(exception);
@@ -34,7 +35,7 @@ class StepService {
     try {
       await Permission.activityRecognition.request();
       await Permission.location.request();
-      return await _health.requestAuthorization([HealthDataType.STEPS]);
+      return await Health().requestAuthorization([HealthDataType.STEPS]);
     } catch (exception) {
       throw Exception(exception);
     }
@@ -43,7 +44,7 @@ class StepService {
   Future<bool?> hasPermissions() async {
     try {
       bool? hasPermissions =
-          await _health.hasPermissions([HealthDataType.STEPS]);
+          await Health().hasPermissions([HealthDataType.STEPS]);
       if (hasPermissions == null) {
         return false;
       }

@@ -8,6 +8,9 @@ import 'package:realfitzclient/views/resources/values_manager.dart';
 import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
+import '../../utils/launch_url.dart';
+import '../resources/colors_manager.dart';
+
 class FatalError extends StatelessWidget {
   final String errorMessage;
 
@@ -24,21 +27,37 @@ class FatalError extends StatelessWidget {
         padding: const EdgeInsets.all(AppPadding.p8),
         child: Column(
           children: [
-            Image(
-              image: AssetImage(ImagePaths.warning),
+            Expanded(
+              child: ListView(
+                children: [
+                  Image(
+                    image: AssetImage(ImagePaths.warning),
+                  ),
+                  const SizedBox(height: AppSizes.s10),
+                  Text(
+                    errorMessage,
+                    style: regularTextStyle.copyWith(fontSize: FontSizes.f13),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: AppSizes.s30),
+                  PrimaryElevatedButton(
+                    text: AppStrings.exit,
+                    onPressed: () {
+                      baseController.exitApp();
+                    },
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: AppSizes.s10),
-            Text(
-              errorMessage,
-              style: regularTextStyle.copyWith(fontSize: FontSizes.f15),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: AppSizes.s30),
-            PrimaryElevatedButton(
-              text: AppStrings.exit,
-              onPressed: () {
-                baseController.exitApp();
+            PrimaryTextButton(
+              decoration: TextDecoration.underline,
+              color: AppColors.brightBlue,
+              onPressed: () async {
+                launchExternalUrl(
+                  urlString: 'https://realfitz.org/terms-and-conditions/',
+                );
               },
+              text: AppStrings.ourTermsAndConditions,
             ),
           ],
         ),
