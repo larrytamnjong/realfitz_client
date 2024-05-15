@@ -35,7 +35,8 @@ class StepService {
     try {
       await Permission.activityRecognition.request();
       await Permission.location.request();
-      return await Health().requestAuthorization([HealthDataType.STEPS]);
+      return await Health().requestAuthorization([HealthDataType.STEPS],
+          permissions: [HealthDataAccess.READ_WRITE]);
     } catch (exception) {
       throw Exception(exception);
     }
@@ -43,8 +44,9 @@ class StepService {
 
   Future<bool?> hasPermissions() async {
     try {
-      bool? hasPermissions =
-          await Health().hasPermissions([HealthDataType.STEPS]);
+      bool? hasPermissions = await Health().hasPermissions(
+          [HealthDataType.STEPS],
+          permissions: [HealthDataAccess.READ_WRITE]);
       if (hasPermissions == null) {
         return false;
       }
