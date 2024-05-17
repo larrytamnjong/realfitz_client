@@ -1,5 +1,8 @@
 class AppStrings {
   static const String appName = "RealFitz";
+  static const String undefinedPermissionStatus =
+      "'Permission status is undefined'";
+  static const String permissionActionNeeded = 'Permission action needed';
   static const String restartApp = "Restart app to effect changes";
   static const String walkEarnAndRedeem = "Walk, Earn and Redeem";
   static const String realFitzRewardsYouWIthCoinsForEveryStep =
@@ -60,9 +63,9 @@ class AppStrings {
       "Failed to grant authorization";
   static const String googleFitNotInstalled = "Google Fit App Not Installed";
   static const String pleaseInstallGoogleFitHealthConnect =
-      "Please download and install the Google Fit and Health Connect apps from the google PlayStore.\nOnce installed please open the Health Connect App and click on 'Get started' then allow 'Read' and 'Write' access to RealFitz and Google Fit. \n\n\nPlease click on 'Exit app' before installing.";
-  static const String exit = "Exit app";
-  static const String error = "We've got an error :-(";
+      "Please download and install Google Health Connect app from the google PlayStore.\nOnce installed please open the Health Connect App and click on 'Get started' then allow 'Read' and 'Write' access to RealFitz. \n\n\nPlease click on 'Exit this app' before installing.";
+  static const String exit = "Exit this app";
+  static const String error = "Fatal error";
   static const String redeemError =
       "Please check if you have sufficient coins to redeem";
   static const String available = "Available";

@@ -73,6 +73,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+  carp_serializable:
+    dependency: transitive
+    description:
+      name: carp_serializable
+      sha256: bd72f3e7521cfac78c2b34762d9240bded1bebe0c6e615703a516705a3a983a0
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   characters:
     dependency: transitive
     description:
@@ -268,10 +276,10 @@ packages:
     dependency: "direct main"
     description:
       name: health
-      sha256: "885104e4cdd1b6db5a04f85304cfb16d50bd1729124c0da11464f1d4c85b9d1c"
+      sha256: "9b3c5ddb1cb22020a2bb423b3c091c8b47806a38f80d350dfb11831000af2392"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.1"
+    version: "10.2.0"
   http:
     dependency: "direct main"
     description:
@@ -304,6 +312,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.2"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.9.0"
   leak_tracker:
     dependency: transitive
     description:

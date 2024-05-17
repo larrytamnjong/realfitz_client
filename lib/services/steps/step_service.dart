@@ -1,21 +1,22 @@
+import 'dart:io';
+
 import 'package:health/health.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
+
+import '../../constants/strings.dart';
 
 class StepService {
-  // StepService() {
-  //   Health().configure(useHealthConnectIfAvailable: true);
-  // }
-
-  final HealthFactory _health =
-      HealthFactory(useHealthConnectIfAvailable: true);
+  StepService() {
+    Health().configure(useHealthConnectIfAvailable: true);
+  }
 
   Future<int?> getStepsByTimeInterval(
       {required DateTime startTime, required DateTime endTime}) async {
     int? steps;
     {
       try {
-        //steps = await Health().getTotalStepsInInterval(startTime, endTime);
-        steps = await _health.getTotalStepsInInterval(startTime, endTime);
+        steps = await Health().getTotalStepsInInterval(startTime, endTime);
         return steps;
       } catch (exception) {
         throw Exception(exception);
@@ -37,11 +38,14 @@ class StepService {
 
   Future<bool> requestAuthorization() async {
     try {
-      await Permission.activityRecognition.request();
-      await Permission.location.request();
-      // return await Health().requestAuthorization([HealthDataType.STEPS],
-      return await _health.requestAuthorization([HealthDataType.STEPS],
-          permissions: [HealthDataAccess.READ_WRITE]);
+      if (Platform.isAndroid) {
+        await Permission.activityRecognition.request();
+        await Permission.location.request();
+      }
+      return await Health().requestAuthorization([HealthDataType.STEPS],
+          permissions: Platform.isIOS
+              ? [HealthDataAccess.READ]
+              : [HealthDataAccess.READ_WRITE]);
     } catch (exception) {
       throw Exception(exception);
     }
@@ -49,15 +53,18 @@ class StepService {
 
   Future<bool?> hasPermissions() async {
     try {
-      // bool? hasPermissions = await Health().hasPermissions(
-      bool? hasPermissions = await _health.hasPermissions(
+      bool? hasPermissions = await Health().hasPermissions(
           [HealthDataType.STEPS],
-          permissions: [HealthDataAccess.READ_WRITE]);
+          permissions: [HealthDataAccess.READ]);
       if (hasPermissions == null) {
+        showInfoSnackBar(message: AppStrings.undefinedPermissionStatus);
         return false;
+      } else if (hasPermissions == false) {
+        showInfoSnackBar(message: AppStrings.permissionActionNeeded);
       }
       return hasPermissions;
     } catch (exception) {
+      showInfoSnackBar(message: exception.toString());
       throw Exception(exception);
     }
   }

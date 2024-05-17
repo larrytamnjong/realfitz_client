@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/health.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:realfitzclient/controllers/onboarding/splash_page_controller.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
@@ -13,6 +14,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    Health().configure(useHealthConnectIfAvailable: true);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SplashPageController splashPageController = Get.put(SplashPageController());
