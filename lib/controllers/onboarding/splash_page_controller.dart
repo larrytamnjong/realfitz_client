@@ -18,22 +18,25 @@ class SplashPageController extends BaseController {
 
   Future executeProcesses() async {
     try {
+      bool healthConnectInstalled = true;
       if (Platform.isAndroid) {
-        isGoogleFitOrHealthConnectInstalled();
+        healthConnectInstalled = await isGoogleFitOrHealthConnectInstalled();
       }
-      bool isAuthorized = await _stepController.hasPermissions();
+      if (healthConnectInstalled) {
+        bool isAuthorized = await _stepController.hasPermissions();
 
-      if (isAuthorized) {
-        bool isUserInLocalStorage =
-            await LocalStorageService.isUserStoredInLocalStorage();
-        if (isUserInLocalStorage) {
-          await _stepController.startStepSyncProcess();
-          Get.offAll(transition: downToUp, () => const DashboardPage());
+        if (isAuthorized) {
+          bool isUserInLocalStorage =
+              await LocalStorageService.isUserStoredInLocalStorage();
+          if (isUserInLocalStorage) {
+            await _stepController.startStepSyncProcess();
+            Get.offAll(transition: downToUp, () => const DashboardPage());
+          } else {
+            Get.offAll(transition: downToUp, () => const GettingStartedPage());
+          }
         } else {
-          Get.offAll(transition: downToUp, () => const GettingStartedPage());
+          Get.offAll(() => const PermissionPage());
         }
-      } else {
-        Get.offAll(() => const PermissionPage());
       }
     } catch (exception) {
       handleException(exception);
@@ -41,13 +44,15 @@ class SplashPageController extends BaseController {
     } finally {}
   }
 
-  void isGoogleFitOrHealthConnectInstalled() async {
+  Future<bool> isGoogleFitOrHealthConnectInstalled() async {
     try {
       //  await AppCheck.checkAvailability("com.google.android.apps.fitness");
       await AppCheck.checkAvailability("com.google.android.apps.healthdata");
+      return true;
     } catch (exception) {
       Get.offAll(() => const FatalError(
           errorMessage: AppStrings.pleaseInstallGoogleFitHealthConnect));
+      return false;
     }
   }
 }
