@@ -1,8 +1,9 @@
 class AppStrings {
   static const String appName = "RealFitz";
   static const String undefinedPermissionStatus =
-      "'Permission status is undefined'";
-  static const String permissionActionNeeded = 'Permission action needed';
+      "Permission action maybe needed, check permission in settings";
+  static const String permissionActionNeeded =
+      'Permission action maybe needed, check permission in settings';
   static const String restartApp = "Restart app to effect changes";
   static const String walkEarnAndRedeem = "Walk, Earn and Redeem";
   static const String realFitzRewardsYouWIthCoinsForEveryStep =
