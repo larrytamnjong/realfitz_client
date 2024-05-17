@@ -89,7 +89,7 @@ class StepController extends BaseController {
         DateTime startTime = DateTime(endTime.year, endTime.month, endTime.day);
         int? steps = await _stepService.getStepsByTimeInterval(
             endTime: endTime, startTime: startTime);
-        fiveDayStepData.add(steps ?? 100);
+        fiveDayStepData.add(steps ?? 0);
       }
       return fiveDayStepData;
     } catch (exception) {
