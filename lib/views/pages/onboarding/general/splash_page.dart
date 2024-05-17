@@ -14,16 +14,20 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  Future executeProcesses() async {
+    Health().configure(useHealthConnectIfAvailable: true);
+    SplashPageController splashPageController = Get.put(SplashPageController());
+    await splashPageController.executeProcesses();
+  }
+
   @override
   void initState() {
-    Health().configure(useHealthConnectIfAvailable: true);
+    executeProcesses();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    SplashPageController splashPageController = Get.put(SplashPageController());
-    splashPageController.executeProcesses();
     return Scaffold(
       body: SafeArea(
         child: Center(

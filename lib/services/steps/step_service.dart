@@ -56,11 +56,16 @@ class StepService {
       bool? hasPermissions = await Health().hasPermissions(
           [HealthDataType.STEPS],
           permissions: [HealthDataAccess.READ]);
-      if (hasPermissions == null) {
-        showInfoSnackBar(message: AppStrings.undefinedPermissionStatus);
-        return false;
-      } else if (hasPermissions == false) {
-        showInfoSnackBar(message: AppStrings.permissionActionNeeded);
+      if (Platform.isAndroid) {
+        if (hasPermissions == null) {
+          showInfoSnackBar(message: AppStrings.undefinedPermissionStatus);
+          return false;
+        } else if (hasPermissions == false) {
+          showInfoSnackBar(message: AppStrings.permissionActionNeeded);
+        }
+      } else if (Platform.isIOS) {
+        await requestAuthorization();
+        hasPermissions = true;
       }
       return hasPermissions;
     } catch (exception) {

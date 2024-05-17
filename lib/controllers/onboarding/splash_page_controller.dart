@@ -16,7 +16,7 @@ import '../../views/widgets/fatal_error.dart';
 class SplashPageController extends BaseController {
   final StepController _stepController = StepController();
 
-  void executeProcesses() async {
+  Future executeProcesses() async {
     try {
       bool isAuthorized = await _stepController.hasPermissions();
 
