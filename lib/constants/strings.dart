@@ -66,7 +66,7 @@ class AppStrings {
       "Failed to authorize. Please grant 'Read' and 'Write' access on the Health connect app";
   static const String googleFitNotInstalled = "Google Fit App Not Installed";
   static const String pleaseInstallGoogleFitHealthConnect =
-      "Please download and install Google Health Connect app from the google PlayStore.\nOnce installed please open the Health Connect App and click on 'Get started' then allow 'Read' and 'Write' access to RealFitz. \n\n\nPlease click on 'Exit this app' before installing.";
+      "Please install Google Health Connect app from the google PlayStore.\nOnce installed please open the Health Connect App and tap on 'Get started' button.\nIf you don't tap on 'Get started' button on the Health Connect app RealFitz might crash. \n\n\nPlease tap on 'Exit this app' before proceeding.";
   static const String exit = "Exit this app";
   static const String error = "Fatal error";
   static const String redeemError =
