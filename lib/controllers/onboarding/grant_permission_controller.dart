@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
@@ -15,7 +17,12 @@ class PermissionController extends BaseController {
       if (isAuthorized) {
         Get.offAll(() => const SplashPage());
       } else {
-        showFailureSnackBar(message: AppStrings.failedToGrantAuthorization);
+        if (Platform.isAndroid) {
+          showFailureSnackBar(
+              message: AppStrings.pleaseGrantAuthorizationOnHealthConnect);
+        } else {
+          showFailureSnackBar(message: AppStrings.failedToGrantAuthorization);
+        }
       }
     } catch (exception) {
       handleException(exception);

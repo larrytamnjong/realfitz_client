@@ -1,9 +1,9 @@
 class AppStrings {
   static const String appName = "RealFitz";
   static const String undefinedPermissionStatus =
-      "Permission action maybe needed, check permission in settings";
+      "You can always check permission action in settings";
   static const String permissionActionNeeded =
-      'Permission action maybe needed, check permission in settings';
+      'You can always check permission action in settings';
   static const String restartApp = "Restart app to effect changes";
   static const String walkEarnAndRedeem = "Walk, Earn and Redeem";
   static const String realFitzRewardsYouWIthCoinsForEveryStep =
@@ -62,6 +62,8 @@ class AppStrings {
   static const String connectNow = "Manage permissions";
   static const String failedToGrantAuthorization =
       "Failed to grant authorization";
+  static const String pleaseGrantAuthorizationOnHealthConnect =
+      "Failed to authorize. Please grant 'Read' and 'Write' access on the Health connect app";
   static const String googleFitNotInstalled = "Google Fit App Not Installed";
   static const String pleaseInstallGoogleFitHealthConnect =
       "Please download and install Google Health Connect app from the google PlayStore.\nOnce installed please open the Health Connect App and click on 'Get started' then allow 'Read' and 'Write' access to RealFitz. \n\n\nPlease click on 'Exit this app' before installing.";
