@@ -46,7 +46,7 @@ class SplashPageController extends BaseController {
 
   Future<bool> isGoogleFitOrHealthConnectInstalled() async {
     try {
-      //  await AppCheck.checkAvailability("com.google.android.apps.fitness");
+      await AppCheck.checkAvailability("com.google.android.apps.fitness");
       await AppCheck.checkAvailability("com.google.android.apps.healthdata");
       return true;
     } catch (exception) {
