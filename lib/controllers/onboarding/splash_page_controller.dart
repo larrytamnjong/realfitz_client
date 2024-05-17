@@ -18,6 +18,9 @@ class SplashPageController extends BaseController {
 
   Future executeProcesses() async {
     try {
+      if (Platform.isAndroid) {
+        isGoogleFitOrHealthConnectInstalled();
+      }
       bool isAuthorized = await _stepController.hasPermissions();
 
       if (isAuthorized) {
@@ -35,11 +38,7 @@ class SplashPageController extends BaseController {
     } catch (exception) {
       handleException(exception);
       exitApp();
-    } finally {
-      if (Platform.isAndroid) {
-        isGoogleFitOrHealthConnectInstalled();
-      }
-    }
+    } finally {}
   }
 
   void isGoogleFitOrHealthConnectInstalled() async {
