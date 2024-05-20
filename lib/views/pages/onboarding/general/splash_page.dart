@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:health/health.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:realfitzclient/controllers/onboarding/splash_page_controller.dart';
 import 'package:realfitzclient/views/resources/colors_manager.dart';
@@ -15,7 +14,6 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   Future executeProcesses() async {
-    Health().configure(useHealthConnectIfAvailable: true);
     SplashPageController splashPageController = Get.put(SplashPageController());
     await splashPageController.executeProcesses();
   }

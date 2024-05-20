@@ -11,6 +11,12 @@ class StepService {
     Health().configure(useHealthConnectIfAvailable: true);
   }
 
+  Future<void> getHealthConnectSdkStatus() async {
+    assert(Platform.isAndroid, "This is only available on Android");
+    final status = await Health().getHealthConnectSdkStatus();
+    print(status);
+  }
+
   Future<int?> getStepsByTimeInterval(
       {required DateTime startTime, required DateTime endTime}) async {
     int? steps;
