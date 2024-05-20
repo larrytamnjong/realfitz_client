@@ -15,14 +15,14 @@ import '../../views/widgets/fatal_error.dart';
 
 class SplashPageController extends BaseController {
   final StepController _stepController = StepController();
+  bool isFitHealthConnectInstalled = true;
 
   Future executeProcesses() async {
     try {
-      bool healthConnectInstalled = true;
       if (Platform.isAndroid) {
-        healthConnectInstalled = await isGoogleFitOrHealthConnectInstalled();
+        await checkIfFitHealthConnectInstalled();
       }
-      if (healthConnectInstalled) {
+      if (isFitHealthConnectInstalled) {
         bool isAuthorized = await _stepController.hasPermissions();
 
         if (isAuthorized) {
@@ -37,22 +37,25 @@ class SplashPageController extends BaseController {
         } else {
           Get.offAll(() => const PermissionPage());
         }
+      } else {
+        Get.offAll(() => const FatalError(
+            errorMessage: AppStrings.pleaseInstallGoogleFitHealthConnect));
       }
     } catch (exception) {
       handleException(exception);
-      exitApp();
-    } finally {}
+      Get.offAll(() => FatalError(errorMessage: exception.toString()));
+    }
   }
 
-  Future<bool> isGoogleFitOrHealthConnectInstalled() async {
+  Future checkIfFitHealthConnectInstalled() async {
     try {
+      isFitHealthConnectInstalled =
+          await _stepController.getHealthConnectSdkStatus();
       await AppCheck.checkAvailability("com.google.android.apps.fitness");
-      await AppCheck.checkAvailability("com.google.android.apps.healthdata");
-      return true;
     } catch (exception) {
+      isFitHealthConnectInstalled = false;
       Get.offAll(() => const FatalError(
           errorMessage: AppStrings.pleaseInstallGoogleFitHealthConnect));
-      return false;
     }
   }
 }

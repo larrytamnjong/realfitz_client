@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:realfitzclient/constants/api_urls.dart';
-import 'package:realfitzclient/models/onboarding/ad_Images.dart';
+import 'package:realfitzclient/models/onboarding/advert_images.dart';
 
 import '../../models/onboarding/user.dart';
 

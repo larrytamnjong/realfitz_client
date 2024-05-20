@@ -1,4 +1,4 @@
-import 'package:realfitzclient/models/onboarding/ad_Images.dart';
+import 'package:realfitzclient/models/onboarding/advert_images.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
 import 'package:realfitzclient/models/step/step_target.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slider/carousel.dart';
-import 'package:realfitzclient/models/onboarding/ad_Images.dart';
+import 'package:realfitzclient/models/onboarding/advert_images.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
 import '../../../../../constants/api_urls.dart';

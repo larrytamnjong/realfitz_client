@@ -9,6 +9,7 @@ import 'package:realfitzclient/views/widgets/appbar.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
 import '../../utils/launch_url.dart';
+import '../pages/onboarding/general/splash_page.dart';
 import '../resources/colors_manager.dart';
 
 class FatalError extends StatelessWidget {
@@ -20,7 +21,14 @@ class FatalError extends StatelessWidget {
   Widget build(BuildContext context) {
     BaseController baseController = Get.put(BaseController());
     return Scaffold(
-      appBar: const MainAppBar(
+      appBar: MainAppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.offAll(() => const SplashPage());
+              },
+              icon: const Icon(Icons.refresh))
+        ],
         title: AppStrings.error,
       ),
       body: Padding(

@@ -100,9 +100,6 @@ class StepController extends BaseController {
   Future<bool> hasPermissions() async {
     try {
       bool? hasPermissions = await _stepService.hasPermissions();
-      if (hasPermissions == null) {
-        return false;
-      }
       return hasPermissions;
     } catch (exception) {
       throw Exception(exception);
@@ -121,6 +118,10 @@ class StepController extends BaseController {
 
   Future<bool> requestAuthorization() async {
     return await _stepService.requestAuthorization();
+  }
+
+  Future<bool> getHealthConnectSdkStatus() async {
+    return await _stepService.getHealthConnectSdkStatus();
   }
 
   Future<bool> updateUserStepTarget({required StepTarget stepTarget}) async {

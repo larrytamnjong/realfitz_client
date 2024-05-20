@@ -1,20 +1,27 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:health/health.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
-
-import '../../constants/strings.dart';
 
 class StepService {
   StepService() {
     Health().configure(useHealthConnectIfAvailable: true);
   }
 
-  Future<void> getHealthConnectSdkStatus() async {
-    assert(Platform.isAndroid, "This is only available on Android");
-    final status = await Health().getHealthConnectSdkStatus();
-    print(status);
+  Future<bool> getHealthConnectSdkStatus() async {
+    try {
+      final status = await Health().getHealthConnectSdkStatus();
+      debugPrint(status.toString());
+      if (status == HealthConnectSdkStatus.sdkAvailable) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
   }
 
   Future<int?> getStepsByTimeInterval(
@@ -57,18 +64,18 @@ class StepService {
     }
   }
 
-  Future<bool?> hasPermissions() async {
+  Future<bool> hasPermissions() async {
     try {
-      bool? hasPermissions = await Health().hasPermissions(
-        [HealthDataType.STEPS],
-        permissions: [HealthDataAccess.READ],
-      );
+      // bool? hasPermissions = await Health().hasPermissions(
+      //   [HealthDataType.STEPS],
+      //   permissions: [HealthDataAccess.READ],
+      // );
       await requestAuthorization();
-      if (hasPermissions == null) {
-        showInfoSnackBar(message: AppStrings.undefinedPermissionStatus);
-      } else if (hasPermissions == false) {
-        showInfoSnackBar(message: AppStrings.permissionActionNeeded);
-      }
+      // if (hasPermissions == null) {
+      //   showInfoSnackBar(message: AppStrings.undefinedPermissionStatus);
+      // } else if (hasPermissions == false) {
+      //   showInfoSnackBar(message: AppStrings.permissionActionNeeded);
+      // }
       return true;
     } catch (exception) {
       showInfoSnackBar(message: exception.toString());
