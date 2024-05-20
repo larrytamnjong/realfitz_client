@@ -1,7 +1,7 @@
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/step/step_client.dart';
-import 'package:realfitzclient/models/step/StepTarget.dart';
+import 'package:realfitzclient/models/step/step_target.dart';
 
 import '../../models/step/last_sync_date.dart';
 import '../../models/step/step.dart';

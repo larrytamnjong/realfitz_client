@@ -6,8 +6,8 @@ import 'package:realfitzclient/controllers/reward/reward_controller.dart';
 import 'package:realfitzclient/controllers/steps/steps_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/data/onboarding/authentication_client.dart';
-import 'package:realfitzclient/models/step/StepTarget.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
+import 'package:realfitzclient/models/step/step_target.dart';
 import 'package:realfitzclient/views/pages/onboarding/general/splash_page.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 

@@ -23,7 +23,7 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        overlayColor: MaterialStateProperty.all(AppColors.primary),
+        overlayColor: WidgetStateProperty.all(AppColors.primary),
         onDestinationSelected: (int index) {
           setState(() => currentPageIndex = index);
         },

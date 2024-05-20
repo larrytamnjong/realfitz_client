@@ -222,6 +222,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.2.1"
+  flutter_image_slider:
+    dependency: "direct main"
+    description:
+      name: flutter_image_slider
+      sha256: "40ad7f99e8f46266bb945938debfd7b1b0c8351735e9d6c929dbb3df587810c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:

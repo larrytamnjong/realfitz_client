@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:realfitzclient/models/step/last_sync_date.dart';
 
 import '../../constants/api_urls.dart';
-import '../../models/step/StepTarget.dart';
 import '../../models/step/step.dart';
+import '../../models/step/step_target.dart';
 
 class StepClient {
   Future<StepLastSyncDate?> getLastSyncDate({required String id}) async {

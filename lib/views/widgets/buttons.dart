@@ -54,11 +54,11 @@ class PrimaryElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(
+        padding: WidgetStateProperty.all(
           const EdgeInsets.fromLTRB(
               AppPadding.p80, AppPadding.p8, AppPadding.p80, AppPadding.p8),
         ),
-        backgroundColor: MaterialStateProperty.all(color ?? AppColors.primary),
+        backgroundColor: WidgetStateProperty.all(color ?? AppColors.primary),
       ),
       onPressed: onPressed,
       child: Text(

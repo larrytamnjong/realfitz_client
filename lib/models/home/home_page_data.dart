@@ -1,6 +1,6 @@
-import 'package:realfitzclient/models/onboarding/AdImages.dart';
-import 'package:realfitzclient/models/step/StepTarget.dart';
+import 'package:realfitzclient/models/onboarding/ad_Images.dart';
 import 'package:realfitzclient/models/step/doughnut_chart_data.dart';
+import 'package:realfitzclient/models/step/step_target.dart';
 
 import '../reward/reward.dart';
 
