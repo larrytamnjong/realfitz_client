@@ -56,9 +56,7 @@ class StepService {
         await Permission.location.request();
       }
       return await Health().requestAuthorization([HealthDataType.STEPS],
-          permissions: Platform.isIOS
-              ? [HealthDataAccess.READ]
-              : [HealthDataAccess.READ_WRITE]);
+          permissions: [HealthDataAccess.READ]);
     } catch (exception) {
       throw Exception(exception);
     }
