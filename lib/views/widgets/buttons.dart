@@ -124,6 +124,7 @@ class OutlineTileButton extends StatelessWidget {
   final Function()? onTap;
   final String text;
   final IconData icon;
+  final Color? iconColor;
   final bool? showTrailing;
 
   const OutlineTileButton({
@@ -132,6 +133,7 @@ class OutlineTileButton extends StatelessWidget {
     required this.text,
     required this.icon,
     this.showTrailing = true,
+    this.iconColor,
   });
 
   @override
@@ -148,7 +150,7 @@ class OutlineTileButton extends StatelessWidget {
         ),
         leading: Icon(
           icon,
-          color: AppColors.primary,
+          color: iconColor ?? AppColors.primary,
         ),
         title: Text(text, style: regularTextStyle),
         trailing: showTrailing == true

@@ -76,6 +76,28 @@ class AuthenticationController extends BaseController {
     }
   }
 
+  void deleteUser() async {
+    try {
+      showLoadingIndicator();
+      authClient = AuthenticationClient();
+      String? id = await _userController.getUserId();
+      User user = User(id: id);
+      authClient.user = user;
+      bool isUserDeleted = await authClient.deleteAccount();
+      if (isUserDeleted) {
+        await _userController.removeUser();
+        showSuccessSnackBar();
+        Get.offAll(() => const GettingStartedPage());
+      } else {
+        showFailureSnackBar(message: AppStrings.failedToDeleteUser);
+      }
+    } catch (exception) {
+      handleException(exception);
+    } finally {
+      hideLoadingIndicator();
+    }
+  }
+
   Future setUserInformation() async {
     User user = await _userController.getUserDetails();
     nameController.text = user.name ?? '';

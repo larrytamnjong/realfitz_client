@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:handy_dialogs/handy_dialogs.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:realfitzclient/controllers/onboarding/authentication_controller.dart';
@@ -46,103 +47,108 @@ class _SettingsPageState extends State<SettingsPage> {
         child: ModalProgressHUD(
           inAsyncCall: settingsController.isShowingLoadingIndicator.value,
           progressIndicator: const CircularProgressIndicator(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    OutlineTileButton(
-                      text: AppStrings.permission,
-                      icon: Icons.security_rounded,
-                      onTap: () {
-                        Get.to(
-                            transition: rightToLeft,
-                            () => const PermissionPage());
-                      },
-                    ),
-                    OutlineTileButton(
-                      text: AppStrings.accountInformation,
-                      icon: Ionicons.person,
-                      onTap: () {
-                        Get.to(
-                          transition: rightToLeft,
-                          () => const ProfileInformationPage(),
-                        );
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(AppPadding.p8),
-                      child: Text(AppStrings.general,
-                          style:
-                              boldTextStyle.copyWith(fontSize: FontSizes.f15)),
-                    ),
-                    OutlineTileButton(
-                      showTrailing: false,
-                      text: AppStrings.faqs,
-                      icon: Icons.question_mark_outlined,
-                      onTap: () {
-                        Get.to(() => const FaqPage(), transition: rightToLeft);
-                      },
-                    ),
-                    OutlineTileButton(
-                      showTrailing: false,
-                      text: AppStrings.privacyPolicy,
-                      icon: Icons.policy,
-                      onTap: () {
-                        Get.to(() => const PrivacyPolicyPage(),
-                            transition: rightToLeft);
-                      },
-                    ),
-                    OutlineTileButton(
-                      showTrailing: false,
-                      text: AppStrings.termsAndConditions,
-                      icon: Icons.receipt,
-                      onTap: () {
-                        Get.to(() => const TermsAndConditionPage(),
-                            transition: rightToLeft);
-                      },
-                    ),
-                    OutlineTileButton(
-                      showTrailing: false,
-                      text: AppStrings.liveSupportOrRequestAccountDeletion,
-                      icon: Ionicons.logo_whatsapp,
-                      onTap: () async {
-                        await settingsController.getWhatsAppSupportNumber();
-                        if (settingsController.whatsAppSupportNumber != null) {
-                          launchExternalUrl(
-                            urlString:
-                                'https://wa.me/${settingsController.whatsAppSupportNumber}?text=What would you like to do today?',
-                          );
-                        }
-                      },
-                    ),
-                    OutlineTileButton(
-                      showTrailing: false,
-                      text: AppStrings.suggestion,
-                      icon: Ionicons.bulb_outline,
-                      onTap: () async {
-                        await settingsController.getWhatsAppSupportNumber();
-                        if (settingsController.whatsAppSupportNumber != null) {
-                          launchExternalUrl(
-                            urlString:
-                                'https://wa.me/${settingsController.whatsAppSupportNumber}?text=Go right ahead and let us know what your suggestion is!',
-                          );
-                        }
-                      },
-                    ),
-                  ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                OutlineTileButton(
+                  text: AppStrings.permission,
+                  icon: Icons.security_rounded,
+                  onTap: () {
+                    Get.to(
+                        transition: rightToLeft, () => const PermissionPage());
+                  },
                 ),
-              ),
-              PrimaryTextButton(
-                color: AppColors.red,
-                onPressed: () async {
-                  await authenticationController.logout();
-                },
-                fontSize: FontSizes.f20,
-                text: AppStrings.logOut,
-              )
-            ],
+                OutlineTileButton(
+                  text: AppStrings.accountInformation,
+                  icon: Ionicons.person,
+                  onTap: () {
+                    Get.to(
+                      transition: rightToLeft,
+                      () => const ProfileInformationPage(),
+                    );
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(AppPadding.p8),
+                  child: Text(AppStrings.general,
+                      style: boldTextStyle.copyWith(fontSize: FontSizes.f15)),
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.faqs,
+                  icon: Icons.question_mark_outlined,
+                  onTap: () {
+                    Get.to(() => const FaqPage(), transition: rightToLeft);
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.privacyPolicy,
+                  icon: Icons.policy,
+                  onTap: () {
+                    Get.to(() => const PrivacyPolicyPage(),
+                        transition: rightToLeft);
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.termsAndConditions,
+                  icon: Icons.receipt,
+                  onTap: () {
+                    Get.to(() => const TermsAndConditionPage(),
+                        transition: rightToLeft);
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.deleteAccount,
+                  iconColor: AppColors.red,
+                  icon: Icons.warning,
+                  onTap: () async {
+                    if (await deleteConfirmation(context)) {
+                      authenticationController.deleteUser();
+                    }
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.liveSupport,
+                  icon: Ionicons.logo_whatsapp,
+                  onTap: () async {
+                    await settingsController.getWhatsAppSupportNumber();
+                    if (settingsController.whatsAppSupportNumber != null) {
+                      launchExternalUrl(
+                        urlString:
+                            'https://wa.me/${settingsController.whatsAppSupportNumber}?text=What would you like to do today?',
+                      );
+                    }
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.suggestion,
+                  icon: Ionicons.bulb_outline,
+                  onTap: () async {
+                    await settingsController.getWhatsAppSupportNumber();
+                    if (settingsController.whatsAppSupportNumber != null) {
+                      launchExternalUrl(
+                        urlString:
+                            'https://wa.me/${settingsController.whatsAppSupportNumber}?text=Go right ahead and let us know what your suggestion is!',
+                      );
+                    }
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.logOut,
+                  icon: Icons.logout,
+                  onTap: () async {
+                    await authenticationController.logout();
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

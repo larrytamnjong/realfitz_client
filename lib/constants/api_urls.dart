@@ -1,6 +1,6 @@
 //String rootUrl = 'http://10.0.2.2/realfitzapi/src/Api';
-//String rootUrl = 'http://192.168.227.134:3150/src/Api';
-String rootUrl = 'https://realfitz.loptymobile.com/realfitzapi/src/Api';
+String rootUrl = 'http://192.168.47.134:3150/src/Api';
+// String rootUrl = 'https://realfitz.loptymobile.com/realfitzapi/src/Api';
 String networkImageUrl =
     "https://realfitz.loptymobile.com/RealFitzAdmin/image/";
 String createAccountUrl = '$rootUrl/User/CreateUser.php';
@@ -20,6 +20,7 @@ String getUserRedeemedRewardsUrl =
     '$rootUrl/Reward/GetUserRedeemedRewards.php?id=';
 String whatsAppLoginUrl = '$rootUrl/User/WhatsAppLogin.php?phone=';
 String updateUserUrl = '$rootUrl/User/UpdateUser.php';
+String deleteUserUrl = '$rootUrl/User/DeleteUser.php';
 String getWhatsAppSupportNumberUrl =
     '$rootUrl/Settings/GetWhatsAppSupportNumber.php';
 String getUserStepTargetUrl = '$rootUrl/Step/GetUserStepTarget.php?id=';

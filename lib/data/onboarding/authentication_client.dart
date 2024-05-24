@@ -23,6 +23,20 @@ class AuthenticationClient {
     }
   }
 
+  Future<bool> deleteAccount() async {
+    try {
+      final response = await http.put(Uri.parse(deleteUserUrl),
+          body: jsonEncode(user?.toJson()));
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (exception) {
+      throw Exception(exception);
+    }
+  }
+
   Future<User?> login() async {
     try {
       final response = await http.post(Uri.parse(loginUrl),

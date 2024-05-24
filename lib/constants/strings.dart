@@ -82,6 +82,13 @@ class AppStrings {
   static const String showMore = "Show more";
   static const String howToRedeem = "How to redeem?";
   static const String termsAndConditions = "Terms and conditions";
+  static const String deleteAccount = "Delete account";
+  static const String deleteConfirm =
+      "Are you sure you want to delete your account?";
+  static const String deleteWarning = "Action cannot be undone.";
+  static const String cancel = "Cancel";
+  static const String proceed = "Proceed";
+
   static const String expiryDate = "Expiry Date";
   static const String sponsor = "Sponsor";
   static const String acceptChallenge = "Accept challenge";
@@ -101,8 +108,7 @@ class AppStrings {
   static const String general = "General";
   static const String faqs = "FAQs";
   static const String privacyPolicy = "Privacy policy";
-  static const String liveSupportOrRequestAccountDeletion =
-      "Live support or Request account deletion";
+  static const String liveSupport = "Live support";
   static const String suggestion = "Suggestion";
   static const String updateDetails = "Update details";
   static const String creationDate = "Creation date";
@@ -111,6 +117,8 @@ class AppStrings {
   static const String kmWalked = "KM Walked";
   static const String country = "Country";
   static const String failedToUpdateUserDetail = "Failed to update user detail";
+  static const String failedToDeleteUser =
+      "Failed to delete your account. Please try again.";
   static const String enterYourDailyStepTarget =
       "Enter you daily step target (e.g 5000)";
   static const String participants = 'Participants';
