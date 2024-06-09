@@ -32,7 +32,7 @@ class SplashPageController extends BaseController {
             await _stepController.startStepSyncProcess();
             Get.offAll(transition: downToUp, () => const DashboardPage());
           } else {
-            Get.offAll(transition: downToUp, () => const GettingStartedPage());
+            Get.offAll(transition: downToUp, () =>  GettingStartedPage());
           }
         } else {
           Get.offAll(() => const PermissionPage());

@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slider/carousel.dart';
+
 import 'package:realfitzclient/models/onboarding/advert_images.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
@@ -10,6 +12,7 @@ import '../../../../resources/colors_manager.dart';
 
 class ImageCarousel extends StatelessWidget {
   final List<AdImage>? images;
+
   const ImageCarousel({super.key, required this.images});
 
   @override
@@ -28,35 +31,55 @@ class ImageCarousel extends StatelessWidget {
         ImagePaths.manWomanJogging
       ];
     }
-    return Card(
-      color: AppColors.white,
-      clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppBorderRadius.r20)),
-      child: SizedBox(
-        height: size.height * 0.3,
+    return SizedBox(
+        height: size.height * 0.2,
         width: size.width,
-        child: Carousel(
-          indicatorBarColor: AppColors.palePrimary,
-          autoScrollDuration: const Duration(seconds: 2),
-          animationPageDuration: const Duration(milliseconds: 500),
-          activateIndicatorColor: AppColors.primary,
-          animationPageCurve: Curves.easeIn,
-          indicatorBarHeight: 15,
-          indicatorHeight: 5,
-          indicatorWidth: 5,
-          unActivatedIndicatorColor: AppColors.white,
-          stopAtEnd: false,
-          autoScroll: true,
+        child: CarouselSlider(
+          options: CarouselOptions(
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.75,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              // enlargeCenterPage: true,
+              // enlargeFactor: 0.3,
+              scrollDirection: Axis.horizontal,
+              height: size.height * 0.3),
           items: imageUrls.map((url) {
-            int index = imageUrls.indexOf(url);
-            return ImageItem(
-                imageUrl: url,
-                urlString: images != null ? images![index].siteUrl : null);
+            return Builder(
+              builder: (BuildContext context) {
+                int index = imageUrls.indexOf(url);
+                return ImageItem(
+                    imageUrl: url,
+                    urlString: images != null ? images![index].siteUrl : null);
+              },
+            );
           }).toList(),
-        ),
-      ),
-    );
+        ) /* Carousel(
+        indicatorBarColor: AppColors.white,
+        autoScrollDuration: const Duration(seconds: 2),
+        animationPageDuration: const Duration(milliseconds: 500),
+        activateIndicatorColor: AppColors.primary,
+        animationPageCurve: Curves.easeIn,
+        indicatorBarHeight: 15,
+        indicatorHeight: 5,
+        indicatorWidth: 5,
+
+        unActivatedIndicatorColor: AppColors.grey,
+        stopAtEnd: false,
+        autoScroll: true,
+        items: imageUrls.map((url) {
+          int index = imageUrls.indexOf(url);
+          return ImageItem(
+              imageUrl: url,
+              urlString: images != null ? images![index].siteUrl : null);
+        }).toList(),
+      ),*/
+        );
 
     //   CarouselImages(
     //   viewportFraction: 1.0,
@@ -88,8 +111,19 @@ class ImageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Image(
-        image: NetworkImage(imageUrl),
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.fill,
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            Container(
+                height: 40,
+                width: 40,
+                child: Center(
+                    child: CircularProgressIndicator(
+                  // value: downloadProgress.progress,
+                  color: AppColors.primary,
+                ))),
+        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
       onTap: () {
         launchExternalUrl(urlString: urlString!);

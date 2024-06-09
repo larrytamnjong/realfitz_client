@@ -31,7 +31,7 @@ class _ChallengeParticipantsPageState extends State<ChallengeParticipantsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: AppStrings.participants),
+      appBar: const MainAppBar(title: AppStrings.participants,isCenter: true,),
       body: Padding(
         padding: const EdgeInsets.all(AppPadding.p8),
         child: FutureBuilder(
@@ -44,8 +44,9 @@ class _ChallengeParticipantsPageState extends State<ChallengeParticipantsPage> {
             if (result.hasError || result.data == null) {
               return const ErrorPage();
             }
-            return ListView.builder(
-              itemCount: result.data?.length,
+            return ListView.separated(
+              itemCount: result.data!.length,
+              separatorBuilder: (context, index) => Divider(color: AppColors.grey,),
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
@@ -53,7 +54,7 @@ class _ChallengeParticipantsPageState extends State<ChallengeParticipantsPage> {
                       padding:
                           const EdgeInsets.symmetric(vertical: AppPadding.p5),
                       child: ListTile(
-                        tileColor: AppColors.paleLime,
+
                         leading: Icon(
                           Ionicons.person_circle,
                           color: AppColors.primary,

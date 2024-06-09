@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realfitzclient/utils/amount_formatter.dart';
 import 'package:realfitzclient/utils/get_first_name.dart';
 import 'package:realfitzclient/utils/get_percentage.dart';
+import 'package:realfitzclient/views/resources/colors_manager.dart';
 
 import '../../../../resources/values_manager.dart';
 import 'account_balance.dart';
@@ -28,20 +29,27 @@ class AccountSummary extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Card(
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.primary.withOpacity(0.05),
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 vertical: AppPadding.p10, horizontal: AppPadding.p8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                NameAndProfileIconRow(
-                  name: getFirstNameFromNames(name),
-                ),
-                const AccountStatusContainer(),
-                const SizedBox(height: AppSizes.s5),
-                AccountBalance(
-                  accountBalance: formatAmount(accountBalance),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    NameAndProfileIconRow(
+                      name: getFirstNameFromNames(name),
+                    ),
+                    AccountBalance(
+                      accountBalance: formatAmount(accountBalance),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: AppSizes.s10),
                 DailyTarget(

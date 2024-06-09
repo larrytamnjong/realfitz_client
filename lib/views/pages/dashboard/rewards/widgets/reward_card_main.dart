@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/reward_detail_page.dart';
 import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 import 'package:realfitzclient/views/resources/transitions.dart';
 
+import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/strings.dart';
 import '../../../../../models/reward/reward.dart';
 import '../../../../../models/sponsor/sponsor.dart';
@@ -14,23 +17,28 @@ import '../../../../resources/colors_manager.dart';
 import '../../../../resources/styles/border_radius.dart';
 import '../../../../resources/styles/text_styles.dart';
 import '../../../../resources/values_manager.dart';
+import '../../../../widgets/buttons.dart';
 
 class RewardCardMain extends StatelessWidget {
   final Reward reward;
   final Sponsor sponsor;
+
   const RewardCardMain({
     super.key,
     required this.reward,
     required this.sponsor,
+
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColors.getRandomColor(),
-      clipBehavior: Clip.hardEdge,
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColors.getRandomColor().withOpacity(0.5),
+          borderRadius: BorderRadius.circular(AppBorderRadius.r15)),
+      // clipBehavior: Clip.hardEdge,
       child: Padding(
-        padding: const EdgeInsets.all(AppPadding.p10),
+        padding: const EdgeInsets.all(AppPadding.p15),
         child: InkWell(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -61,51 +69,75 @@ class RewardCardMain extends StatelessWidget {
               ),
               Text(
                 sponsor.name,
-                style: appNameTextStyle.copyWith(fontSize: FontSizes.f20),
+                style: appNameTextStyle.copyWith(fontSize: FontSizes.f20,color: AppColors.primary),
               ),
               const SizedBox(height: AppSizes.s26),
-              Text(
-                reward.caption,
-                style: boldTextStyle.copyWith(fontSize: FontSizes.f13),
-              ),
-              const SizedBox(height: AppSizes.s5),
-              Text(
-                reward.detail,
-                style: regularTextStyle,
-                maxLines: TextLines.l4,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: AppSizes.s20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  OutlinedButton(
-                    onPressed: () {
-                      Clipboard.setData(
-                        ClipboardData(text: reward.voucherCode),
-                      );
-                      showInfoSnackBar(message: AppStrings.copiedToClipBoard);
-                    },
-                    child: Row(
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(Ionicons.copy_outline),
-                        const SizedBox(width: AppSizes.s5),
-                        Text(reward.voucherCode),
+                        Text(
+                          reward.caption,
+                          style: boldTextStyle.copyWith(fontSize: FontSizes.f13),
+                        ),
+                        const SizedBox(height: AppSizes.s5),
+                        Text(
+                          reward.detail,
+                          style: regularTextStyle,
+                          maxLines: TextLines.l4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(height: AppSizes.s18),
+                      Container(
+                        width:Get.width/2.5,
+                        height: 35,
+                        child: ElevatedButton(
+
+                          style: ButtonStyle(
+                            foregroundColor:
+                            MaterialStatePropertyAll(AppColors.white),
+                            backgroundColor:   MaterialStatePropertyAll(AppColors.primary),
+                          ),
+                          onPressed: () {
+                            Clipboard.setData(
+                              ClipboardData(text: reward.voucherCode),
+                            );
+                            showInfoSnackBar(message: AppStrings.copiedToClipBoard);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Ionicons.copy_outline,size: 20,),
+                              const SizedBox(width: AppSizes.s5),
+                              Text(reward.voucherCode,style: regularTextStyle.copyWith(color: AppColors.white),),
+                            ],
+                          ),
+                        ),
+                      ),
+                        const SizedBox(height: AppSizes.s10),
+                        Text(
+                          '${AppStrings.claimedOn} ${formatDate(reward.userReward!.creationDate)}',
+                          style: regularTextStyle.copyWith(fontSize: FontSizes.f10,),
+                        ),
+                        Text(
+                          '${AppStrings.expiresOn} ${formatDate(reward.expiryDate)}',
+                          style: regularTextStyle.copyWith(fontSize: FontSizes.f10),
+                        ),
                       ],
                     ),
                   ),
+                  Column(
+                    children: [
+                      // Container(width: 45,height: 45,)
+                      reward.image!=null? Image.network(networkImageUrl+reward.image.toString(),height: 150,width: 150,):Container()
+                    ],
+                  )
                 ],
               ),
-              const SizedBox(height: AppSizes.s20),
-              Text(
-                '${AppStrings.claimedOn} ${formatDate(reward.userReward!.creationDate)}',
-                style: regularTextStyle,
-              ),
-              const SizedBox(height: AppSizes.s2),
-              Text(
-                '${AppStrings.expiresOn} ${formatDate(reward.expiryDate)}',
-                style: regularTextStyle,
-              ),
+
               const SizedBox(height: AppSizes.s20),
             ],
           ),

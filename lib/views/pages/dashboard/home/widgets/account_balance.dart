@@ -17,20 +17,21 @@ class AccountBalance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ImageIcon(
+        Image.asset(IconPaths.coins,height: 25,width: 25,)
+        /*ImageIcon(
           AssetImage(IconPaths.coins),
-          color: AppColors.primary,
-        ),
+          // color: AppColors.primary,
+        )*/,
         const SizedBox(width: AppSizes.s5),
         Text(
           accountBalance,
-          style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
+          style: boldTextStyle.copyWith(fontSize: FontSizes.f18),
         ),
         const SizedBox(width: AppSizes.s10),
         Text(
           AppStrings.rfc,
           style: boldTextStyle.copyWith(
-              fontSize: FontSizes.f21, color: AppColors.green),
+              fontSize: FontSizes.f18, color: AppColors.green),
           textAlign: TextAlign.end,
         )
       ],

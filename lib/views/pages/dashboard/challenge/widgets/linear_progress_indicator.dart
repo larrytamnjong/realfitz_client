@@ -26,12 +26,12 @@ class LinearPercentageIndicator extends StatelessWidget {
       children: [
         const SizedBox(height: AppSizes.s12),
         LinearPercentIndicator(
-          backgroundColor: AppColors.palePrimary,
+          backgroundColor: AppColors.white,
           barRadius: const Radius.circular(AppBorderRadius.r15),
           progressColor: AppColors.primary,
           animation: true,
           width: MediaQuery.of(context).size.width - (negativeWidth ?? 25),
-          lineHeight: AppSizes.s20,
+          lineHeight: AppSizes.s22,
           percent: percent,
           center: Row(
             mainAxisAlignment: MainAxisAlignment.center,

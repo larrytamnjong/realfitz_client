@@ -25,37 +25,36 @@ class ChallengeDetailText extends StatelessWidget {
           thickness: AppSizes.s_05,
           padding: AppPadding.p0,
         ),
-        Card(
-          color: AppColors.paleLime,
-          child: Padding(
-            padding: const EdgeInsets.all(AppPadding.p8),
-            child: Obx(
-              () => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppStrings.details,
-                    style: boldTextStyle.copyWith(
-                      color: AppColors.grey,
-                    ),
-                    textAlign: TextAlign.justify,
+        Padding(
+          padding: const EdgeInsets.all(AppPadding.p8),
+          child: Obx(
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  AppStrings.details,
+                  style: boldTextStyle.copyWith(
+
+                    fontSize: FontSizes.f18,
                   ),
-                  Text(
-                    detail,
-                    style: regularTextStyle,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: showMore.value ? TextLines.l20 : TextLines.l6,
-                  ),
-                  PrimaryTextButton(
-                    onPressed: () {
-                      showMore.value = !showMore.value;
-                    },
-                    text: showMore.value
-                        ? AppStrings.showLess
-                        : AppStrings.showMore,
-                  ),
-                ],
-              ),
+                  textAlign: TextAlign.justify,
+                ),
+                SizedBox(height: AppSizes.s12,),
+                Text(
+                  detail,
+                  style: regularTextStyle,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: showMore.value ? TextLines.l20 : TextLines.l6,
+                ),
+                PrimaryTextButton(
+                  onPressed: () {
+                    showMore.value = !showMore.value;
+                  },
+                  text: showMore.value
+                      ? AppStrings.showLess
+                      : AppStrings.showMore,
+                ),
+              ],
             ),
           ),
         ),

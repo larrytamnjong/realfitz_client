@@ -30,7 +30,8 @@ String formatDate(String inputDateString) {
   String day = dateTime.day.toString();
   String year = dateTime.year.toString();
 
-  String formattedDateString = '$dayOfWeek $month $day, $year';
+  String formattedDateString = '$month $day, $year';
+  // String formattedDateString = '$dayOfWeek $month $day, $year';
 
   return formattedDateString;
 }

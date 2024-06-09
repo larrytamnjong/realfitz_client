@@ -13,6 +13,7 @@ class ErrorPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(AppSizes.s12),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
             image: AssetImage(ImagePaths.synchronize),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:realfitzclient/constants/icon_paths.dart';
 import 'package:realfitzclient/views/pages/dashboard/home/widgets/home_item.dart';
@@ -12,6 +13,7 @@ class HomeItems extends StatefulWidget {
   final String coinsToday;
   final String caloriesBurned;
   final String kmWalked;
+
   const HomeItems(
       {super.key,
       required this.stepsToday,
@@ -26,49 +28,157 @@ class HomeItems extends StatefulWidget {
 class _HomeItemsState extends State<HomeItems> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 25,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    height: 180,
+                    decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(AppBorderRadius.r50),
+                          bottomRight: Radius.circular(AppBorderRadius.r20),
+                          bottomLeft: Radius.circular(AppBorderRadius.r20),
+                        )),
+                    child: HomeItem(
+                      title: AppStrings.stepsToday,
+                      value: widget.stepsToday,
+                      cardColor: AppColors.darkWhite,
+                      // iconColor: AppColors.black,
+                      iconPath: IconPaths.shoe,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    height: 140,
+                    decoration: BoxDecoration(
+                        color: AppColors.lightCream,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(AppBorderRadius.r20),
+                        )),
+                    child: HomeItem(
+                      title: AppStrings.distance,
+                      value: widget.kmWalked,
+                      cardColor: AppColors.darkGrass,
+                      iconColor: AppColors.black,
+                      iconPath: IconPaths.run,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+        Expanded(child: Container()),
+        Expanded(
+            flex: 25,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                      height: 140,
+                      decoration: BoxDecoration(
+                          color: AppColors.lightCream,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(AppBorderRadius.r20),
+                          )),
+                      child: HomeItem(
+                        title: AppStrings.caloriesBurned,
+                        value: widget.caloriesBurned,
+                        useImageIcon: false,
+                        icon: Ionicons.flame,
+                        cardColor: AppColors.lightGrass,
+                        iconColor: AppColors.black,
+                      )),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    height: 180,
+                    decoration: BoxDecoration(
+                        color: AppColors.lightCream,
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(AppBorderRadius.r20),
+                          bottomRight: Radius.circular(AppBorderRadius.r50),
+                          topLeft: Radius.circular(AppBorderRadius.r20),
+                        )),
+                    child: HomeItem(
+                      title: AppStrings.coinsToday,
+                      value: widget.coinsToday,
+                      cardColor: AppColors.lightCream,
+                      iconColor: AppColors.black,
+                      iconPath: IconPaths.coin,
+                    ),
+                  ),
+                ),
+              ],
+            ))
+      ],
+    );
+
+    /* Column(
       children: [
         Row(
           children: [
             HomeItem(
               title: AppStrings.stepsToday,
               value: widget.stepsToday,
-              cardColor: AppColors.palePink,
-              iconColor: AppColors.black,
+              cardColor: AppColors.lightOrange,
+              // iconColor: AppColors.black,
               iconPath: IconPaths.shoe,
             ),
             const SizedBox(width: AppSizes.s5),
-            HomeItem(
-              title: AppStrings.coinsToday,
-              value: widget.coinsToday,
-              cardColor: AppColors.paleTeal,
-              iconColor: AppColors.primary,
-              iconPath: IconPaths.coins,
-            ),
-          ],
-        ),
-        Row(
-          children: [
             HomeItem(
               title: AppStrings.caloriesBurned,
               value: widget.caloriesBurned,
               useImageIcon: false,
               icon: Ionicons.flame,
-              cardColor: AppColors.palePrimary,
+              cardColor: AppColors.lightGrass,
               iconColor: AppColors.black,
+            ),
+
+          ],
+        ),
+        Row(
+          children: [
+            HomeItem(
+              title: AppStrings.coinsToday,
+              value: widget.coinsToday,
+              cardColor: AppColors.lightCream,
+              iconColor: AppColors.black,
+              iconPath: IconPaths.coin,
             ),
             const SizedBox(width: AppSizes.s5),
             HomeItem(
-              title: AppStrings.kmWalked,
+              title: AppStrings.distance,
               value: widget.kmWalked,
-              useImageIcon: false,
-              cardColor: AppColors.paleLime,
-              iconColor: AppColors.primary,
-              icon: Icons.directions_walk,
+
+              cardColor: AppColors.darkGrass,
+              iconColor: AppColors.black,
+              iconPath: IconPaths.run,
             ),
           ],
         ),
       ],
-    );
+    );*/
   }
 }

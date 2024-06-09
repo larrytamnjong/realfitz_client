@@ -20,6 +20,7 @@ class RewardCardSummary extends StatelessWidget {
   final Reward reward;
   final Sponsor sponsor;
   final RewardController? controller;
+
   const RewardCardSummary({
     super.key,
     required this.reward,
@@ -31,11 +32,13 @@ class RewardCardSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: showRandomColor ? AppColors.getRandomColor() : AppColors.paleLime,
-      shape: RoundedRectangleBorder(
-        borderRadius: circularBorderAll15,
-      ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+      decoration: BoxDecoration(
+          color: showRandomColor
+              ? AppColors.getRandomColor().withOpacity(0.5)
+              : AppColors.paleLime,
+          borderRadius: circularBorderAll15),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         child: Column(
@@ -73,7 +76,7 @@ class RewardCardSummary extends StatelessWidget {
                           maxLines: TextLines.l4,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Container(height: AppSizes.s10),
+                        // Container(height: AppSizes.s10),
                       ],
                     ),
                   ),
@@ -82,7 +85,7 @@ class RewardCardSummary extends StatelessWidget {
             ),
             reward.isUserRedeemable
                 ? Padding(
-                    padding: const EdgeInsets.all(AppPadding.p5),
+                    padding: const EdgeInsets.only(left: AppPadding.p15,right:AppPadding.p15,top: AppPadding.p10,bottom: AppPadding.p16 ),
                     child: Center(
                       child: showRedeemButton
                           ? PrimaryElevatedButton(

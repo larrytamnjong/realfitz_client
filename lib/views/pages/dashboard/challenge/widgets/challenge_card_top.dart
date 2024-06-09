@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -31,12 +32,15 @@ class ChallengeCardTop extends StatelessWidget {
               height: AppSizes.s200,
               decoration: BoxDecoration(
                 borderRadius: topRightLeftCircularBorder15,
-                image: DecorationImage(
-                  image: //AssetImage(image)
-                      NetworkImage(image),
-                  fit: BoxFit.cover,
+                image: DecorationImage(image: NetworkImage(image),
+                    fit: BoxFit.cover
+
+                /*
+                  //AssetImage(image)
+                     ,*/
                 ),
               ),
+
             ),
             Align(
               alignment: Alignment.topRight,
@@ -46,16 +50,18 @@ class ChallengeCardTop extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.centerLeft,
-          height: AppSizes.s40,
+          // height: AppSizes.s40,
           color: AppColors.black,
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: AppPadding.p8,
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppPadding.p8,
+              vertical: AppPadding.p8
             ),
             child: Text(
               title,
               style: regularTextStyle.copyWith(
                 color: AppColors.white,
+
               ),
             ),
           ),

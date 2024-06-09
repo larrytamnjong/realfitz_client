@@ -81,15 +81,18 @@ class StepController extends BaseController {
     }
   }
 
-  Future<List<int?>> getFiveDayStepData() async {
+  Future<List<Map<String, dynamic>>> getFiveDayStepData() async {
     try {
-      List<int?> fiveDayStepData = [];
-      for (int i = 4; i >= 0; i--) {
+      List<Map<String, dynamic>> fiveDayStepData = [];
+      for (int i = 6; i >= 0; i--) {
         DateTime endTime = DateTime.now().subtract(Duration(days: i));
         DateTime startTime = DateTime(endTime.year, endTime.month, endTime.day);
         int? steps = await _stepService.getStepsByTimeInterval(
             endTime: endTime, startTime: startTime);
-        fiveDayStepData.add(steps ?? 0);
+        fiveDayStepData.add({
+          "day":endTime.weekday,
+          "step":steps??0
+        });
       }
       return fiveDayStepData;
     } catch (exception) {

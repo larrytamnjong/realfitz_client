@@ -57,9 +57,11 @@ dependencies:
   carousel_images: ^1.1.2
   flutter_easy_faq: ^1.0.1
   url_launcher: ^6.2.6
-  flutter_image_slider: ^0.0.2
+#  flutter_image_slider: ^0.0.2
+  carousel_slider: ^4.2.1
   flutter_dialogs: ^3.0.0
   handy_dialogs: ^0.1.0
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:

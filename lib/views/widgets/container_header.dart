@@ -21,7 +21,7 @@ class ContainerHeader extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.only(left: AppPadding.p8),
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
             child: Text(
               title,
               style: semiBoldTextStyle.copyWith(fontSize: FontSizes.f15),

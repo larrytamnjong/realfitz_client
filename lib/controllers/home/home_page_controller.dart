@@ -24,6 +24,7 @@ class HomePageController extends BaseController {
   final AuthenticationClient _authenticationClient = AuthenticationClient();
 
   final formKey = GlobalKey<FormBuilderState>();
+
   Future<HomePageData?> getHomePageData() async {
     try {
       HomePageData homePageData = HomePageData();
@@ -32,7 +33,7 @@ class HomePageController extends BaseController {
       homePageData.doughnutChartData = await _getDoughnutChartData();
       homePageData.stepsToday = todaySteps;
       homePageData.accountBalance =
-          await _accountController.getAccountBalance();
+      await _accountController.getAccountBalance();
       homePageData.coinsToday = todaySteps;
       homePageData.stepTarget = await _stepController.getUserStepTarget();
       homePageData.caloriesBurned = _calculateCaloriesBurned(todaySteps);
@@ -48,15 +49,46 @@ class HomePageController extends BaseController {
 
   Future<List<DoughnutChartData>> _getDoughnutChartData() async {
     try {
-      List<int?> fiveDayStepData = await _stepController.getFiveDayStepData();
+      List<Map<String,dynamic>> fiveDayStepData = await _stepController.getFiveDayStepData();
       List<DoughnutChartData> doughnutChartData = [];
-      for (var steps in fiveDayStepData) {
-        if (steps == null) {
-          doughnutChartData.add(DoughnutChartData("0", 0.0));
-        } else {
-          doughnutChartData.add(
-              DoughnutChartData(steps.toDouble().toString(), steps.toDouble()));
+      print("fiveDayStepData--->" + fiveDayStepData.toString());
+      for (int i = 0; i < fiveDayStepData.length; i++) {
+        double steps =double.parse( fiveDayStepData[i]['step'].toString());
+        var weekday;
+        switch (int.parse(fiveDayStepData[i]['day'].toString())) {
+          case 1:
+            weekday = "Mon";
+            break;
+          case 2:
+            weekday = "Tue";
+            break;
+          case 3:
+            weekday = "Wed";
+            break;
+          case 4:
+            weekday = "Thu";
+            break;
+          case 5:
+            weekday = "Fri";
+            break;
+          case 6:
+            weekday = "Sat";
+            break;
+          case 7:
+            weekday = "Sun";
+            break;
         }
+      /*  if (steps == "null") {
+          // doughnutChartData.add(DoughnutChartData(weekday, 0.0));
+          doughnutChartData.add(DoughnutChartData(weekday.toString(), 0.0));
+        } else {*/
+          // doughnutChartData.add(
+          //     DoughnutChartData(weekday, steps.toDouble(),));
+          //
+           doughnutChartData.add(
+               DoughnutChartData(weekday, steps,));
+        // }
+        print("Chart data--->" + doughnutChartData.length.toString());
       }
       return doughnutChartData;
     } catch (exception) {
@@ -73,7 +105,7 @@ class HomePageController extends BaseController {
         stepTarget.id = await _userController.getUserId();
 
         bool isUpdated =
-            await _stepController.updateUserStepTarget(stepTarget: stepTarget);
+        await _stepController.updateUserStepTarget(stepTarget: stepTarget);
         if (isUpdated) {
           showSuccessSnackBar();
           Get.offAll(() => const SplashPage());

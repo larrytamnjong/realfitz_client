@@ -10,6 +10,10 @@ String syncStepsUrl = '$rootUrl/Step/SyncSteps.php';
 String getAccountBalanceUrl = '$rootUrl/Account/GetAccountBalance.php?id=';
 String getAvailableChallengeUrl =
     '$rootUrl/Challenge/GetAvailableChallenges.php?id=';
+String getChallengeByCategoryIdUrl =
+    '$rootUrl/Challenge/GetChallengeByCategoryId.php?id=';
+String getAllCategoryUrl =
+    '$rootUrl/Category/GetAllCategories.php';
 String getChallengeHistoriesUrl =
     '$rootUrl/Challenge/GetChallengeHistories.php?id=';
 String addParticipationUrl = '$rootUrl/Participation/AddParticipant.php';

@@ -16,12 +16,15 @@ class HorizontalTextIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(text, style: boldTextStyle.copyWith(fontSize: FontSizes.f15)),
-        const SizedBox(width: AppSizes.s10),
-        IconButton(onPressed: onPressed, icon: icon),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left:  AppPadding.p15),
+      child: Row(
+        children: [
+          Text(text, style: boldTextStyle.copyWith(fontSize: FontSizes.f15)),
+          const SizedBox(width: AppSizes.s5),
+          IconButton(onPressed: onPressed, icon: icon),
+        ],
+      ),
     );
   }
 }
