@@ -42,6 +42,7 @@ class RewardCardMain extends StatelessWidget {
         child: InkWell(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -69,15 +70,17 @@ class RewardCardMain extends StatelessWidget {
               ),
               Text(
                 sponsor.name,
-                style: appNameTextStyle.copyWith(fontSize: FontSizes.f20,color: AppColors.primary),
+                style: appNameTextStyle.copyWith(fontSize: FontSizes.f18,color: AppColors.primary),
               ),
               const SizedBox(height: AppSizes.s26),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
                           reward.caption,
@@ -92,7 +95,7 @@ class RewardCardMain extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSizes.s18),
                       Container(
-                        width:Get.width/2.5,
+                        // width:Get.width/2.5,
                         height: 35,
                         child: ElevatedButton(
 
@@ -111,7 +114,6 @@ class RewardCardMain extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Icon(Ionicons.copy_outline,size: 20,),
-                              const SizedBox(width: AppSizes.s5),
                               Text(reward.voucherCode,style: regularTextStyle.copyWith(color: AppColors.white),),
                             ],
                           ),
@@ -129,10 +131,12 @@ class RewardCardMain extends StatelessWidget {
                       ],
                     ),
                   ),
+                   SizedBox(width: AppSizes.s10),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // Container(width: 45,height: 45,)
-                      reward.image!=null? Image.network(networkImageUrl+reward.image.toString(),height: 150,width: 150,):Container()
+                      reward.image!=null? Image.network(networkImageUrl+reward.image.toString(),height: 120,width: 120,):Container()
                     ],
                   )
                 ],

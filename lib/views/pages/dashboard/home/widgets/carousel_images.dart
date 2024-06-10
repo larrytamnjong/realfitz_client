@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:realfitzclient/models/onboarding/advert_images.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
@@ -35,22 +36,25 @@ class ImageCarousel extends StatelessWidget {
         height: size.height * 0.2,
         width: size.width,
         child: CarouselSlider(
+
           options: CarouselOptions(
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.75,
+              // aspectRatio: 18/9,
+              // viewportFraction: 0.9,
               initialPage: 0,
+              // aspectRatio: 16/9,
+              viewportFraction: .90,
               enableInfiniteScroll: true,
               reverse: false,
               autoPlay: true,
               autoPlayInterval: Duration(seconds: 3),
               autoPlayAnimationDuration: Duration(milliseconds: 800),
               autoPlayCurve: Curves.fastOutSlowIn,
-              // enlargeCenterPage: true,
-              // enlargeFactor: 0.3,
+
               scrollDirection: Axis.horizontal,
               height: size.height * 0.3),
           items: imageUrls.map((url) {
             return Builder(
+
               builder: (BuildContext context) {
                 int index = imageUrls.indexOf(url);
                 return ImageItem(
@@ -111,19 +115,23 @@ class ImageItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        fit: BoxFit.fill,
-        progressIndicatorBuilder: (context, url, downloadProgress) =>
-            Container(
-                height: 40,
-                width: 40,
-                child: Center(
-                    child: CircularProgressIndicator(
-                  // value: downloadProgress.progress,
-                  color: AppColors.primary,
-                ))),
-        errorWidget: (context, url, error) => Icon(Icons.error),
+      child: Container(
+        width: Get.width*0.9,
+        margin: EdgeInsets.symmetric(horizontal: AppPadding.p3),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.fill,
+          progressIndicatorBuilder: (context, url, downloadProgress) =>
+              SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: Center(
+                      child: CircularProgressIndicator(
+                    // value: downloadProgress.progress,
+                    color: AppColors.primary,
+                  ))),
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        ),
       ),
       onTap: () {
         launchExternalUrl(urlString: urlString!);

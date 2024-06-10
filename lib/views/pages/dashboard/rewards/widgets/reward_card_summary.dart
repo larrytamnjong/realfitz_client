@@ -85,7 +85,7 @@ class RewardCardSummary extends StatelessWidget {
             ),
             reward.isUserRedeemable
                 ? Padding(
-                    padding: const EdgeInsets.only(left: AppPadding.p15,right:AppPadding.p15,top: AppPadding.p10,bottom: AppPadding.p16 ),
+                    padding: const EdgeInsets.only(top: AppPadding.p10,bottom: AppPadding.p16 ),
                     child: Center(
                       child: showRedeemButton
                           ? PrimaryElevatedButton(

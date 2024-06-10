@@ -129,6 +129,7 @@ class ChallengeDetailPage extends StatelessWidget {
           );
         } else {
           return PrimaryElevatedButton(
+
             text: AppStrings.acceptChallenge,
             onPressed: () {
               controller.addChallengeParticipant(

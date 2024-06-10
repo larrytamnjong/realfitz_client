@@ -53,7 +53,7 @@ class PhoneCodePicker extends StatelessWidget {
             width: Get.width * 0.05,
           ),
           SizedBox(
-            width: Get.width * 0.62,
+            width: Get.width * 0.58,
             child: TextFormField(
               autofocus: false,
               inputFormatters: [

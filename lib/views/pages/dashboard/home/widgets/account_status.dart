@@ -16,8 +16,8 @@ class AccountStatusContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          height: 25,
-          width: 100,
+          height: 20,
+          width: 80,
 
           decoration: BoxDecoration(
             shape: BoxShape.circle,

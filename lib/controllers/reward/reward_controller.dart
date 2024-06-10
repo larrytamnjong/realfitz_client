@@ -22,16 +22,15 @@ class RewardController extends BaseController {
   Rx<Category> selectedCategoryChallenge = Category(id: "0").obs;
 
   Future<List<Reward>?> getUserRedeemedRewards() async {
-
     try {
       String? id = await _userController.getUserId();
       List<Reward>? rewards = await _rewardClient.getUserRedeemedRewards(
           id: id!,
           categoryId: selectedCategoryChallenge.value.id ?? "",
           keyword: searchController.value.text ?? "");
-      redeemRewards.value=rewards??[];
-update();
-      print(" redeemRewards.value--->"+ redeemRewards.length.toString());
+      redeemRewards.value = rewards ?? [];
+      update();
+
       return rewards;
     } catch (exception) {
       throw Exception(exception);
