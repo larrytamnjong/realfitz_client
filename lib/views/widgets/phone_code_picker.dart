@@ -57,9 +57,9 @@ class PhoneCodePicker extends StatelessWidget {
             child: TextFormField(
               autofocus: false,
               inputFormatters: [
-                MaskedInputFormatter('# ## ## ## ## ### ######')
+                MaskedInputFormatter('## ### ####')
               ],
-              enabled: false,
+
               controller: controller,
               validator: validator,
               style: regularTextStyle,

@@ -33,7 +33,8 @@ class AccountBalance extends StatelessWidget {
           style: boldTextStyle.copyWith(
               fontSize: FontSizes.f18, color: AppColors.green),
           textAlign: TextAlign.end,
-        )
+        ),
+        const SizedBox(width: AppSizes.s5),
       ],
     );
   }

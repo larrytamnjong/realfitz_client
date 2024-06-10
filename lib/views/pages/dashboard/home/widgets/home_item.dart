@@ -10,7 +10,7 @@ class HomeItem extends StatefulWidget {
   final String? iconPath;
   final String title;
   final String value;
-  final Color cardColor;
+  // final Color cardColor;
   final Color? iconColor;
   final bool useImageIcon;
   final IconData? icon;
@@ -20,7 +20,7 @@ class HomeItem extends StatefulWidget {
     this.iconPath,
     required this.title,
     required this.value,
-    required this.cardColor,
+    // required this.cardColor,
     this.iconColor,
     this.useImageIcon = true,
     this.icon,

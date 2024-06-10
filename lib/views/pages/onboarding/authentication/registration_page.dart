@@ -63,12 +63,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         // ),
                         const SizedBox(height: AppSizes.s30),
                         PhoneCodePicker(
-                          validator: requiredValidator.call,
+                          validator: phoneValidator.call,
                           controller: authController.phoneController,
                           countryDetails: (String? code, String? country) {
                             authController.countryCode = code;
                             authController.country = country;
-                            authController.phoneController.text=country.toString();
+                            // authController.phoneController.text=country.toString();
                             authController.update();
                           },
                         ),

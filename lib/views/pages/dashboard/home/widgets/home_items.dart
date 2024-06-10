@@ -33,54 +33,51 @@ class _HomeItemsState extends State<HomeItems> {
       children: [
         Expanded(
           flex: 25,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 180,
-                    decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(AppBorderRadius.r50),
-                          bottomRight: Radius.circular(AppBorderRadius.r20),
-                          bottomLeft: Radius.circular(AppBorderRadius.r20),
-                        )),
-                    child: HomeItem(
-                      title: AppStrings.stepsToday,
-                      value: widget.stepsToday,
-                      cardColor: AppColors.darkWhite,
-                      // iconColor: AppColors.black,
-                      iconPath: IconPaths.shoe,
-                    ),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 180,
+                  decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(AppBorderRadius.r50),
+                        bottomRight: Radius.circular(AppBorderRadius.r20),
+                        bottomLeft: Radius.circular(AppBorderRadius.r20),
+                      )),
+                  child: HomeItem(
+                    title: AppStrings.stepsToday,
+                    value: widget.stepsToday,
+                    // cardColor: AppColors.darkWhite,
+                    // iconColor: AppColors.black,
+                    iconPath: IconPaths.shoe,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 140,
-                    decoration: BoxDecoration(
-                        color: AppColors.lightCream,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(AppBorderRadius.r20),
-                        )),
-                    child: HomeItem(
-                      title: AppStrings.distance,
-                      value: widget.kmWalked,
-                      cardColor: AppColors.darkGrass,
-                      iconColor: AppColors.black,
-                      iconPath: IconPaths.run,
-                    ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 140,
+                  decoration: BoxDecoration(
+                      color: AppColors.primary.withOpacity(0.05),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(AppBorderRadius.r20),
+                      )),
+                  child: HomeItem(
+                    title: AppStrings.distance,
+                    value: widget.kmWalked,
+                    // cardColor: AppColors.darkGrass,
+                    iconColor: AppColors.black,
+                    iconPath: IconPaths.run,
                   ),
-                )
-              ],
-            ),
+                ),
+              )
+            ],
           ),
         ),
         Expanded(child: Container()),
@@ -94,7 +91,7 @@ class _HomeItemsState extends State<HomeItems> {
                   child: Container(
                       height: 140,
                       decoration: BoxDecoration(
-                          color: AppColors.lightCream,
+                          color: AppColors.primary.withOpacity(0.05),
                           borderRadius: const BorderRadius.all(
                             Radius.circular(AppBorderRadius.r20),
                           )),
@@ -103,7 +100,7 @@ class _HomeItemsState extends State<HomeItems> {
                         value: widget.caloriesBurned,
                         useImageIcon: false,
                         icon: Ionicons.flame,
-                        cardColor: AppColors.lightGrass,
+                        // cardColor: AppColors.lightGrass,
                         iconColor: AppColors.black,
                       )),
                 ),
@@ -115,7 +112,7 @@ class _HomeItemsState extends State<HomeItems> {
                   child: Container(
                     height: 180,
                     decoration: BoxDecoration(
-                        color: AppColors.lightCream,
+                        color:AppColors.primary.withOpacity(0.05),
                         borderRadius: const BorderRadius.only(
                           topRight: Radius.circular(AppBorderRadius.r20),
                           bottomRight: Radius.circular(AppBorderRadius.r50),
@@ -124,7 +121,7 @@ class _HomeItemsState extends State<HomeItems> {
                     child: HomeItem(
                       title: AppStrings.coinsToday,
                       value: widget.coinsToday,
-                      cardColor: AppColors.lightCream,
+                      // cardColor: AppColors.palePrimary,
                       iconColor: AppColors.black,
                       iconPath: IconPaths.coin,
                     ),

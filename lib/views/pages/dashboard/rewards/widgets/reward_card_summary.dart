@@ -5,6 +5,7 @@ import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/rewar
 import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
+import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../constants/strings.dart';
 import '../../../../../models/reward/reward.dart';
@@ -49,12 +50,21 @@ class RewardCardSummary extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Image(
-                    image: AssetImage(ImagePaths.logo),
-                    height: AppSizes.s100,
-                    width: AppSizes.s100,
-                    fit: BoxFit.cover,
-                  ),
+                  reward.image.toString() != "" ||
+                          reward.image.toString() != "null"
+                      ? Image(
+                          image: NetworkImage(
+                              '$networkImageUrl${reward.image.toString()}'),
+                          height: AppSizes.s100,
+                          width: AppSizes.s100,
+                          fit: BoxFit.cover,
+                        )
+                      : Image(
+                          image: AssetImage(ImagePaths.logo),
+                          height: AppSizes.s100,
+                          width: AppSizes.s100,
+                          fit: BoxFit.cover,
+                        ),
                   Container(width: AppSizes.s20),
                   Expanded(
                     child: Column(
@@ -85,7 +95,8 @@ class RewardCardSummary extends StatelessWidget {
             ),
             reward.isUserRedeemable
                 ? Padding(
-                    padding: const EdgeInsets.only(top: AppPadding.p10,bottom: AppPadding.p16 ),
+                    padding: const EdgeInsets.only(
+                        top: AppPadding.p10, bottom: AppPadding.p16),
                     child: Center(
                       child: showRedeemButton
                           ? PrimaryElevatedButton(

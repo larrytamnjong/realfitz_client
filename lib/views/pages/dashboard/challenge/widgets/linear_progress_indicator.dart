@@ -24,7 +24,7 @@ class LinearPercentageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: AppSizes.s12),
+        const SizedBox(height: AppSizes.s10),
         LinearPercentIndicator(
           backgroundColor: AppColors.white,
           barRadius: const Radius.circular(AppBorderRadius.r15),

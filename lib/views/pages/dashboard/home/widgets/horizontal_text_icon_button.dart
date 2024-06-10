@@ -17,7 +17,7 @@ class HorizontalTextIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left:  AppPadding.p15),
+      padding: const EdgeInsets.only(left:  AppPadding.p10,right: 10),
       child: Row(
         children: [
           Text(text, style: boldTextStyle.copyWith(fontSize: FontSizes.f15)),
