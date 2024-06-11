@@ -12,22 +12,28 @@ class AccountStatusContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppSizes.s23,
-      width: 150,
-      decoration: BoxDecoration(
-          color: AppColors.lightGreen.withOpacity(0.4),
-          borderRadius: BorderRadius.circular(AppBorderRadius.r5)),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Padding(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 20,
+          width: 80,
+
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+              color: AppColors.lightGreen,
+              // borderRadius: BorderRadius.circular(AppBorderRadius.r5)
+          ),
+
+        ),
+        Padding(
           padding: const EdgeInsets.only(left: AppPadding.p4),
           child: Text(
             AppStrings.accountIsActive,
             style: boldTextStyle,
           ),
-        ),
-      ),
+        )
+      ],
     );
   }
 }

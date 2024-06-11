@@ -3,23 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
+import '../../../../../constants/strings.dart';
 import '../../../../resources/styles/text_styles.dart';
 
 class HomeItem extends StatefulWidget {
   final String? iconPath;
   final String title;
   final String value;
-  final Color cardColor;
-  final Color iconColor;
+  // final Color cardColor;
+  final Color? iconColor;
   final bool useImageIcon;
   final IconData? icon;
+
   const HomeItem({
     super.key,
     this.iconPath,
     required this.title,
     required this.value,
-    required this.cardColor,
-    required this.iconColor,
+    // required this.cardColor,
+    this.iconColor,
     this.useImageIcon = true,
     this.icon,
   });
@@ -52,46 +54,51 @@ class _HomeItemState extends State<HomeItem> {
   @override
   Widget build(BuildContext context) {
     countNumber.start();
-    return Expanded(
-      child: Card(
-        color: widget.cardColor,
-        child: Padding(
-          padding: const EdgeInsets.all(AppPadding.p8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(AppPadding.p8),
-                child: widget.useImageIcon
-                    ? ImageIcon(
-                        AssetImage(widget.iconPath ?? ''),
-                        size: AppSizes.s45,
-                        color: widget.iconColor,
-                      )
-                    : Icon(
-                        widget.icon,
-                        size: AppSizes.s45,
-                        color: widget.iconColor,
-                      ),
-              ),
-              Text(
-                widget.title,
-                style: regularTextStyle.copyWith(
-                  fontSize: FontSizes.f15,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(AppPadding.p4),
-                child: Obx(
-                  () => Text(
-                    count.value.toString(),
-                    style: boldTextStyle.copyWith(fontSize: FontSizes.f18),
-                  ),
-                ),
-              ),
-            ],
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // Text(
+          //   widget.title.toUpperCase(),
+          //   style: regularTextStyle.copyWith(
+          //     fontSize: FontSizes.f18,
+          //   ),
+          // ),
+          Center(
+            child: widget.useImageIcon
+                ? ImageIcon(
+              AssetImage(widget.iconPath ?? ''),
+              size: AppSizes.s60,
+              // color: widget.iconColor,
+            )
+                : Icon(
+              widget.icon,
+              size: AppSizes.s60,
+              // color: widget.iconColor,
+            ),
           ),
-        ),
+          SizedBox(height: AppSizes.s20,),
+          Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  count.value.toString(),
+                  style: boldTextStyle.copyWith(fontSize: FontSizes.f25),
+                ),
+                Text(
+                  widget.title == AppStrings.caloriesBurned
+                      ? " cal"
+                      : widget.title == AppStrings.distance
+                      ? " km"
+                      :  widget.title == AppStrings.steps?" steps":" RFC",
+                  style: regularTextStyle.copyWith(fontSize: FontSizes.f18),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

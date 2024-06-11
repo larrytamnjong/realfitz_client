@@ -4,10 +4,12 @@ import 'package:realfitzclient/constants/api_urls.dart';
 import 'package:realfitzclient/constants/image_paths.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/detail/challenge_detail_page.dart';
 import 'package:realfitzclient/views/pages/dashboard/challenge/widgets/challenge_card_bottom.dart';
+import 'package:realfitzclient/views/resources/colors_manager.dart';
 
 import '../../../../../models/challenge/challenge.dart';
 import '../../../../resources/styles/border_radius.dart';
 import '../../../../resources/transitions.dart';
+import '../../../../resources/values_manager.dart';
 import 'challenge_card_top.dart';
 
 class ChallengeCard extends StatefulWidget {
@@ -25,10 +27,13 @@ class ChallengeCard extends StatefulWidget {
 class _ChallengeCardState extends State<ChallengeCard> {
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
       clipBehavior: Clip.hardEdge,
-      shape: RoundedRectangleBorder(
-        borderRadius: topRightLeftCircularBorder15,
+      decoration: BoxDecoration(
+        color: AppColors.palePrimary,
+          borderRadius: BorderRadius.all(
+            Radius.circular(AppBorderRadius.r15),
+             ),
       ),
       child: InkWell(
         child: Column(

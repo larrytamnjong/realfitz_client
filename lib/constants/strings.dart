@@ -11,14 +11,14 @@ class AppStrings {
   static const String
       byClickingLetsGetStartedStartedOrSigninYouAgreeToOurTermsAndConditions =
       "By clicking \"let's get started\" or \"signin\" you agree to our terms and conditions";
-  static const String ourTermsAndConditions = "Read our terms and conditions";
+  static const String ourTermsAndConditions = "Terms and conditions";
   static const String letsGetStarted = "Let's get Started";
   static const String signIn = "SignIn";
   static const String alreadyHaveAnAccount = "Already have an account?";
-  static const String createAccount = "Create account";
+  static const String createAccount = "Create Account";
   static const String login = "Login";
   static const String failedToRetrieveUser = "Failed to retrieve user";
-  static const String signInWithWhatsAppOTP = "Sign in with WhatsApp OTP?!";
+  static const String signInWithWhatsAppOTP = "Sign in with WhatsApp OTP";
   static const String fullName = "Full name";
   static const String email = "Email";
   static const String password = "Password";
@@ -46,14 +46,15 @@ class AppStrings {
   static const String challenge = "Challenge";
   static const String reward = "Reward";
   static const String profile = "Profile";
-  static const String accountIsActive = "Account is active";
+  static const String accountIsActive = "Active";
   static const String history = "History";
   static const String withdrawal = "Withdrawal";
   static const String deposit = "Deposit";
   static const String rfc = "RFC";
-  static const String stepsToday = "Steps today";
-  static const String coinsToday = "Coins today";
-  static const String cumulativeStepData = "Five day step data";
+  static const String stepsToday = "Steps";
+  static const String coinsToday = "Coins";
+  static const String coinsNeededToRedeem = "coins needed to redeem.";
+  static const String cumulativeStepData = "Seven day step data";
   static const String invalidAccountBalance = "Invalid account balance format";
   static const String permission = "Permissions";
   static const String connectYourAppToGoogleFitOrHealConnect =
@@ -102,6 +103,7 @@ class AppStrings {
   static const String expiresOn = "Expires on";
   static const String copiedToClipBoard = "Copied to clipboard.";
   static const String settings = "Settings";
+  static const String search = "Search";
   static const String stepTarget = "Step target";
   static const String numberOfSteps = "Number of steps";
   static const String accountInformation = "Account information";
@@ -115,6 +117,7 @@ class AppStrings {
   static const String save = "Save";
   static const String caloriesBurned = "Calories";
   static const String kmWalked = "KM Walked";
+  static const String distance = "Distance";
   static const String country = "Country";
   static const String failedToUpdateUserDetail = "Failed to update user detail";
   static const String failedToDeleteUser =

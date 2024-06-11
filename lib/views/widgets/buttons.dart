@@ -10,6 +10,7 @@ class PrimaryTextButton extends StatelessWidget {
   final double? fontSize;
   final Function onPressed;
   final String text;
+
   const PrimaryTextButton({
     super.key,
     required this.onPressed,
@@ -42,28 +43,35 @@ class PrimaryTextButton extends StatelessWidget {
 class PrimaryElevatedButton extends StatelessWidget {
   final Color? color;
   final String text;
+  final Widget? child;
   final Function() onPressed;
+  final TextStyle? textStyle;
   const PrimaryElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
+     this.child,
     this.color,
+    this.textStyle
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+
       style: ButtonStyle(
-        padding: WidgetStateProperty.all(
+
+        padding: MaterialStateProperty.all(
           const EdgeInsets.fromLTRB(
               AppPadding.p80, AppPadding.p8, AppPadding.p80, AppPadding.p8),
         ),
-        backgroundColor: WidgetStateProperty.all(color ?? AppColors.primary),
+        backgroundColor: MaterialStateProperty.all(color ?? AppColors.primary),
       ),
       onPressed: onPressed,
-      child: Text(
+      child:child ?? Text(
         text,
-        style: semiBoldTextStyle.copyWith(color: AppColors.white),
+        style: textStyle??boldTextStyle.copyWith(color: AppColors.white,fontSize: FontSizes.f15),
+        // style: textStyle??semiBoldTextStyle.copyWith(color: AppColors.white),
       ),
     );
   }
@@ -139,7 +147,7 @@ class OutlineTileButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppPadding.p8),
+      padding: const EdgeInsets.all(AppPadding.p10),
       child: ListTile(
         dense: true,
         contentPadding: const EdgeInsets.only(
@@ -152,7 +160,7 @@ class OutlineTileButton extends StatelessWidget {
           icon,
           color: iconColor ?? AppColors.primary,
         ),
-        title: Text(text, style: regularTextStyle),
+        title: Text(text, style: semiBoldTextStyle),
         trailing: showTrailing == true
             ? const Icon(
                 Icons.arrow_forward_ios_rounded,
@@ -160,7 +168,7 @@ class OutlineTileButton extends StatelessWidget {
               )
             : const SizedBox.shrink(),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppBorderRadius.r15),
+          borderRadius: BorderRadius.circular(AppBorderRadius.r10),
           side: BorderSide(
             color: AppColors.grey,
           ),

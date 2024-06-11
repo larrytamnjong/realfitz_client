@@ -100,17 +100,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         transition: rightToLeft);
                   },
                 ),
-                OutlineTileButton(
-                  showTrailing: false,
-                  text: AppStrings.deleteAccount,
-                  iconColor: AppColors.red,
-                  icon: Icons.warning,
-                  onTap: () async {
-                    if (await deleteConfirmation(context)) {
-                      authenticationController.deleteUser();
-                    }
-                  },
-                ),
+
                 OutlineTileButton(
                   showTrailing: false,
                   text: AppStrings.liveSupport,
@@ -136,6 +126,17 @@ class _SettingsPageState extends State<SettingsPage> {
                         urlString:
                             'https://wa.me/${settingsController.whatsAppSupportNumber}?text=Go right ahead and let us know what your suggestion is!',
                       );
+                    }
+                  },
+                ),
+                OutlineTileButton(
+                  showTrailing: false,
+                  text: AppStrings.deleteAccount,
+                  iconColor: AppColors.red,
+                  icon: Icons.warning,
+                  onTap: () async {
+                    if (await deleteConfirmation(context)) {
+                      authenticationController.deleteUser();
                     }
                   },
                 ),

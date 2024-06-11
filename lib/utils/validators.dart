@@ -11,7 +11,9 @@ MultiValidator emailValidator = MultiValidator([
 
 MultiValidator phoneValidator = MultiValidator([
   RequiredValidator(errorText: AppStrings.required),
-  MinLengthValidator(6, errorText: AppStrings.invalidLength),
-  MaxLengthValidator(15, errorText: AppStrings.invalidLength),
+  // MinLengthValidator(6, errorText: AppStrings.invalidLength),
+  // MinLengthValidator(6, errorText: AppStrings.invalidLength),
+  // MaxLengthValidator(15, errorText: AppStrings.invalidLength),
+  MaxLengthValidator(9, errorText: AppStrings.invalidLength),
   PatternValidator(r'^(?=.*?[0-9])', errorText: AppStrings.invalidCharacter),
 ]);

@@ -20,7 +20,7 @@ class FloatingStatusCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: AppPadding.p_5),
       child: Card(
-        elevation: AppSizes.s1,
+        elevation: AppSizes.s0,
         color: AppColors.black,
         child: Padding(
           padding: const EdgeInsets.symmetric(

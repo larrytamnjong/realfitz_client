@@ -18,25 +18,41 @@ class RewardDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithAppName(),
-      backgroundColor: AppColors.paleLime,
-      body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p16),
-        child: ListView(
-          children: [
-            const SizedBox(height: AppSizes.s10),
-            const ContainerHeader(title: AppStrings.details),
-            Text(reward.detail),
-            const ContainerHeader(title: AppStrings.howToRedeem),
-            Text(reward.howToRedeem),
-            const ContainerHeader(title: AppStrings.termsAndConditions),
-            Text(reward.termsAndConditions),
-            const ContainerHeader(title: AppStrings.expiryDate),
-            Text(formatDate(reward.expiryDate)),
-            const ContainerHeader(title: AppStrings.sponsor),
-            Text(sponsor.name)
-          ],
-        ),
+      appBar: const MainAppBar(title: AppStrings.appName,isCenter: true,),
+
+      body: ListView(
+        children: [
+          const SizedBox(height: AppSizes.s10),
+          const ContainerHeader(title: AppStrings.details),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+            child: Text(reward.detail),
+          ),
+          const SizedBox(height: AppSizes.s10),
+          const ContainerHeader(title: AppStrings.howToRedeem),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+            child: Text(reward.howToRedeem),
+          ),
+          const SizedBox(height: AppSizes.s10),
+          const ContainerHeader(title: AppStrings.termsAndConditions),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+            child: Text(reward.termsAndConditions),
+          ),
+          const SizedBox(height: AppSizes.s10),
+          const ContainerHeader(title: AppStrings.expiryDate),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+            child: Text(formatDate(reward.expiryDate)),
+          ),
+          const SizedBox(height: AppSizes.s10),
+          const ContainerHeader(title: AppStrings.sponsor),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+            child: Text(sponsor.name),
+          )
+        ],
       ),
     );
   }

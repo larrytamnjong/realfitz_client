@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:realfitzclient/views/widgets/appbar.dart';
 import '../../../../constants/strings.dart';
 import '../../../../controllers/onboarding/authentication_controller.dart';
 import '../../../../utils/validators.dart';
+import '../../../resources/colors_manager.dart';
 import '../../../resources/styles/text_styles.dart';
 import '../../../resources/values_manager.dart';
 import '../../../widgets/buttons.dart';
@@ -29,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MainAppBar(title: AppStrings.login),
+      appBar: const MainAppBar(title: AppStrings.login, isCenter: true,isLeading: true,),
       body: Obx(
         () => ModalProgressHUD(
           inAsyncCall: authController.isShowingLoadingIndicator.value,
@@ -44,26 +46,82 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          AppStrings.heyThereAthlete,
-                          style:
-                              boldTextStyle.copyWith(fontSize: FontSizes.f18),
-                        ),
-                        const SizedBox(height: AppSizes.s12),
+                        // Text(
+                        //   AppStrings.heyThereAthlete,
+                        //   style:
+                        //       boldTextStyle.copyWith(fontSize: FontSizes.f18),
+                        // ),
+                        const SizedBox(height: AppSizes.s100),
                         FormBuilderTextField(
                           name: AppStrings.email,
                           decoration: InputDecoration(
-                              hintStyle: regularTextStyle,
+                              errorBorder:  OutlineInputBorder(
+                                borderSide:  BorderSide(
+                                  color: AppColors.red,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              enabledBorder:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              focusedBorder:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              border:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              hintStyle: hintTextStyle,
+
                               labelText: AppStrings.email),
                           keyboardType: TextInputType.emailAddress,
                           validator: emailValidator.call,
                           controller: authController.emailController,
                         ),
+                        const SizedBox(height: AppSizes.s20),
                         FormBuilderTextField(
                           obscureText: true,
                           name: AppStrings.password,
                           decoration: InputDecoration(
-                              hintStyle: regularTextStyle,
+                              errorBorder:  OutlineInputBorder(
+                                borderSide:  BorderSide(
+                                  color: AppColors.red,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              enabledBorder:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              focusedBorder:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              border:OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.grey,
+                                  width: 1,
+                                ),
+                                borderRadius:  BorderRadius.circular(AppSizes.s12),
+                              ),
+                              hintStyle: hintTextStyle,
                               labelText: AppStrings.password),
                           keyboardType: TextInputType.text,
                           validator: requiredValidator.call,
@@ -71,12 +129,18 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: AppSizes.s20),
-                    PrimaryElevatedButton(
-                        text: AppStrings.login,
-                        onPressed: authController.login),
+                    const SizedBox(height: AppSizes.s100),
+                    Container(
+                      width: Get.width,
+                      height: 50,
+                      child: PrimaryElevatedButton(
+                          text: AppStrings.login,
+                          onPressed: authController.login),
+                    ),
                     PrimaryTextButton(
                       text: AppStrings.signInWithWhatsAppOTP,
+                      color: AppColors.black,
+                      fontSize: FontSizes.f15,
                       onPressed: () async {
                         await authController.signInWithWhatsApp();
                       },

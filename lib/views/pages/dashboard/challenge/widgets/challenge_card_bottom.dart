@@ -13,6 +13,7 @@ import 'linear_progress_indicator.dart';
 class ChallengeCardRegularBottom extends StatelessWidget {
   final String days;
   final String steps;
+
   const ChallengeCardRegularBottom({
     super.key,
     required this.days,
@@ -21,8 +22,11 @@ class ChallengeCardRegularBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: AppSizes.s60,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(AppBorderRadius.r15),bottomRight:  Radius.circular(AppBorderRadius.r15))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -46,6 +50,7 @@ class ChallengeCardActiveBottom extends StatelessWidget {
   final String stepsTaken;
   final String steps;
   final bool showCircularIndicator;
+
   const ChallengeCardActiveBottom(
       {super.key,
       required this.percent,
@@ -59,7 +64,10 @@ class ChallengeCardActiveBottom extends StatelessWidget {
         ? RoundedPercentageIndicator(
             percent: percent, stepsTaken: stepsTaken, steps: steps)
         : LinearPercentageIndicator(
-            percent: percent, stepsTaken: stepsTaken, steps: steps);
+            negativeWidth: 55,
+            percent: percent,
+            stepsTaken: stepsTaken,
+            steps: steps);
   }
 }
 

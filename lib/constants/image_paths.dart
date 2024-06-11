@@ -10,6 +10,7 @@ class ImagePaths {
   static String manWomanJogging = "assets/images/man_woman_jogging.png";
   static String manWomanStretching = "assets/images/man_woman_stretching.png";
   static String smileyWomanJogging = "assets/images/smiley_woman_running.jpg";
+  static String startingStretching = "assets/images/starting_page.jpg";
   static String logo = "assets/images/logo.png";
 
   static String getRandomPath() {

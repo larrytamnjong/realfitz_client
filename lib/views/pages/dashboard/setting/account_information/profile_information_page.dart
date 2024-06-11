@@ -126,10 +126,14 @@ class _ProfileInformationPageState extends State<ProfileInformationPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: AppSizes.s20),
-                  PrimaryElevatedButton(
-                    text: AppStrings.updateDetails,
-                    onPressed: authController.updateUserDetail,
+                  const SizedBox(height: AppSizes.s50),
+                  Container(
+                    width: Get.width,
+                    height: 50,
+                    child: PrimaryElevatedButton(
+                      text: AppStrings.updateDetails,
+                      onPressed: authController.updateUserDetail,
+                    ),
                   ),
                 ],
               ),

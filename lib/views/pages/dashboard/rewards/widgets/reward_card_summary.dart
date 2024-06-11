@@ -5,6 +5,7 @@ import 'package:realfitzclient/views/pages/dashboard/rewards/reward_detail/rewar
 import 'package:realfitzclient/views/resources/transitions.dart';
 import 'package:realfitzclient/views/widgets/buttons.dart';
 
+import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../constants/strings.dart';
 import '../../../../../models/reward/reward.dart';
@@ -20,6 +21,7 @@ class RewardCardSummary extends StatelessWidget {
   final Reward reward;
   final Sponsor sponsor;
   final RewardController? controller;
+
   const RewardCardSummary({
     super.key,
     required this.reward,
@@ -31,11 +33,13 @@ class RewardCardSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: showRandomColor ? AppColors.getRandomColor() : AppColors.paleLime,
-      shape: RoundedRectangleBorder(
-        borderRadius: circularBorderAll15,
-      ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: AppPadding.p15),
+      decoration: BoxDecoration(
+          color: showRandomColor
+              ? AppColors.getRandomColor().withOpacity(0.5)
+              : AppColors.paleLime,
+          borderRadius: circularBorderAll15),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
         child: Column(
@@ -46,12 +50,21 @@ class RewardCardSummary extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Image(
-                    image: AssetImage(ImagePaths.logo),
-                    height: AppSizes.s100,
-                    width: AppSizes.s100,
-                    fit: BoxFit.cover,
-                  ),
+                  reward.image.toString() != "" ||
+                          reward.image.toString() != "null"
+                      ? Image(
+                          image: NetworkImage(
+                              '$networkImageUrl${reward.image.toString()}'),
+                          height: AppSizes.s100,
+                          width: AppSizes.s100,
+                          fit: BoxFit.cover,
+                        )
+                      : Image(
+                          image: AssetImage(ImagePaths.logo),
+                          height: AppSizes.s100,
+                          width: AppSizes.s100,
+                          fit: BoxFit.cover,
+                        ),
                   Container(width: AppSizes.s20),
                   Expanded(
                     child: Column(
@@ -73,7 +86,8 @@ class RewardCardSummary extends StatelessWidget {
                           maxLines: TextLines.l4,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Container(height: AppSizes.s10),
+
+                        // Container(height: AppSizes.s10),
                       ],
                     ),
                   ),
@@ -82,16 +96,27 @@ class RewardCardSummary extends StatelessWidget {
             ),
             reward.isUserRedeemable
                 ? Padding(
-                    padding: const EdgeInsets.all(AppPadding.p5),
+                    padding: const EdgeInsets.only(
+                        top: AppPadding.p10, bottom: AppPadding.p16),
                     child: Center(
                       child: showRedeemButton
-                          ? PrimaryElevatedButton(
-                              text: AppStrings.redeem,
-                              onPressed: () async {
-                                await controller?.addUserReward(
-                                    rewardId: reward.id);
-                              },
-                            )
+                          ? Column(
+                            children: [
+                              Text(
+                                "${reward.coinsNeededToRedeem} ${AppStrings.coinsNeededToRedeem}",
+                                style: semiBoldTextStyle.copyWith(color: AppColors.primary),
+                                maxLines: TextLines.l4,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              PrimaryElevatedButton(
+                                  text: AppStrings.redeem,
+                                  onPressed: () async {
+                                    await controller?.addUserReward(
+                                        rewardId: reward.id);
+                                  },
+                                ),
+                            ],
+                          )
                           : const SizedBox.shrink(),
                     ),
                   )

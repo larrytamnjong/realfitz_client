@@ -14,10 +14,13 @@ import '../../../../../constants/api_urls.dart';
 import '../../../../../constants/image_paths.dart';
 import '../../../../../models/challenge/challenge.dart';
 import '../../../../resources/colors_manager.dart';
+import '../../../../resources/styles/border_radius.dart';
+import '../../../../resources/styles/text_styles.dart';
 import '../../rewards/widgets/reward_card_summary.dart';
 import '../widgets/challenge_card_bottom.dart';
 import '../widgets/challenge_detail_text.dart';
 import '../widgets/count_down_timer.dart';
+import '../widgets/floating_status_card.dart';
 
 class ChallengeDetailPage extends StatelessWidget {
   final Challenge challenge;
@@ -27,9 +30,9 @@ class ChallengeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ChallengeController controller = Get.find<ChallengeController>();
     return Scaffold(
-      appBar: const MainAppBar(title: AppStrings.challengeDetail),
+      appBar:  MainAppBar(title: challenge.sponsor.name,isLeading: true,),
       body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p8),
+        padding: const EdgeInsets.all(AppPadding.p15),
         child: ModalProgressHUD(
           inAsyncCall: controller.isShowingLoadingIndicator.value,
           child: Column(
@@ -37,13 +40,45 @@ class ChallengeDetailPage extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    ChallengeCardTop(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: AppPadding.p8,
+                          vertical: AppPadding.p8
+                      ),
+                      child: Text(
+                        challenge.title,
+                        style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
+                      ),
+                    ),
+                    SizedBox(height: AppSizes.s12,),
+                    Stack(
+                      children: [
+                        Container(
+                          height: AppSizes.s300,
+                          decoration: BoxDecoration(
+
+                            image: DecorationImage(
+                              image: //AssetImage(image)
+                              NetworkImage(challenge.image != null
+                                  ? "$networkImageUrl${challenge.image}"
+                                  : ImagePaths.getRandomPath()),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: FloatingStatusCard(text: challenge.status),
+                        ),
+                      ],
+                    ),
+                  /*  ChallengeCardTop(
                       image: challenge.image != null
                           ? "$networkImageUrl${challenge.image}"
                           : ImagePaths.getRandomPath(),
                       status: challenge.status,
                       title: challenge.title,
-                    ),
+                    ),*/
                     getChallengeCardBottom(
                       challenge: challenge,
                       showCircularIndicator: true,
@@ -54,6 +89,7 @@ class ChallengeDetailPage extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSizes.s10),
                     RewardCardSummary(
+                      showRandomColor: true,
                       reward: challenge.reward,
                       sponsor: challenge.sponsor,
                     ),
@@ -93,6 +129,7 @@ class ChallengeDetailPage extends StatelessWidget {
           );
         } else {
           return PrimaryElevatedButton(
+
             text: AppStrings.acceptChallenge,
             onPressed: () {
               controller.addChallengeParticipant(

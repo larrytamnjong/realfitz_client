@@ -87,7 +87,7 @@ class AuthenticationController extends BaseController {
       if (isUserDeleted) {
         await _userController.removeUser();
         showSuccessSnackBar();
-        Get.offAll(() => const GettingStartedPage());
+        Get.offAll(() =>  GettingStartedPage());
       } else {
         showFailureSnackBar(message: AppStrings.failedToDeleteUser);
       }
@@ -112,7 +112,7 @@ class AuthenticationController extends BaseController {
   Future logout() async {
     try {
       await _userController.removeUser();
-      Get.offAll(transition: downToUp, () => const GettingStartedPage());
+      Get.offAll(transition: downToUp, () =>  GettingStartedPage());
     } catch (exception) {
       handleException(exception);
     }
@@ -126,7 +126,7 @@ class AuthenticationController extends BaseController {
       bool userIsUpdated = await authClient.updateUserDetail();
       if (userIsUpdated) {
         showSuccessSnackBar();
-        Get.offAll(() => const GettingStartedPage());
+        Get.offAll(() =>  GettingStartedPage());
       } else {
         showFailureSnackBar(message: AppStrings.failedToUpdateUserDetail);
       }

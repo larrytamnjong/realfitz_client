@@ -39,9 +39,10 @@ class DailyTarget extends StatelessWidget {
           onPressed: () => _updateStepTarget(context),
         ),
         LinearPercentageIndicator(
-          negativeWidth: 40,
+          negativeWidth: 55,
           percent: getPercentageOnTen(percent),
           stepsTaken: stepsTaken,
+
           steps: steps,
         ),
       ],
@@ -57,21 +58,25 @@ class DailyTarget extends StatelessWidget {
           ? const CircularProgressIndicator()
           : FormBuilder(
               key: controller.formKey,
-              child: Column(
-                children: <Widget>[
-                  FormBuilderTextField(
-                    name: AppStrings.stepTarget,
-                    decoration: InputDecoration(
-                      helperText: AppStrings.enterYourDailyStepTarget,
-                      helperStyle: regularTextStyle,
-                      hintStyle: regularTextStyle,
-                      labelText: AppStrings.stepTarget,
-                    ),
-                    keyboardType: TextInputType.number,
-                    validator: requiredValidator.call,
-                    controller: controller.targetController,
-                  )
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: <Widget>[
+                    FormBuilderTextField(
+
+                      name: AppStrings.stepTarget,
+                      decoration: InputDecoration(
+                        helperText: AppStrings.enterYourDailyStepTarget,
+                        helperStyle: regularTextStyle,
+                        hintStyle: regularTextStyle,
+                        labelText: AppStrings.stepTarget,
+                      ),
+                      keyboardType: TextInputType.number,
+                      validator: requiredValidator.call,
+                      controller: controller.targetController,
+                    )
+                  ],
+                ),
               ),
             ),
       buttons: [

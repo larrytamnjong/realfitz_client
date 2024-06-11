@@ -18,25 +18,27 @@ class NameAndProfileIconRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          name,
-          style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
-        ),
         IconButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             Get.to(
               transition: downToUp,
-              () => const ProfileInformationPage(),
+                  () => const ProfileInformationPage(),
             );
           },
           icon: Icon(
             Ionicons.person_circle,
             color: AppColors.primary,
-            size: AppSizes.s50,
+            size: AppSizes.s60,
           ),
-        )
+        ),
+        Text(
+          name,
+          style: boldTextStyle.copyWith(fontSize: FontSizes.f20),
+        ),
+
       ],
     );
   }

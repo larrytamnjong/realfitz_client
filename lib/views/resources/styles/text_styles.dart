@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realfitzclient/views/resources/colors_manager.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
 const String montserrat = 'Montserrat';
@@ -57,4 +58,11 @@ TextStyle appNameTextStyle = const TextStyle(
   fontSize: FontSizes.f25,
   fontFamily: signikaNegative,
   fontWeight: bold,
+);
+
+TextStyle hintTextStyle =  TextStyle(
+  fontSize: FontSizes.f15,
+  fontFamily: montserrat,
+  color: AppColors.grey,
+  fontWeight: regular,
 );
