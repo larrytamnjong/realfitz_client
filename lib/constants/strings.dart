@@ -53,6 +53,7 @@ class AppStrings {
   static const String rfc = "RFC";
   static const String stepsToday = "Steps";
   static const String coinsToday = "Coins";
+  static const String coinsNeededToRedeem = "coins needed to redeem.";
   static const String cumulativeStepData = "Seven day step data";
   static const String invalidAccountBalance = "Invalid account balance format";
   static const String permission = "Permissions";

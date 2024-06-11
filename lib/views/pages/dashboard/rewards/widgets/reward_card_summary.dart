@@ -86,6 +86,7 @@ class RewardCardSummary extends StatelessWidget {
                           maxLines: TextLines.l4,
                           overflow: TextOverflow.ellipsis,
                         ),
+
                         // Container(height: AppSizes.s10),
                       ],
                     ),
@@ -99,13 +100,23 @@ class RewardCardSummary extends StatelessWidget {
                         top: AppPadding.p10, bottom: AppPadding.p16),
                     child: Center(
                       child: showRedeemButton
-                          ? PrimaryElevatedButton(
-                              text: AppStrings.redeem,
-                              onPressed: () async {
-                                await controller?.addUserReward(
-                                    rewardId: reward.id);
-                              },
-                            )
+                          ? Column(
+                            children: [
+                              Text(
+                                "${reward.coinsNeededToRedeem} ${AppStrings.coinsNeededToRedeem}",
+                                style: semiBoldTextStyle.copyWith(color: AppColors.primary),
+                                maxLines: TextLines.l4,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              PrimaryElevatedButton(
+                                  text: AppStrings.redeem,
+                                  onPressed: () async {
+                                    await controller?.addUserReward(
+                                        rewardId: reward.id);
+                                  },
+                                ),
+                            ],
+                          )
                           : const SizedBox.shrink(),
                     ),
                   )

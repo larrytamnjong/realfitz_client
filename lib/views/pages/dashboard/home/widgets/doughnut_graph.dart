@@ -35,6 +35,13 @@ class DoughnutGraph extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppBorderRadius.r5),
               child: SfCartesianChart(
                   primaryXAxis: const CategoryAxis(),
+                  primaryYAxis: NumericAxis(
+                      minimum: 0,
+                      maximum: 35000,
+
+                      axisLine: AxisLine(width: 0),
+                      labelFormat: '{value} st.',
+                      majorTickLines: MajorTickLines(size: 0)),
                   tooltipBehavior:  TooltipBehavior(
                       enable: true,
                       tooltipPosition: TooltipPosition.pointer,
