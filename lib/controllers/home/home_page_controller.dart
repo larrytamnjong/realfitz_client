@@ -27,19 +27,21 @@ class HomePageController extends BaseController {
 
   Future<HomePageData?> getHomePageData() async {
     try {
+      String? userId = await _userController.getUserId();
       HomePageData homePageData = HomePageData();
       String? todaySteps = await _stepController.getTodaySteps();
       homePageData.name = await _userController.getUserName();
       homePageData.doughnutChartData = await _getDoughnutChartData();
       homePageData.stepsToday = todaySteps;
       homePageData.accountBalance =
-      await _accountController.getAccountBalance();
+          await _accountController.getAccountBalance();
       homePageData.coinsToday = todaySteps;
       homePageData.stepTarget = await _stepController.getUserStepTarget();
       homePageData.caloriesBurned = _calculateCaloriesBurned(todaySteps);
       homePageData.kmWalked = _calculateKilometersWalked(todaySteps);
       homePageData.rewards = await _rewardController.getAllRewards();
-      homePageData.adImages = await _authenticationClient.getAdImages();
+      homePageData.adImages =
+          await _authenticationClient.getAdImages(id: userId!);
       return homePageData;
     } catch (exception) {
       handleException(exception);
@@ -49,11 +51,12 @@ class HomePageController extends BaseController {
 
   Future<List<DoughnutChartData>> _getDoughnutChartData() async {
     try {
-      List<Map<String,dynamic>> fiveDayStepData = await _stepController.getFiveDayStepData();
+      List<Map<String, dynamic>> fiveDayStepData =
+          await _stepController.getFiveDayStepData();
       List<DoughnutChartData> doughnutChartData = [];
-      print("fiveDayStepData--->" + fiveDayStepData.toString());
+      //    print("fiveDayStepData--->" + fiveDayStepData.toString());
       for (int i = 0; i < fiveDayStepData.length; i++) {
-        double steps =double.parse( fiveDayStepData[i]['step'].toString());
+        double steps = double.parse(fiveDayStepData[i]['step'].toString());
         var weekday;
         switch (int.parse(fiveDayStepData[i]['day'].toString())) {
           case 1:
@@ -78,17 +81,19 @@ class HomePageController extends BaseController {
             weekday = "Sun";
             break;
         }
-      /*  if (steps == "null") {
+        /*  if (steps == "null") {
           // doughnutChartData.add(DoughnutChartData(weekday, 0.0));
           doughnutChartData.add(DoughnutChartData(weekday.toString(), 0.0));
         } else {*/
-          // doughnutChartData.add(
-          //     DoughnutChartData(weekday, steps.toDouble(),));
-          //
-           doughnutChartData.add(
-               DoughnutChartData(weekday, steps,));
+        // doughnutChartData.add(
+        //     DoughnutChartData(weekday, steps.toDouble(),));
+        //
+        doughnutChartData.add(DoughnutChartData(
+          weekday,
+          steps,
+        ));
         // }
-        print("Chart data--->" + doughnutChartData.length.toString());
+        // print("Chart data--->" + doughnutChartData.length.toString());
       }
       return doughnutChartData;
     } catch (exception) {
@@ -105,7 +110,7 @@ class HomePageController extends BaseController {
         stepTarget.id = await _userController.getUserId();
 
         bool isUpdated =
-        await _stepController.updateUserStepTarget(stepTarget: stepTarget);
+            await _stepController.updateUserStepTarget(stepTarget: stepTarget);
         if (isUpdated) {
           showSuccessSnackBar();
           Get.offAll(() => const SplashPage());

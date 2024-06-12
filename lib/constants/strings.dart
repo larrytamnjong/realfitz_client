@@ -17,12 +17,15 @@ class AppStrings {
   static const String alreadyHaveAnAccount = "Already have an account?";
   static const String createAccount = "Create Account";
   static const String login = "Login";
-  static const String failedToRetrieveUser = "Failed to retrieve user";
+  static const String failedToRetrieveUser =
+      "Failed to retrieve user or user does not exist.";
   static const String signInWithWhatsAppOTP = "Sign in with WhatsApp OTP";
   static const String fullName = "Full name";
   static const String email = "Email";
   static const String password = "Password";
   static const String dailyStepTarget = "Daily step target";
+  static const String exception =
+      "No internet or an unexpected exception occurred";
   static const String repeatPassword = "Repeat Password";
   static const String phone = "WhatsApp number";
   static const String youWillUseThisNumberForAccountRecoveryOrOTPSignIn =

@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:realfitzclient/models/onboarding/advert_images.dart';
 import 'package:realfitzclient/views/resources/values_manager.dart';
 
@@ -36,7 +35,6 @@ class ImageCarousel extends StatelessWidget {
         height: size.height * 0.2,
         width: size.width,
         child: CarouselSlider(
-
           options: CarouselOptions(
               // aspectRatio: 18/9,
               // viewportFraction: 0.9,
@@ -49,12 +47,10 @@ class ImageCarousel extends StatelessWidget {
               autoPlayInterval: Duration(seconds: 3),
               autoPlayAnimationDuration: Duration(milliseconds: 800),
               autoPlayCurve: Curves.fastOutSlowIn,
-
               scrollDirection: Axis.horizontal,
               height: size.height * 0.3),
           items: imageUrls.map((url) {
             return Builder(
-
               builder: (BuildContext context) {
                 int index = imageUrls.indexOf(url);
                 return ImageItem(
@@ -116,7 +112,7 @@ class ImageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        width: Get.width*0.9,
+        width: Get.width * 0.9,
         margin: EdgeInsets.symmetric(horizontal: AppPadding.p3),
         child: CachedNetworkImage(
           imageUrl: imageUrl,

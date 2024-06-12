@@ -12,14 +12,13 @@ String getAvailableChallengeUrl =
     '$rootUrl/Challenge/GetAvailableChallenges.php?id=';
 String getChallengeByCategoryIdUrl =
     '$rootUrl/Challenge/GetChallengeByCategoryId.php?id=';
-String getAllCategoryUrl =
-    '$rootUrl/Category/GetAllCategories.php';
+String getAllCategoryUrl = '$rootUrl/Category/GetAllCategories.php';
 String getChallengeHistoriesUrl =
     '$rootUrl/Challenge/GetChallengeHistories.php?id=';
 String addParticipationUrl = '$rootUrl/Participation/AddParticipant.php';
 String getAllRewardsUrl = '$rootUrl/Reward/GetRewards.php?id=';
 String addUserRewardUrl = '$rootUrl/Reward/AddUserReward.php';
-String getAdImageUrls = '$rootUrl/Images/GetAdImages.php';
+String getAdImageUrls = '$rootUrl/Images/GetAdImages.php?id=';
 String getUserRedeemedRewardsUrl =
     '$rootUrl/Reward/GetUserRedeemedRewards.php?id=';
 String whatsAppLoginUrl = '$rootUrl/User/WhatsAppLogin.php?phone=';

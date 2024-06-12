@@ -78,9 +78,9 @@ class AuthenticationClient {
     }
   }
 
-  Future<List<AdImage>?> getAdImages() async {
+  Future<List<AdImage>?> getAdImages({required String id}) async {
     try {
-      final response = await http.get(Uri.parse(getAdImageUrls));
+      final response = await http.get(Uri.parse('$getAdImageUrls$id'));
       if (response.statusCode == 200) {
         final List<dynamic> jsonImages = jsonDecode(response.body);
         final List<AdImage> adImages =

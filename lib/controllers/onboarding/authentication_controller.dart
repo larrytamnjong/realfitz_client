@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:otpless_flutter/otpless_flutter.dart';
+import 'package:realfitzclient/constants/otpless_app_id.dart';
 import 'package:realfitzclient/controllers/base_controller.dart';
 import 'package:realfitzclient/controllers/user/user_controller.dart';
 import 'package:realfitzclient/views/pages/dashboard/dashboard_page.dart';
@@ -12,7 +13,6 @@ import 'package:realfitzclient/views/resources/dialogs/snack_bars.dart';
 import '../../constants/strings.dart';
 import '../../data/onboarding/authentication_client.dart';
 import '../../models/onboarding/user.dart';
-import '../../utils/remove_country_code.dart';
 import '../../views/resources/transitions.dart';
 
 class AuthenticationController extends BaseController {
@@ -87,7 +87,7 @@ class AuthenticationController extends BaseController {
       if (isUserDeleted) {
         await _userController.removeUser();
         showSuccessSnackBar();
-        Get.offAll(() =>  GettingStartedPage());
+        Get.offAll(() => GettingStartedPage());
       } else {
         showFailureSnackBar(message: AppStrings.failedToDeleteUser);
       }
@@ -112,7 +112,7 @@ class AuthenticationController extends BaseController {
   Future logout() async {
     try {
       await _userController.removeUser();
-      Get.offAll(transition: downToUp, () =>  GettingStartedPage());
+      Get.offAll(transition: downToUp, () => GettingStartedPage());
     } catch (exception) {
       handleException(exception);
     }
@@ -126,7 +126,7 @@ class AuthenticationController extends BaseController {
       bool userIsUpdated = await authClient.updateUserDetail();
       if (userIsUpdated) {
         showSuccessSnackBar();
-        Get.offAll(() =>  GettingStartedPage());
+        Get.offAll(() => GettingStartedPage());
       } else {
         showFailureSnackBar(message: AppStrings.failedToUpdateUserDetail);
       }
@@ -182,22 +182,21 @@ class AuthenticationController extends BaseController {
       showLoadingIndicator();
       if (await _isWhatsAppInstalled()) {
         authClient = AuthenticationClient();
-        await _otpless.hideFabButton();
-        _otpless.openLoginPage(
-          (result) async {
-            String? phone = await result['data']['mobile']['number'];
-            if (await result['data'] != null) {
-              User? user = await authClient.whatsAppLogin(
-                  phone: removeCountryCode(phone!));
-              if (user != null) {
-                await _userController.saveUserToLocalStorage(user);
-                Get.offAll(transition: downToUp, () => const DashboardPage());
-              } else {
-                showFailureSnackBar(message: AppStrings.failedToRetrieveUser);
-              }
+        _otpless.openLoginPage((result) async {
+          var phone = await result['data']['identities'][0]['identityValue'];
+          if (await result['data'] != null &&
+              result['data']['identities'][0]['verified'] == true) {
+            showLoadingIndicator();
+            User? user = await authClient.whatsAppLogin(phone: phone);
+            if (user != null) {
+              await _userController.saveUserToLocalStorage(user);
+              Get.offAll(transition: downToUp, () => const DashboardPage());
+            } else {
+              showFailureSnackBar(message: AppStrings.failedToRetrieveUser);
+              hideLoadingIndicator();
             }
-          },
-        );
+          }
+        }, {'appId': otpLessAppId});
       } else {
         showFailureSnackBar(message: AppStrings.pleaseInstallWhatsApp);
       }
