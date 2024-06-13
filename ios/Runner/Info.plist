@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Realfitzclient</string>
+	<string>RealFitz</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>realfitzclient</string>
+	<string>RealFitz</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -53,5 +53,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    	<key>CFBundleURLSchemes</key>
+    	<string>otpless.424hy51qiim6t9oofdql</string>
+    	<key>CFBundleTypeRole</key>
+    	<string>Editor</string>
+    	<key>CFBundleURLName</key>
+    	<string>otpless</string>
+    	</dict>
+    </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+    	<string>whatsapp</string>
+    	<string>otpless</string>
+    	<string>gootpless</string>
+    	<string>com.otpless.ios.app.otpless</string>
+    	<string>googlegmail</string>
+    </array>
 </dict>
 </plist>
